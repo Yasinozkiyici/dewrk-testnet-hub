@@ -1,0 +1,145 @@
+/**
+ * UI-FREEZE: Next.js Configuration
+ * 
+ * Performans bütçeleri ile yapılandırılmış
+ * CLS ≤ 0.02, LCP ≤ 2.5s, yeni JS ≤ +30KB
+ */
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  outputFileTracingRoot: __dirname,
+  serverExternalPackages: ['node-cron'],
+  
+  // === PERFORMANCE OPTIMIZATIONS ===
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['lucide-react', '@prisma/client'],
+  },
+  
+  // === BUNDLE ANALYSIS ===
+  webpack: (config, { isServer, dev }) => {
+    // Bundle size monitoring
+    if (!isServer && !dev) {
+      config.plugins.push(
+        new (require('webpack-bundle-analyzer').BundleAnalyzerPlugin)({
+          analyzerMode: 'static',
+          openAnalyzer: false,
+          reportFilename: '../bundle-analysis.html',
+        })
+      );
+    }
+    
+    // Performance budget validation
+    config.optimization = {
+      ...config.optimization,
+      splitChunks: {
+        ...config.optimization.splitChunks,
+        chunks: 'all',
+        cacheGroups: {
+          ...config.optimization.splitChunks?.cacheGroups,
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+            maxSize: 30000, // 30KB budget
+          },
+          ui: {
+            test: /[\\/]src[\\/]components[\\/]ui[\\/]/,
+            name: 'ui',
+            chunks: 'all',
+            maxSize: 15000, // 15KB budget
+          },
+        },
+      },
+    };
+    
+    return config;
+  },
+  
+  // === IMAGE OPTIMIZATION ===
+  images: {
+    formats: ['image/webp', 'image/avif'],
+    minimumCacheTTL: 31536000, // 1 year
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ethereum.org',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'polygon.technology',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'arbitrum.io',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'optimism.io',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'base.org',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'avax.network',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cryptologos.cc',
+        port: '',
+        pathname: '/**',
+      }
+    ],
+  },
+  
+  // === COMPRESSION ===
+  compress: true,
+  
+  // === HEADERS FOR PERFORMANCE ===
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+        ],
+      },
+      {
+        source: '/static/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
+}
+
+module.exports = nextConfig

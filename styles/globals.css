@@ -1,0 +1,187 @@
+/**
+ * UI-FREEZE: FROZEN GLOBAL STYLES
+ * 
+ * Bu dosya değiştirilemez - tüm CSS custom properties dondurulmuştur.
+ * Design tokens, gradient/mesh tanımları ve tipografi ölçekleri
+ * değiştirilmemelidir.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.card { 
+  @apply rounded-2xl border border-white/20 bg-white/70 backdrop-blur-md shadow-lg shadow-black/5;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.6) 100%);
+}
+
+.glass-card {
+  @apply rounded-xl border border-white/30 bg-white/60 backdrop-blur-sm shadow-sm;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.5) 100%);
+}
+
+.glass-table {
+  @apply rounded-lg border border-white/20 bg-white/80 backdrop-blur-md shadow-lg;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+}
+
+h1,h2,h3 { @apply tracking-tight; }
+
+@layer utilities {
+  .sticky-col { position: sticky; top: 88px; }
+}
+
+:root {
+  /* === FROZEN DESIGN TOKENS - DEĞİŞTİRİLEMEZ === */
+  --bg-soft: #F5F9FF;
+  --surface: #FFFFFF;
+  --raised: #F8FAFC;
+  --border: #E7ECF2;
+  --ink-1: #0D1321;
+  --ink-2: #414B5A;
+  --ink-3: #6D7A8B;
+  --glass: #FFFFFFCC;
+  --stroke: #FFFFFF4D;
+  --mint: #7CF7D6;
+  --aqua: #78DFF9;
+  --lilac: #C6B8FF;
+  
+  /* Legacy compatibility - FROZEN */
+  --bg: var(--bg-soft);
+  --ink-primary: var(--ink-1);
+  --ink-secondary: var(--ink-2);
+  --primary-from: var(--mint);
+  --primary-to: var(--aqua);
+  --accent: var(--lilac);
+  --success: #22C55E;
+  --warn: #F59E0B;
+  --danger: #EF4444;
+  
+  /* Legacy compatibility - FROZEN */
+  --text: var(--ink-primary);
+  --text-2: var(--ink-secondary);
+  --text-3: #8B9CB0;
+  --muted: var(--raised);
+  --text-muted: var(--text-3);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Scroll performance optimizations */
+  -webkit-overflow-scrolling: touch;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  font-size: 13px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Scroll performance optimizations */
+  overflow-x: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: scroll-position;
+}
+
+/* Typography scale - küçük tipografi */
+.text-xs { font-size: 11px; line-height: 1.4; }
+.text-sm { font-size: 12px; line-height: 1.4; }
+.text-base { font-size: 13px; line-height: 1.5; }
+.text-lg { font-size: 14px; line-height: 1.5; }
+.text-xl { font-size: 16px; line-height: 1.4; }
+.text-2xl { font-size: 18px; line-height: 1.3; }
+.text-3xl { font-size: 20px; line-height: 1.2; }
+
+/* === FROZEN GRADIENT/MESH - DEĞİŞTİRİLEMEZ === */
+.landing-bg {
+  background: 
+    radial-gradient(600px 400px at 10% 15%, #CFF8F1 0%, transparent 60%),
+    radial-gradient(700px 500px at 85% 80%, #E6DFFF 0%, transparent 65%),
+    linear-gradient(180deg, #F6FAFF 0%, #EFF5FF 100%);
+  position: relative;
+}
+
+.bg-noise {
+  background-image: url('/noise.png');
+  opacity: 0.05;
+  mix-blend-mode: soft-light;
+}
+
+.landing-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at top, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Link styles */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--primary-700);
+}
+
+/* Focus styles - mint outline for accessibility */
+*:focus {
+  outline: 2px solid #7cf2d0;
+  outline-offset: 2px;
+}
+
+*:focus-visible {
+  outline: 2px solid #7cf2d0;
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Selection styles */
+::selection {
+  background-color: var(--primary);
+  color: var(--bg);
+}
+
+/* Smooth transitions */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
