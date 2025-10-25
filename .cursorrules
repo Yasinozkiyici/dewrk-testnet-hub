@@ -1,0 +1,83 @@
+# Project Instructions / Workspace Rules — Dewrk.com
+
+## Amaç
+Bu proje "Dewrk" adlı Web3 testnet directory/task hub'ıdır. UI dili: soft gradient mesh + glass cards, küçük tipografi, minimal ve profesyonel. **Global design token'ları değiştirme** (yalnızca açıkça istenirse).
+
+## Çekirdek Sayfalar
+- /testnets (listing)
+- /testnets/[slug] (detail)
+
+### Listing sütunları (>=1280px yatay scroll YASAK)
+- Name + logo + network
+- Status
+- Difficulty
+- Est. Time
+- Reward
+- KYC
+- Tags
+- Tasks
+- Updated
+- Funding (USD)
+- "Dashboard" pill (varsa)
+- Satır focusable; Enter → detail aç.
+
+### Detail içeriği (yalnızca var olan veriyi render et)
+- Overview: shortDescription + meta chips
+- Funding & Links kartı: Website/GitHub/Twitter/Discord + "Open Dashboard" CTA
+- Discord Roles tablosu: role / requirement / perks
+- Getting Started steps
+- Tasks list
+
+## Admin Panel
+- Tek rich editor + canlı preview (duplicate preview yok)
+- Editable fields:
+  - logoUrl, heroImageUrl, shortDescription
+  - network, difficulty, estTimeMinutes
+  - rewardType, rewardNote
+  - kycRequired, requiresWallet
+  - tags[], categories[], highlights[], prerequisites[], gettingStarted[]
+  - socials: websiteUrl, githubUrl, twitterUrl, discordUrl
+  - dashboardUrl, hasDashboard (bool)
+  - totalRaisedUSD (Decimal)
+  - discordRoles (Json)
+- Kaydet sonrası: `revalidateTag('testnets')` ve `revalidateTag(\`testnet:${slug}\`)`
+- Sol admin sidebar sabit ve hizalı; label'lar AA kontrast.
+
+## Veri Modeli (additive)
+- Halihazırdaki alanlara ek: websiteUrl, githubUrl, twitterUrl, discordUrl, dashboardUrl, hasDashboard (bool), totalRaisedUSD (Decimal), discordRoles (Json)
+- **BREAKING schema değişikliği yapma.** Tüm değişiklikler additive ve migration dosyalarıyla.
+
+## API
+- GET /api/testnets (list): yeni alanları (hasDashboard, totalRaisedUSD, socials, tasksCount) döndür.
+- GET /api/testnets/[slug] (detail): full detail + dashboardUrl + discordRoles.
+- Mutasyonlarda tag revalidation şart.
+
+## Kalite Kapıları
+- A11y AA kontrast, keyboard nav
+- Health endpoint
+- Light Playwright smoke: create → publish → list → detail
+- Contract tests
+- Global token'larda görsel değişiklik yapma
+
+## Migration & Veritabanı Kuralları (Supabase/Postgres)
+- **DDL ve migration'lar için 5432 portu** kullanılır. **6543 (pooler/PgBouncer) KULLANILMAZ.**
+- `psql` komutunda **`-4`/`-6` gibi bayrak YOK.** Kullanma.
+- SSL şart: `sslmode=require`
+- GitHub Actions'ta migration adımı `psql -v ON_ERROR_STOP=1` ile çalışır; hata anında job fail.
+- DDL sırasında app bağlantıları pooler'dan gelse bile DDL `5432` üzerinden yapılır.
+- Migration dosyaları sıralı ve idempotent yazılmalı (CREATE TABLE IF NOT EXISTS, ALTER TABLE … ADD COLUMN IF NOT EXISTS).
+- Üretim/schema kırıcı değişiklik YASAK. Gerekirse yeni kolon ekle, eskileri deprecate et.
+- **Kimlik bilgilerinin hiçbiri koda commitlenmez.** Sadece GitHub Secrets ve CI env.
+
+## Types & Build Kuralları
+- `@/types/api` içinde `TestnetFull` export edilir (aşağıdaki tipe uy).
+- TypeScript "noEmit" hatasız geçmeli.
+- Endpoint response tipleriyle UI tipleri senkron tutulur; kritik alanlarda `zod` validasyonuyla koru.
+
+## Cursor'la çalışma kuralları
+- Veritabanına dokunman gerekiyorsa migration yaz ve yalnızca `5432` kullan.
+- Pooler (6543) **sadece uygulama runtime** bağlantıları içindir, migration için asla.
+- Komut veya script örneklerinde `-4` gibi geçersiz `psql` bayrağı önerme.
+- Şema additive ilerler; istenen alan yoksa **yeni kolon** veya **Json** ekle.
+- UI değişikliği istenmedikçe global tokenları kurcalama.
+- Kod değişikliklerinden sonra `revalidateTag` kullanımını eklemeyi unutma.
