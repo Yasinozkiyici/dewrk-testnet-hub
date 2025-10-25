@@ -125,7 +125,7 @@ from public.dewrk_testnets t;
 
 grant select on public.dewrk_v_testnet_detail to anon, authenticated;
 
--- 7) Seed örneği (isteğe bağlı ama ilk testi kolaylaştırır)
+-- 7) Seed örneği
 insert into public.dewrk_testnets (
   slug, name, network, status, difficulty, est_time_minutes,
   reward_type, reward_note, kyc_required, requires_wallet,
