@@ -124,6 +124,12 @@ export function TestnetTable({ onRowClick }: TestnetTableProps) {
     setFocusedSlug(slug);
   }, [searchParams]);
 
+  const handleCloseDrawer = () => {
+    const params = new URLSearchParams(searchParams);
+    params.delete('slug');
+    router.push(`?${params.toString()}` as any, { scroll: false });
+  };
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -136,7 +142,7 @@ export function TestnetTable({ onRowClick }: TestnetTableProps) {
 
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [searchParams]);
+  }, [searchParams, handleCloseDrawer]);
 
   const handleRowClick = (testnet: Testnet) => {
     onRowClick(testnet);

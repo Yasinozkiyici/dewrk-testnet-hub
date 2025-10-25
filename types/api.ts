@@ -59,3 +59,7 @@ export type TestnetDetail = {
   updated?: string | null;
   created?: string | null;
 };
+
+// Aliases for backward compatibility
+export type TestnetLite = TestnetListItem;
+export type TestnetFull = TestnetDetail;

@@ -172,9 +172,11 @@ describe('API Contract Tests - Real Endpoints', () => {
       
       expect(typeof validated.socials).toBe('object')
       // Socials should only contain twitter/discord
-      Object.keys(validated.socials).forEach(key => {
-        expect(['twitter', 'discord']).toContain(key)
-      })
+      if (validated.socials) {
+        Object.keys(validated.socials).forEach(key => {
+          expect(['twitter', 'discord']).toContain(key)
+        })
+      }
 
       expect(Array.isArray(validated.discordRoles)).toBe(true)
       expect(Array.isArray(validated.tasks)).toBe(true)

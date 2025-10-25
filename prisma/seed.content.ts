@@ -80,10 +80,10 @@ async function main() {
       create: {
         name: item.name,
         slug: item.slug,
-        status: item.status ?? 'ACTIVE',
-        network: item.network,
+        status: (item.status ?? 'ACTIVE') as any,
+        network: item.network ?? '',
         shortDescription: item.shortDescription,
-        difficulty: item.difficulty,
+        difficulty: item.difficulty ?? 'MEDIUM',
         estTimeMinutes: item.estTimeMinutes,
         rewardType: item.rewardType,
         rewardNote: item.rewardNote,
@@ -96,7 +96,7 @@ async function main() {
       },
       update: {
         name: item.name,
-        status: item.status ?? 'ACTIVE',
+        status: (item.status ?? 'ACTIVE') as any,
         network: item.network,
         shortDescription: item.shortDescription,
         difficulty: item.difficulty,

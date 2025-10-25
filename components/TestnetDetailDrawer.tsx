@@ -161,7 +161,7 @@ export function TestnetDetailDrawer({ isOpen, onClose, testnetSlug }: TestnetDet
     const params = new URLSearchParams(searchParams);
     params.delete('slug');
     const newUrl = params.toString() ? `/?${params.toString()}` : '/';
-    router.push(newUrl, { scroll: false });
+    router.push(newUrl as any, { scroll: false });
     onClose();
   }, [searchParams, router, onClose]);
 
