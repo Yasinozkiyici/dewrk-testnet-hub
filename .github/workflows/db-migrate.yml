@@ -10,18 +10,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Postgres Client
+      - name: Install Postgres Client & DNS tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y postgresql-client
+          sudo apt-get install -y postgresql-client dnsutils
 
-      # IPv6 sorununu aşmak için host'un IPv4'ünü bul ve PGHOSTADDR'a koy
+      # IPv4'ü dayanıklı biçimde çöz: dig → getent → nslookup
       - name: Resolve IPv4 for Supabase host
         env:
           PGHOST: db.ngnxebpzlbhqjmwtfcjy.supabase.co
         run: |
           set -e
-          IPV4=$(getent ahostsv4 "$PGHOST" | awk '{print $1; exit}')
+          echo "Resolving IPv4 for $PGHOST ..."
+          IPV4="$(dig +short A $PGHOST | head -n1)"
+          if [ -z "$IPV4" ]; then
+            IPV4="$(getent hosts $PGHOST | awk '($1 ~ /^[0-9.]+$/){print $1; exit}')"
+          fi
+          if [ -z "$IPV4" ]; then
+            IPV4="$(nslookup -query=A $PGHOST 2>/dev/null | awk '/^Address: /{print $2; exit}')"
+          fi
           if [ -z "$IPV4" ]; then
             echo "Could not resolve IPv4 for $PGHOST"
             exit 1
