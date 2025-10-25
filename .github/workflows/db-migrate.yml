@@ -15,7 +15,21 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y postgresql-client
 
-      - name: Run migrations with psql (direct 5432 + SSL)
+      # IPv6 sorununu aşmak için host'un IPv4'ünü bul ve PGHOSTADDR'a koy
+      - name: Resolve IPv4 for Supabase host
+        env:
+          PGHOST: db.ngnxebpzlbhqjmwtfcjy.supabase.co
+        run: |
+          set -e
+          IPV4=$(getent ahostsv4 "$PGHOST" | awk '{print $1; exit}')
+          if [ -z "$IPV4" ]; then
+            echo "Could not resolve IPv4 for $PGHOST"
+            exit 1
+          fi
+          echo "Resolved IPv4: $IPV4"
+          echo "PGHOSTADDR=$IPV4" >> "$GITHUB_ENV"
+
+      - name: Run migrations with psql (direct 5432 + SSL, IPv4)
         env:
           PGHOST: db.ngnxebpzlbhqjmwtfcjy.supabase.co
           PGPORT: "5432"
@@ -23,9 +37,10 @@ jobs:
           PGUSER: ${{ secrets.SUPABASE_DB_USER }}
           PGPASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
           PGSSLMODE: require
+          PGCONNECT_TIMEOUT: "15"
         run: |
           set -e
-          echo "Checking connection..."
+          echo "Checking connection (IPv4 via PGHOSTADDR=$PGHOSTADDR)..."
           psql -v ON_ERROR_STOP=1 -c "SELECT version();"
 
           echo "Running migrations in supabase/migrations ..."
