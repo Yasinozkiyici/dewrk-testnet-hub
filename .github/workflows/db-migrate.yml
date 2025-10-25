@@ -1,6 +1,7 @@
 name: DB Migrate (Supabase)
+
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
 
 jobs:
   migrate:
@@ -9,37 +10,40 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Ensure psql client
+      - name: Install tooling
         run: |
-          if ! command -v psql >/dev/null 2>&1; then
-            sudo apt-get update
-            sudo apt-get install -y postgresql-client
-          fi
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client dnsutils netcat-openbsd
 
-      - name: Run migration (force IPv4, fallback 6543→5432)
+      - name: Preflight — verify SUPABASE_POOLER_URL
         env:
-          PGCONNECT_TIMEOUT: "10"
+          DATABASE_URL: ${{ secrets.SUPABASE_POOLER_URL }}
+        run: |
+          set -euo pipefail
+          test -n "${DATABASE_URL:-}" || { echo "❌ SECRET SUPABASE_POOLER_URL boş"; exit 1; }
+          case "$DATABASE_URL" in *\?*) URL="${DATABASE_URL}&sslmode=require" ;; *) URL="${DATABASE_URL}?sslmode=require" ;; esac
+          echo "$URL" > url.txt
+          proto="${DATABASE_URL%%://*}"; rest="${DATABASE_URL#*://}"; creds="${rest%@*}"; hostportdb="${rest#*@}"
+          user="${creds%%:*}"; hostport="${hostportdb%%/*}"; db="${hostportdb#*/}"
+          host="${hostport%%:*}"; port="${hostport##*:}"
+          echo "👤 $user"; echo "🖥️ $host"; echo "🔌 $port"; echo "🗄️ $db"
+          echo "$user" | grep -Eq '^postgres\.[a-z0-9]{20,}$' || { echo "❌ user yanlış (postgres.<ref> olmalı)"; exit 1; }
+          echo "$host" | grep -Eq '^aws-1-eu-west-1\.pooler\.supabase\.com$' || { echo "❌ host bölgene uymuyor"; exit 1; }
+          [ "$port" = "5432" ] || { echo "❌ port 5432 olmalı (Session mode)"; exit 1; }
+          AIPV4=$(dig +short A "$host" | head -n1 || true); test -n "$AIPV4" || { echo "❌ $host için IPv4 A kaydı bulunamadı"; exit 1; }
+          echo "✅ IPv4 $AIPV4"; nc -vz -w 5 "$host" "$port"
+
+      - name: Check version
         run: |
           set -e
-          FILE="supabase/migrations/20251025_init_dewrk.sql"
-          test -f "$FILE" || { echo "Migration file missing: $FILE"; exit 2; }
+          psql -v ON_ERROR_STOP=1 "$(cat url.txt)" -c "SELECT version();"
 
-          URL1='postgresql://postgres:Yasin.4545.95@db.ngnxebpzlbhqjmwtfcjy.supabase.co:6543/postgres?sslmode=require'
-          URL2='postgresql://postgres:Yasin.4545.95@db.ngnxebpzlbhqjmwtfcjy.supabase.co:5432/postgres?sslmode=require'
-
-          echo "Trying IPv4 to 6543..."
-          if psql -4 "$URL1" -c 'select 1;' ; then
-            echo "Connected on 6543. Applying migration..."
-            psql -4 "$URL1" -f "$FILE"
-            exit 0
-          fi
-
-          echo "6543 failed. Trying IPv4 to 5432..."
-          if psql -4 "$URL2" -c 'select 1;' ; then
-            echo "Connected on 5432. Applying migration..."
-            psql -4 "$URL2" -f "$FILE"
-            exit 0
-          fi
-
-          echo "All connection attempts failed (IPv4 6543 & 5432)."
-          exit 2
+      - name: Run migrations
+        run: |
+          set -e
+          shopt -s nullglob
+          for f in supabase/migrations/*.sql; do
+            echo ">> $f"
+            psql -v ON_ERROR_STOP=1 "$(cat url.txt)" -f "$f"
+          done
+          echo "✅ Migrations completed."

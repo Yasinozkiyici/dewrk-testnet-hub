@@ -39,11 +39,55 @@ create table if not exists public.dewrk_testnets (
   has_dashboard boolean default false,
   logo_url text,
   hero_image_url text,
+  short_description text,
   tasks_count integer default 0,
   total_raised_usd numeric(18,2),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+-- 2a) Ensure new columns exist when running against pre-existing tables
+do $$ begin
+  if not exists (
+    select 1 from information_schema.columns
+    where table_schema = 'public' and table_name = 'dewrk_testnets' and column_name = 'est_time_minutes'
+  ) then
+    alter table public.dewrk_testnets add column est_time_minutes integer;
+  end if;
+
+  if not exists (
+    select 1 from information_schema.columns
+    where table_schema = 'public' and table_name = 'dewrk_testnets' and column_name = 'total_raised_usd'
+  ) then
+    alter table public.dewrk_testnets add column total_raised_usd numeric(18,2);
+  end if;
+
+  if not exists (
+    select 1 from information_schema.columns
+    where table_schema = 'public' and table_name = 'dewrk_testnets' and column_name = 'has_dashboard'
+  ) then
+    alter table public.dewrk_testnets add column has_dashboard boolean default false;
+  end if;
+
+  if not exists (
+    select 1 from information_schema.columns
+    where table_schema = 'public' and table_name = 'dewrk_testnets' and column_name = 'website_url'
+  ) then
+    alter table public.dewrk_testnets
+      add column website_url text,
+      add column github_url  text,
+      add column twitter_url text,
+      add column discord_url text,
+      add column dashboard_url text;
+  end if;
+
+  if not exists (
+    select 1 from information_schema.columns
+    where table_schema = 'public' and table_name = 'dewrk_testnets' and column_name = 'short_description'
+  ) then
+    alter table public.dewrk_testnets add column short_description text;
+  end if;
+end $$;
 
 -- 3) updated_at trigger
 create or replace function public.set_updated_at()
@@ -64,75 +108,78 @@ alter table public.dewrk_testnets enable row level security;
 grant usage on schema public to anon, authenticated;
 grant select on public.dewrk_testnets to service_role;
 
--- 5) LIST view
-drop view if exists public.dewrk_v_testnets_list;
-create view public.dewrk_v_testnets_list as
+-- 5) Testnet listing için public view
+create or replace view public.dewrk_testnets_public as
 select
+  t.id,
   t.slug,
   t.name,
   t.network,
   t.status,
   t.difficulty,
-  t.est_time_minutes as "estTimeMinutes",
-  t.reward_type as "rewardType",
-  t.reward_note as "rewardNote",
-  t.kyc_required as "kycRequired",
-  t.tags,
-  t.tasks_count as "tasksCount",
-  t.updated_at as "updated",
-  t.total_raised_usd as "totalRaisedUSD",
-  t.has_dashboard as "hasDashboard",
-  t.logo_url as "logoUrl"
-from public.dewrk_testnets t;
-
-grant select on public.dewrk_v_testnets_list to anon, authenticated;
-
--- 6) DETAIL view
-drop view if exists public.dewrk_v_testnet_detail;
-create view public.dewrk_v_testnet_detail as
-select
-  t.slug,
-  t.name,
-  t.network,
-  t.status,
-  t.difficulty,
-  t.est_time_minutes as "estTimeMinutes",
-  t.reward_type as "rewardType",
-  t.reward_note as "rewardNote",
-  t.kyc_required as "kycRequired",
-  t.requires_wallet as "requiresWallet",
+  t.est_time_minutes,
+  t.reward_type,
+  t.reward_note,
+  t.kyc_required,
+  t.requires_wallet,
   t.tags,
   t.categories,
   t.highlights,
   t.prerequisites,
-  t.getting_started as "gettingStarted",
-  jsonb_build_object(
-    'websiteUrl', t.website_url,
-    'githubUrl',  t.github_url,
-    'twitterUrl', t.twitter_url,
-    'discordUrl', t.discord_url
-  ) as socials,
-  t.dashboard_url as "dashboardUrl",
-  t.has_dashboard as "hasDashboard",
-  t.total_raised_usd as "totalRaisedUSD",
-  t.discord_roles as "discordRoles",
-  t.logo_url as "logoUrl",
-  t.hero_image_url as "heroImageUrl",
-  t.tasks_count as "tasksCount",
-  t.updated_at as "updated",
-  t.created_at as "created"
+  t.getting_started,
+  t.logo_url,
+  t.hero_image_url,
+  t.short_description,
+  t.tasks_count,
+  t.updated_at,
+  t.total_raised_usd,
+  t.has_dashboard,
+  t.dashboard_url,
+  t.website_url,
+  t.github_url,
+  t.twitter_url,
+  t.discord_url
 from public.dewrk_testnets t;
 
-grant select on public.dewrk_v_testnet_detail to anon, authenticated;
+grant select on public.dewrk_testnets_public to anon, authenticated;
 
--- Seed örneği (idempotent)
-INSERT INTO public.dewrk_testnets (slug, name, status, network, tasks_count)
-VALUES ('citrea', 'Citrea', 'LIVE', 'Bitcoin L2', 7)
-ON CONFLICT (slug) DO UPDATE
-SET name = EXCLUDED.name,
-    status = EXCLUDED.status,
-    network = EXCLUDED.network,
-    tasks_count = EXCLUDED.tasks_count;
+-- 7) Seed örneği
+insert into public.dewrk_testnets (
+  slug, name, network, status, difficulty, est_time_minutes,
+  reward_type, reward_note, kyc_required, requires_wallet,
+  tags, categories, highlights, prerequisites, getting_started,
+  website_url, github_url, twitter_url, discord_url,
+  dashboard_url, has_dashboard, total_raised_usd,
+  discord_roles, logo_url, hero_image_url, short_description, tasks_count
+) values (
+  'citrea',
+  'Citrea',
+  'Bitcoin L2',
+  'active',
+  'intermediate',
+  20,
+  'points',
+  'Early tester points',
+  false,
+  true,
+  array['bitcoin','rollup','l2'],
+  array['infra'],
+  array['Fast finality','OPCAT'],
+  array['Wallet','Twitter'],
+  '[{"title":"Start here","body":"Connect wallet and join Discord","url":"https://example.com"}]'::jsonb,
+  'https://citrea.xyz',
+  'https://github.com/citrea',
+  'https://twitter.com/citrea',
+  'https://discord.gg/citrea',
+  'https://dashboard.citrea.xyz',
+  true,
+  25000000.00,
+  '[{"role":"Early Adopter","requirement":"Complete onboarding","perks":"Priority access"}]'::jsonb,
+  'https://cdn.example.com/citrea-logo.png',
+  'https://cdn.example.com/citrea-hero.jpg',
+  'Quick summary about Citrea testnet',
+  7
+);
 
 -- 8) Schema cache yenile
 select pg_notify('pgrst','reload schema');
