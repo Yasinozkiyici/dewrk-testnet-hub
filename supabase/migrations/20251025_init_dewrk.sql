@@ -125,42 +125,14 @@ from public.dewrk_testnets t;
 
 grant select on public.dewrk_v_testnet_detail to anon, authenticated;
 
--- 7) Seed örneği
-insert into public.dewrk_testnets (
-  slug, name, network, status, difficulty, est_time_minutes,
-  reward_type, reward_note, kyc_required, requires_wallet,
-  tags, categories, highlights, prerequisites, getting_started,
-  website_url, github_url, twitter_url, discord_url,
-  dashboard_url, has_dashboard, total_raised_usd,
-  discord_roles, logo_url, hero_image_url, tasks_count
-) values (
-  'citrea',
-  'Citrea',
-  'Bitcoin L2',
-  'active',
-  'intermediate',
-  20,
-  'points',
-  'Early tester points',
-  false,
-  true,
-  array['bitcoin','rollup','l2'],
-  array['infra'],
-  array['Fast finality','OPCAT'],
-  array['Wallet','Twitter'],
-  '[{"title":"Start here","body":"Connect wallet and join Discord","url":"https://example.com"}]'::jsonb,
-  'https://citrea.xyz',
-  'https://github.com/citrea',
-  'https://twitter.com/citrea',
-  'https://discord.gg/citrea',
-  'https://dashboard.citrea.xyz',
-  true,
-  25000000.00,
-  '[{"role":"Early Adopter","requirement":"Complete onboarding","perks":"Priority access"}]'::jsonb,
-  'https://cdn.example.com/citrea-logo.png',
-  'https://cdn.example.com/citrea-hero.jpg',
-  7
-);
+-- Seed örneği (idempotent)
+INSERT INTO public.dewrk_testnets (slug, name, status, network, tasks_count)
+VALUES ('citrea', 'Citrea', 'LIVE', 'Bitcoin L2', 7)
+ON CONFLICT (slug) DO UPDATE
+SET name = EXCLUDED.name,
+    status = EXCLUDED.status,
+    network = EXCLUDED.network,
+    tasks_count = EXCLUDED.tasks_count;
 
 -- 8) Schema cache yenile
 select pg_notify('pgrst','reload schema');
