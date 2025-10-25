@@ -157,9 +157,77 @@ SELECT
   t.discord_url
 FROM public.dewrk_testnets t;
 
+-- Eski camelCase view'lerine geriye dönük uyum
+CREATE OR REPLACE VIEW public.dewrk_v_testnets_list AS
+SELECT
+  p.id,
+  p.slug,
+  p.name,
+  p.network,
+  p.status,
+  p.difficulty,
+  p.est_time_minutes      AS "estTimeMinutes",
+  p.reward_type           AS "rewardType",
+  p.reward_note           AS "rewardNote",
+  p.kyc_required          AS "kycRequired",
+  p.requires_wallet       AS "requiresWallet",
+  p.tags,
+  p.categories,
+  p.highlights,
+  p.prerequisites,
+  p.getting_started       AS "gettingStarted",
+  p.logo_url              AS "logoUrl",
+  p.hero_image_url        AS "heroImageUrl",
+  p.short_description     AS "shortDescription",
+  p.tasks_count           AS "tasksCount",
+  p.updated_at            AS "updatedAt",
+  p.total_raised_usd      AS "totalRaisedUSD",
+  p.has_dashboard         AS "hasDashboard",
+  p.dashboard_url         AS "dashboardUrl",
+  p.website_url           AS "websiteUrl",
+  p.github_url            AS "githubUrl",
+  p.twitter_url           AS "twitterUrl",
+  p.discord_url           AS "discordUrl"
+FROM public.dewrk_testnets_public p;
+
+CREATE OR REPLACE VIEW public.dewrk_v_testnet_detail AS
+SELECT
+  t.slug,
+  t.name,
+  t.network,
+  t.status,
+  t.difficulty,
+  t.est_time_minutes      AS "estTimeMinutes",
+  t.reward_type           AS "rewardType",
+  t.reward_note           AS "rewardNote",
+  t.kyc_required          AS "kycRequired",
+  t.requires_wallet       AS "requiresWallet",
+  t.tags,
+  t.categories,
+  t.highlights,
+  t.prerequisites,
+  t.getting_started       AS "gettingStarted",
+  t.logo_url              AS "logoUrl",
+  t.hero_image_url        AS "heroImageUrl",
+  t.short_description     AS "shortDescription",
+  t.tasks_count           AS "tasksCount",
+  t.updated_at            AS "updated",
+  t.created_at            AS "created",
+  t.total_raised_usd      AS "totalRaisedUSD",
+  t.has_dashboard         AS "hasDashboard",
+  t.dashboard_url         AS "dashboardUrl",
+  t.website_url           AS "websiteUrl",
+  t.github_url            AS "githubUrl",
+  t.twitter_url           AS "twitterUrl",
+  t.discord_url           AS "discordUrl",
+  t.discord_roles         AS "discordRoles"
+FROM public.dewrk_testnets t;
+
 -- 5) Yetkiler (Supabase default rolleri)
 GRANT USAGE ON SCHEMA public TO anon, authenticated;
 GRANT SELECT ON public.dewrk_testnets_public TO anon, authenticated;
+GRANT SELECT ON public.dewrk_v_testnets_list TO anon, authenticated;
+GRANT SELECT ON public.dewrk_v_testnet_detail TO anon, authenticated;
 GRANT SELECT, INSERT, UPDATE, DELETE ON public.dewrk_testnets TO service_role;
 
 -- 6) Seed (idempotent UPSERT)

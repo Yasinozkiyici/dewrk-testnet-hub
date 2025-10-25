@@ -1,12 +1,28 @@
+import { unstable_cache } from 'next/cache';
 import { NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from '@/lib/supabase';
 
-export const revalidate = 60;
-export const dynamic = 'force-static';
+const getTestnets = unstable_cache(
+  async () => {
+    const supabase = createClient();
+    const { data, error } = await supabase
+      .from('dewrk_v_testnets_list')
+      .select('*')
+      .order('updatedAt', { ascending: false, nullsFirst: false });
+
+    if (error) throw new Error(error.message);
+    return data ?? [];
+  },
+  ['testnets'],
+  { tags: ['testnets'] }
+);
 
 export async function GET() {
-  const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
-  const { data, error } = await supabase.from('dewrk_v_testnets_list').select('*');
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json({ items: data });
+  try {
+    const data = await getTestnets();
+    return NextResponse.json({ items: data });
+  } catch (error) {
+    console.error('Failed to load testnets', error);
+    return NextResponse.json({ error: 'Failed to load testnets' }, { status: 500 });
+  }
 }

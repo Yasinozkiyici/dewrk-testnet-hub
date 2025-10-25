@@ -1,13 +1,28 @@
+import { unstable_cache } from 'next/cache';
 import { NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from '@/lib/supabase';
 import { serializeDetail } from '@/lib/serializers/testnet';
 
-export const revalidate = 60;
-export const dynamic = 'force-static';
+function getTestnetDetail(slug: string) {
+  return unstable_cache(
+    async () => {
+      const supabase = createClient();
+      const { data, error } = await supabase
+        .from('dewrk_v_testnet_detail')
+        .select('*')
+        .eq('slug', slug)
+        .single();
+
+      if (error || !data) return null;
+      return data;
+    },
+    ['testnet-detail', slug],
+    { tags: [`testnet:${slug}`] }
+  )();
+}
 
 export async function GET(_: Request, { params }: { params: { slug: string } }) {
-  const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
-  const { data, error } = await supabase.from('dewrk_v_testnet_detail').select('*').eq('slug', params.slug).single();
-  if (error || !data) return NextResponse.json({ error: 'NotFound' }, { status: 404 });
-  return NextResponse.json(serializeDetail(data));
+  const row = await getTestnetDetail(params.slug);
+  if (!row) return NextResponse.json({ error: 'NotFound' }, { status: 404 });
+  return NextResponse.json(serializeDetail(row));
 }
