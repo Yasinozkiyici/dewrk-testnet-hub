@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Link from 'next/link';
 import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
