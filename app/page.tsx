@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
@@ -12,7 +12,7 @@ import type { TestnetLite } from '@/types/api';
 
 type Testnet = TestnetLite;
 
-export default function LandingPage() {
+function LandingPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [selectedTestnet, setSelectedTestnet] = useState<Testnet | null>(null);
@@ -103,5 +103,13 @@ export default function LandingPage() {
         testnetSlug={searchParams.get('slug')}
       />
     </div>
+  );
+}
+
+export default function LandingPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[var(--bg-soft)] flex items-center justify-center">Loading...</div>}>
+      <LandingPageContent />
+    </Suspense>
   );
 }
