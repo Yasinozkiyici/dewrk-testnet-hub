@@ -1,12 +1,5 @@
 {
   "version": 2,
-  "name": "testnet-hub",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
   "functions": {
     "src/app/api/**/*.ts": {
       "maxDuration": 30
