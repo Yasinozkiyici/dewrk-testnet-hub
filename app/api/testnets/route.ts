@@ -5,10 +5,17 @@ import { createClient } from '@/lib/supabase';
 const getTestnets = unstable_cache(
   async () => {
     const supabase = createClient();
-    const { data, error } = await supabase
-      .from('dewrk_v_testnets_list')
-      .select('*')
-      .order('updatedAt', { ascending: false, nullsFirst: false });
+    const fetchOrdered = (column: 'updatedAt' | 'updated') =>
+      supabase
+        .from('dewrk_v_testnets_list')
+        .select('*')
+        .order(column, { ascending: false, nullsFirst: false });
+
+    let { data, error } = await fetchOrdered('updatedAt');
+
+    if (error && /updatedat/i.test(error.message ?? '')) {
+      ({ data, error } = await fetchOrdered('updated'));
+    }
 
     if (error) throw new Error(error.message);
     return data ?? [];
