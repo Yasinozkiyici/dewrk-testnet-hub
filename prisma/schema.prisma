@@ -1,0 +1,101 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./prisma/dev.db"
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+enum Status {
+  LIVE
+  PAUSED
+  ENDED
+  UPCOMING
+}
+
+
+model Testnet {
+  id               String   @id @default(cuid())
+  name             String   @unique
+  slug             String   @unique
+  network          String
+  status           Status   @default(UPCOMING)
+  difficulty       Difficulty
+  shortDescription String?
+  description      String?
+  heroImageUrl     String?
+  logoUrl          String?
+  estTimeMinutes   Int?
+  rewardType       String?
+  rewardNote       String?
+  kycRequired      Boolean  @default(false)
+  requiresWallet   Boolean  @default(true)
+  tags             Json?
+  categories       Json?
+  highlights       Json?
+  prerequisites    Json?
+  gettingStarted   Json?
+  websiteUrl       String?
+  githubUrl        String?
+  twitterUrl       String?
+  discordUrl       String?
+  dashboardUrl     String?
+  hasDashboard     Boolean  @default(false)
+  totalRaisedUSD   Float?
+  discordRoles     Json?
+  socials          Json?    @ignore
+  tasks            Task[]
+  tasksCount       Int      @default(0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Task {
+  id          String   @id @default(cuid())
+  testnetId   String
+  title       String
+  description String?
+  url         String?
+  reward      String?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  testnet Testnet @relation(fields: [testnetId], references: [id], onDelete: Cascade)
+
+  @@index([testnetId])
+}
+
+model User {
+  id            String   @id @default(cuid())
+  walletAddress String   @unique
+  email         String?
+  favorites     Json?
+  progress      Json?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([walletAddress])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?  // Admin user ID (optional for now)
+  action    String   // CREATE, UPDATE, DELETE
+  resource  String   // testnet, task, etc.
+  resourceId String? // ID of the affected resource
+  changes   Json?    // What changed (before/after)
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@index([resource, resourceId])
+  @@index([createdAt])
+}
