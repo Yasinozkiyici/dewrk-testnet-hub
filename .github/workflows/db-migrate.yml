@@ -1,0 +1,22 @@
+name: DB Migrate (Supabase)
+on:
+  workflow_dispatch: {}
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure psql client
+        run: |
+          if ! command -v psql >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y postgresql-client
+          fi
+
+      - name: Run migration (plaintext password – rotate after run)
+        run: |
+          psql "postgresql://postgres:Yasin.4545.95@db.ngnxebpzlbhqjmwtfcjy.supabase.co:6543/postgres?sslmode=require" \
+            -f supabase/migrations/20251025_init_dewrk.sql
