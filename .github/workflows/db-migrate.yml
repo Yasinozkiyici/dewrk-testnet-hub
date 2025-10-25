@@ -1,6 +1,7 @@
 name: DB Migrate (Supabase)
+
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
 
 jobs:
   migrate:
@@ -9,37 +10,29 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Ensure psql client
+      - name: Install Postgres Client
         run: |
-          if ! command -v psql >/dev/null 2>&1; then
-            sudo apt-get update
-            sudo apt-get install -y postgresql-client
-          fi
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
 
-      - name: Run migration (force IPv4, fallback 6543→5432)
+      - name: Run migrations with psql (direct 5432 + SSL)
         env:
-          PGCONNECT_TIMEOUT: "10"
+          PGHOST: db.ngnxebpzlbhqjmwtfcjy.supabase.co
+          PGPORT: "5432"
+          PGDATABASE: ${{ secrets.SUPABASE_DB_NAME }}
+          PGUSER: ${{ secrets.SUPABASE_DB_USER }}
+          PGPASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+          PGSSLMODE: require
         run: |
           set -e
-          FILE="supabase/migrations/20251025_init_dewrk.sql"
-          test -f "$FILE" || { echo "Migration file missing: $FILE"; exit 2; }
+          echo "Checking connection..."
+          psql -v ON_ERROR_STOP=1 -c "SELECT version();"
 
-          URL1='postgresql://postgres:Yasin.4545.95@db.ngnxebpzlbhqjmwtfcjy.supabase.co:6543/postgres?sslmode=require'
-          URL2='postgresql://postgres:Yasin.4545.95@db.ngnxebpzlbhqjmwtfcjy.supabase.co:5432/postgres?sslmode=require'
+          echo "Running migrations in supabase/migrations ..."
+          shopt -s nullglob
+          for f in supabase/migrations/*.sql; do
+            echo ">> $f"
+            psql -v ON_ERROR_STOP=1 -f "$f"
+          done
 
-          echo "Trying IPv4 to 6543..."
-          if psql -4 "$URL1" -c 'select 1;' ; then
-            echo "Connected on 6543. Applying migration..."
-            psql -4 "$URL1" -f "$FILE"
-            exit 0
-          fi
-
-          echo "6543 failed. Trying IPv4 to 5432..."
-          if psql -4 "$URL2" -c 'select 1;' ; then
-            echo "Connected on 5432. Applying migration..."
-            psql -4 "$URL2" -f "$FILE"
-            exit 0
-          fi
-
-          echo "All connection attempts failed (IPv4 6543 & 5432)."
-          exit 2
+          echo "Migrations completed."
