@@ -10,51 +10,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Postgres Client & DNS tools
+      - name: Install Postgres Client
         run: |
           sudo apt-get update
-          sudo apt-get install -y postgresql-client dnsutils
+          sudo apt-get install -y postgresql-client
 
-      # IPv4'ü dayanıklı biçimde çöz: dig → getent → nslookup
-      - name: Resolve IPv4 for Supabase host
+      - name: Run migrations via Supabase Pooler (Session mode, IPv4)
         env:
-          PGHOST: db.ngnxebpzlbhqjmwtfcjy.supabase.co
+          DATABASE_URL: ${{ secrets.SUPABASE_POOLER_URL }}
         run: |
           set -e
-          echo "Resolving IPv4 for $PGHOST ..."
-          IPV4="$(dig +short A $PGHOST | head -n1)"
-          if [ -z "$IPV4" ]; then
-            IPV4="$(getent hosts $PGHOST | awk '($1 ~ /^[0-9.]+$/){print $1; exit}')"
-          fi
-          if [ -z "$IPV4" ]; then
-            IPV4="$(nslookup -query=A $PGHOST 2>/dev/null | awk '/^Address: /{print $2; exit}')"
-          fi
-          if [ -z "$IPV4" ]; then
-            echo "Could not resolve IPv4 for $PGHOST"
-            exit 1
-          fi
-          echo "Resolved IPv4: $IPV4"
-          echo "PGHOSTADDR=$IPV4" >> "$GITHUB_ENV"
+          # SSL zorunlu
+          URL_WITH_SSL="${DATABASE_URL}?sslmode=require"
 
-      - name: Run migrations with psql (direct 5432 + SSL, IPv4)
-        env:
-          PGHOST: db.ngnxebpzlbhqjmwtfcjy.supabase.co
-          PGPORT: "5432"
-          PGDATABASE: ${{ secrets.SUPABASE_DB_NAME }}
-          PGUSER: ${{ secrets.SUPABASE_DB_USER }}
-          PGPASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
-          PGSSLMODE: require
-          PGCONNECT_TIMEOUT: "15"
-        run: |
-          set -e
-          echo "Checking connection (IPv4 via PGHOSTADDR=$PGHOSTADDR)..."
-          psql -v ON_ERROR_STOP=1 -c "SELECT version();"
+          echo "Checking connection (Session mode pooler @ 5432)..."
+          psql -v ON_ERROR_STOP=1 "$URL_WITH_SSL" -c "SELECT version();"
 
           echo "Running migrations in supabase/migrations ..."
           shopt -s nullglob
           for f in supabase/migrations/*.sql; do
             echo ">> $f"
-            psql -v ON_ERROR_STOP=1 -f "$f"
+            psql -v ON_ERROR_STOP=1 "$URL_WITH_SSL" -f "$f"
           done
 
           echo "Migrations completed."
