@@ -10,27 +10,40 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Postgres Client
+      - name: Install tooling
         run: |
           sudo apt-get update
-          sudo apt-get install -y postgresql-client
+          sudo apt-get install -y postgresql-client dnsutils netcat-openbsd
 
-      - name: Run migrations via Supabase Pooler (Session mode, IPv4)
+      - name: Preflight — verify SUPABASE_POOLER_URL
         env:
           DATABASE_URL: ${{ secrets.SUPABASE_POOLER_URL }}
         run: |
+          set -euo pipefail
+          test -n "${DATABASE_URL:-}" || { echo "❌ SECRET SUPABASE_POOLER_URL boş"; exit 1; }
+          case "$DATABASE_URL" in *\?*) URL="${DATABASE_URL}&sslmode=require" ;; *) URL="${DATABASE_URL}?sslmode=require" ;; esac
+          echo "$URL" > url.txt
+          proto="${DATABASE_URL%%://*}"; rest="${DATABASE_URL#*://}"; creds="${rest%@*}"; hostportdb="${rest#*@}"
+          user="${creds%%:*}"; hostport="${hostportdb%%/*}"; db="${hostportdb#*/}"
+          host="${hostport%%:*}"; port="${hostport##*:}"
+          echo "👤 $user"; echo "🖥️ $host"; echo "🔌 $port"; echo "🗄️ $db"
+          echo "$user" | grep -Eq '^postgres\.[a-z0-9]{20,}$' || { echo "❌ user yanlış (postgres.<ref> olmalı)"; exit 1; }
+          echo "$host" | grep -Eq '^aws-1-eu-west-1\.pooler\.supabase\.com$' || { echo "❌ host bölgene uymuyor"; exit 1; }
+          [ "$port" = "5432" ] || { echo "❌ port 5432 olmalı (Session mode)"; exit 1; }
+          AIPV4=$(dig +short A "$host" | head -n1 || true); test -n "$AIPV4" || { echo "❌ $host için IPv4 A kaydı bulunamadı"; exit 1; }
+          echo "✅ IPv4 $AIPV4"; nc -vz -w 5 "$host" "$port"
+
+      - name: Check version
+        run: |
           set -e
-          # SSL zorunlu
-          URL_WITH_SSL="${DATABASE_URL}?sslmode=require"
+          psql -v ON_ERROR_STOP=1 "$(cat url.txt)" -c "SELECT version();"
 
-          echo "Checking connection (Session mode pooler @ 5432)..."
-          psql -v ON_ERROR_STOP=1 "$URL_WITH_SSL" -c "SELECT version();"
-
-          echo "Running migrations in supabase/migrations ..."
+      - name: Run migrations
+        run: |
+          set -e
           shopt -s nullglob
           for f in supabase/migrations/*.sql; do
             echo ">> $f"
-            psql -v ON_ERROR_STOP=1 "$URL_WITH_SSL" -f "$f"
+            psql -v ON_ERROR_STOP=1 "$(cat url.txt)" -f "$f"
           done
-
-          echo "Migrations completed."
+          echo "✅ Migrations completed."
