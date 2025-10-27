@@ -123,16 +123,18 @@ export function TestnetDetailDrawer({ slug, open, onClose }: TestnetDetailDrawer
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex" role="dialog" aria-modal="true">
+    <div className="fixed inset-0 flex" role="dialog" aria-modal="true" style={{ zIndex: 'var(--z-drawer)' }}>
       <div
         className="absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity"
         onClick={onClose}
         aria-hidden="true"
+        style={{ zIndex: 'var(--z-backdrop)' }}
       />
       <div
         ref={panelRef}
-        className="relative z-[101] ml-auto flex h-full w-full max-w-[700px] flex-col overflow-y-auto bg-white shadow-2xl focus-visible:outline-none"
+        className="relative ml-auto flex h-full w-full max-w-[700px] flex-col overflow-y-auto bg-white shadow-2xl focus-visible:outline-none"
         tabIndex={-1}
+        style={{ zIndex: 'calc(var(--z-drawer) + 1)' }}
       >
         <div className="sticky top-0 z-10 flex items-center justify-between border-b border-gray-200 bg-white px-6 py-4">
           <h2 className="text-lg font-semibold text-[var(--ink-1)]">Testnet Details</h2>

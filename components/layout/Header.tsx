@@ -286,9 +286,10 @@ export function Header() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-[50] border-b border-white/30 bg-white/80 backdrop-blur transition-shadow',
+        'sticky top-0 border-b border-white/30 bg-white/80 backdrop-blur transition-shadow',
         isScrolled ? 'shadow-[0_20px_30px_-24px_rgba(15,23,42,0.35)]' : 'shadow-none'
       )}
+      style={{ zIndex: 'var(--z-header)' }}
       data-scrolled={isScrolled ? 'true' : 'false'}
     >
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-4 sm:h-14 sm:px-6 lg:h-16">

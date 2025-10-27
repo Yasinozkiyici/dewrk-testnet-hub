@@ -46,7 +46,9 @@ export default async function LandingPage() {
   };
 
   return (
-    <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-6 px-4 py-8 lg:px-6">
+    <div className="mx-auto w-full max-w-[1280px] px-6 py-8"
+      style={{ '--page-gutter': '24px' } as React.CSSProperties}
+    >
       {/* Stats Cards */}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <div className="rounded-2xl border border-white/40 bg-white/60 px-4 py-3 shadow-glass">

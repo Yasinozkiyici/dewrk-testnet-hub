@@ -51,23 +51,25 @@ export function TestnetTable({ rows, activeSlug, onSelect }: TestnetTableProps) 
         <table className="w-full table-fixed border-collapse text-sm text-[var(--ink-2)]" role="table">
         <caption className="sr-only">Testnet programs directory</caption>
         <colgroup>
-          <col className="w-[30%]" />
-          <col className="w-[12%]" />
-          <col className="w-[12%]" />
-          <col className="w-[12%]" />
-          <col className="w-[14%]" />
+          <col className="w-[24%]" />
+          <col className="w-[10%]" />
+          <col className="w-[10%]" />
+          <col className="w-[10%]" />
+          <col className="w-[18%]" />
+          <col className="w-[8%]" />
           <col className="w-[10%]" />
           <col className="w-[10%]" />
         </colgroup>
-        <thead className="bg-white/80 text-xs font-semibold uppercase tracking-wide text-[var(--ink-3)]">
+        <thead className="bg-white/80 text-[11px] font-semibold uppercase tracking-wide text-[var(--ink-3)]">
           <tr>
-            <th scope="col" className="px-4 py-3 text-left">Name</th>
-            <th scope="col" className="px-4 py-3 text-left">Status</th>
-            <th scope="col" className="px-4 py-3 text-left">Difficulty</th>
-            <th scope="col" className="px-4 py-3 text-left">Est. Time</th>
-            <th scope="col" className="px-4 py-3 text-left">Reward</th>
-            <th scope="col" className="px-4 py-3 text-left">Tasks</th>
-            <th scope="col" className="px-4 py-3 text-left">Action</th>
+            <th scope="col" className="px-3 py-3 text-left">Name & Network</th>
+            <th scope="col" className="px-3 py-3 text-left">Status</th>
+            <th scope="col" className="px-3 py-3 text-left">Difficulty</th>
+            <th scope="col" className="px-3 py-3 text-left">Est. Time</th>
+            <th scope="col" className="px-3 py-3 text-left">Reward</th>
+            <th scope="col" className="px-3 py-3 text-center">Tasks</th>
+            <th scope="col" className="px-3 py-3 text-left">Updated</th>
+            <th scope="col" className="px-3 py-3 text-right">Action</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-white/40">

@@ -33,6 +33,13 @@ h1,h2,h3 { @apply tracking-tight; }
 }
 
 :root {
+  /* === Z-INDEX MAP === */
+  --z-header: 50;
+  --z-filters: 40;
+  --z-backdrop: 55;
+  --z-drawer: 60;
+  --z-tooltip: 70;
+  
   /* === FROZEN DESIGN TOKENS - DEĞİŞTİRİLEMEZ === */
   --bg-soft: #F5F9FF;
   --surface: #FFFFFF;

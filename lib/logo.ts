@@ -1,76 +1,126 @@
-type LogoInputs = {
-  primary?: string | null;
+/**
+ * Logo resolution utilities with fallback chain:
+ * 1) logoUrl → 2) website favicon → 3) GitHub avatar → 4) Monogram
+ */
+
+export function resolveLogo(project: {
+  logoUrl?: string | null;
   websiteUrl?: string | null;
   githubUrl?: string | null;
-};
-
-function hashString(value: string) {
-  let hash = 0;
-  for (let index = 0; index < value.length; index += 1) {
-    hash = (hash << 5) - hash + value.charCodeAt(index);
-    hash |= 0;
+  slug: string;
+  name: string;
+}): string | null {
+  // 1) Direct logo URL
+  if (project.logoUrl && isValidUrl(project.logoUrl)) {
+    return project.logoUrl;
   }
-  return Math.abs(hash);
+
+  // 2) Website favicon
+  if (project.websiteUrl && isValidUrl(project.websiteUrl)) {
+    try {
+      const url = new URL(project.websiteUrl);
+      return `https://${url.hostname}/favicon.ico`;
+    } catch {
+      // Continue to next fallback
+    }
+  }
+
+  // 3) GitHub org/user avatar
+  if (project.githubUrl && isValidUrl(project.githubUrl)) {
+    const githubAvatar = extractGitHubAvatar(project.githubUrl);
+    if (githubAvatar) {
+      return githubAvatar;
+    }
+  }
+
+  // 4) Monogram will be rendered by component
+  return null;
 }
 
-export function buildLogoCandidates({ primary, websiteUrl, githubUrl }: LogoInputs) {
-  const candidates = new Set<string>();
-
-  const push = (candidate?: string | null) => {
-    if (!candidate || !candidate.trim()) return;
-    try {
-      const url = new URL(candidate, candidate.startsWith('http') ? undefined : 'https://');
-      if (url.protocol === 'http:' || url.protocol === 'https:') {
-        candidates.add(url.toString());
-      }
-    } catch {
-      // ignore invalid candidate
-    }
-  };
-
-  push(primary ?? undefined);
-
-  if (websiteUrl) {
-    try {
-      const parsed = new URL(websiteUrl, websiteUrl.startsWith('http') ? undefined : 'https://');
-      push(`${parsed.origin}/favicon.ico`);
-    } catch {
-      // ignore invalid website urls
-    }
+export function extractGitHubAvatar(githubUrl: string): string | null {
+  try {
+    const url = new URL(githubUrl);
+    if (url.hostname !== 'github.com') return null;
+    
+    const parts = url.pathname.split('/').filter(Boolean);
+    if (parts.length === 0) return null;
+    
+    const owner = parts[0];
+    return `https://avatars.githubusercontent.com/${owner}?s=200&v=4`;
+  } catch {
+    return null;
   }
-
-  if (githubUrl) {
-    try {
-      const parsed = new URL(githubUrl);
-      const segments = parsed.pathname.split('/').filter(Boolean);
-      const owner = segments[0];
-      if (owner) {
-        push(`https://github.com/${owner}.png`);
-      }
-    } catch {
-      // ignore invalid github urls
-    }
-  }
-
-  return Array.from(candidates);
 }
 
-export function monogramFor(name: string, seed: string) {
-  const initials = name
-    .trim()
-    .split(' ')
-    .filter(Boolean)
-    .map((part) => part.charAt(0).toUpperCase())
+export function generateMonogram(name: string, slug: string): { letters: string; gradient: string } {
+  // Extract first 2 letters
+  const letters = name
+    .split(/\s+/)
     .slice(0, 2)
-    .join('');
+    .map((word) => word[0]?.toUpperCase() || '')
+    .join('')
+    .slice(0, 2) || slug.slice(0, 2).toUpperCase();
 
-  const fallback = seed.slice(0, 2).toUpperCase() || 'DW';
-  const label = initials || fallback;
-
-  const hash = hashString(seed || name || fallback);
+  // Deterministic color based on slug
+  const hash = slug.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
   const hue = hash % 360;
-  const secondaryHue = (hue + 35) % 360;
-  const gradient = `linear-gradient(135deg, hsl(${hue}, 70%, 60%) 0%, hsl(${secondaryHue}, 65%, 55%) 100%)`;
+  const saturation = 60 + (hash % 20);
+  const lightness = 50 + (hash % 15);
 
-  return { label, gradient };
+  const gradient = `linear-gradient(135deg, 
+    hsl(${hue}, ${saturation}%, ${lightness}%), 
+    hsl(${(hue + 60) % 360}, ${saturation}%, ${lightness + 10}%))`;
+
+  return { letters, gradient };
+}
+
+function isValidUrl(url: string): boolean {
+  try {
+    new URL(url);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function fetchFavicon(host: string): string {
+  return `https://${host}/favicon.ico`;
+}
+
+export function buildLogoCandidates(options: {
+  primary?: string;
+  websiteUrl?: string;
+  githubUrl?: string;
+}): string[] {
+  const candidates: string[] = [];
+
+  // 1) Primary logo URL
+  if (options.primary && isValidUrl(options.primary)) {
+    candidates.push(options.primary);
+  }
+
+  // 2) Website favicon
+  if (options.websiteUrl && isValidUrl(options.websiteUrl)) {
+    try {
+      const url = new URL(options.websiteUrl);
+      candidates.push(`https://${url.hostname}/favicon.ico`);
+    } catch {
+      // Skip invalid URL
+    }
+  }
+
+  // 3) GitHub avatar
+  if (options.githubUrl) {
+    const avatar = extractGitHubAvatar(options.githubUrl);
+    if (avatar) {
+      candidates.push(avatar);
+    }
+  }
+
+  return candidates;
+}
+
+export function monogramFor(name: string, slug: string): { label: string; gradient: string } {
+  const { letters, gradient } = generateMonogram(name, slug);
+  return { label: letters, gradient };
 }
