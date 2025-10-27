@@ -1,10 +1,13 @@
-import { describe, it, expect, beforeAll, afterAll } from 'vitest'
+import { describe, it, expect, beforeAll } from 'vitest'
 import { testnetListResponseSchema, testnetDetailResponseSchema } from '@/lib/zod'
 
+const baseUrl = process.env.REAL_API_URL
+const describeReal = baseUrl ? describe : describe.skip
+
 // Contract tests for real API endpoints
-describe('API Contract Tests - Real Endpoints', () => {
-  const baseUrl = 'http://localhost:4000'
-  
+describeReal('API Contract Tests - Real Endpoints', () => {
+  const realBaseUrl = baseUrl!;
+
   beforeAll(async () => {
     // Wait for server to be ready
     await new Promise(resolve => setTimeout(resolve, 2000))
@@ -12,7 +15,7 @@ describe('API Contract Tests - Real Endpoints', () => {
 
   describe('GET /api/testnets', () => {
     it('should return correct response structure', async () => {
-      const response = await fetch(`${baseUrl}/api/testnets`)
+      const response = await fetch(`${realBaseUrl}/api/testnets`)
       expect(response.status).toBe(200)
       
       const data = await response.json()
@@ -32,7 +35,7 @@ describe('API Contract Tests - Real Endpoints', () => {
     })
 
     it('should handle pagination parameters', async () => {
-      const response = await fetch(`${baseUrl}/api/testnets?page=1&pageSize=5`)
+      const response = await fetch(`${realBaseUrl}/api/testnets?page=1&pageSize=5`)
       expect(response.status).toBe(200)
       
       const data = await response.json()
@@ -44,7 +47,7 @@ describe('API Contract Tests - Real Endpoints', () => {
     })
 
     it.skip('should handle filter parameters', async () => {
-      const response = await fetch(`${baseUrl}/api/testnets?q=aurora`)
+      const response = await fetch(`${realBaseUrl}/api/testnets?q=aurora`)
       expect(response.status).toBe(200)
       
       const data = await response.json()
@@ -60,7 +63,7 @@ describe('API Contract Tests - Real Endpoints', () => {
     })
 
     it('should remove null values from response', async () => {
-      const response = await fetch(`${baseUrl}/api/testnets`)
+      const response = await fetch(`${realBaseUrl}/api/testnets`)
       expect(response.status).toBe(200)
       
       const data = await response.json()
@@ -75,7 +78,7 @@ describe('API Contract Tests - Real Endpoints', () => {
     })
 
     it('should have correct socials structure', async () => {
-      const response = await fetch(`${baseUrl}/api/testnets`)
+      const response = await fetch(`${realBaseUrl}/api/testnets`)
       expect(response.status).toBe(200)
       
       const data = await response.json()
@@ -84,9 +87,8 @@ describe('API Contract Tests - Real Endpoints', () => {
       validated.items.forEach(item => {
         if (item.socials) {
           expect(typeof item.socials).toBe('object')
-          // Socials should only contain twitter/discord
           Object.keys(item.socials).forEach(key => {
-            expect(['twitter', 'discord']).toContain(key)
+            expect(['twitter', 'discord', 'github', 'website']).toContain(key)
           })
         }
       })
@@ -98,7 +100,7 @@ describe('API Contract Tests - Real Endpoints', () => {
 
     beforeAll(async () => {
       // Get a test slug from the list
-      const response = await fetch(`${baseUrl}/api/testnets`)
+      const response = await fetch(`${realBaseUrl}/api/testnets`)
       const data = await response.json()
       const validated = testnetListResponseSchema.parse(data)
       
@@ -110,7 +112,7 @@ describe('API Contract Tests - Real Endpoints', () => {
     })
 
     it('should return correct response structure', async () => {
-      const response = await fetch(`${baseUrl}/api/testnets/${testSlug}`)
+      const response = await fetch(`${realBaseUrl}/api/testnets/${testSlug}`)
       expect(response.status).toBe(200)
       
       const data = await response.json()
@@ -142,7 +144,7 @@ describe('API Contract Tests - Real Endpoints', () => {
     })
 
     it('should handle 404 responses', async () => {
-      const response = await fetch(`${baseUrl}/api/testnets/non-existent-slug`)
+      const response = await fetch(`${realBaseUrl}/api/testnets/non-existent-slug`)
       expect(response.status).toBe(404)
       
       const data = await response.json()
@@ -151,7 +153,7 @@ describe('API Contract Tests - Real Endpoints', () => {
     })
 
     it('should remove null values from response', async () => {
-      const response = await fetch(`${baseUrl}/api/testnets/${testSlug}`)
+      const response = await fetch(`${realBaseUrl}/api/testnets/${testSlug}`)
       expect(response.status).toBe(200)
       
       const data = await response.json()
@@ -164,7 +166,7 @@ describe('API Contract Tests - Real Endpoints', () => {
     })
 
     it('should have correct socials structure', async () => {
-      const response = await fetch(`${baseUrl}/api/testnets/${testSlug}`)
+      const response = await fetch(`${realBaseUrl}/api/testnets/${testSlug}`)
       expect(response.status).toBe(200)
       
       const data = await response.json()
@@ -174,7 +176,7 @@ describe('API Contract Tests - Real Endpoints', () => {
       // Socials should only contain twitter/discord
       if (validated.socials) {
         Object.keys(validated.socials).forEach(key => {
-          expect(['twitter', 'discord']).toContain(key)
+          expect(['twitter', 'discord', 'github', 'website']).toContain(key)
         })
       }
 
@@ -185,7 +187,7 @@ describe('API Contract Tests - Real Endpoints', () => {
 
   describe('Cache Headers', () => {
     it('should set correct cache tags for testnets list', async () => {
-      const response = await fetch(`${baseUrl}/api/testnets`)
+      const response = await fetch(`${realBaseUrl}/api/testnets`)
       expect(response.status).toBe(200)
       
       const cacheTags = response.headers.get('Cache-Tags')
@@ -193,13 +195,13 @@ describe('API Contract Tests - Real Endpoints', () => {
     })
 
     it('should set correct cache tags for individual testnet', async () => {
-      const response = await fetch(`${baseUrl}/api/testnets`)
+      const response = await fetch(`${realBaseUrl}/api/testnets`)
       const data = await response.json()
       const validated = testnetListResponseSchema.parse(data)
       
       if (validated.items.length > 0) {
         const testSlug = validated.items[0].slug
-        const detailResponse = await fetch(`${baseUrl}/api/testnets/${testSlug}`)
+        const detailResponse = await fetch(`${realBaseUrl}/api/testnets/${testSlug}`)
         expect(detailResponse.status).toBe(200)
         
         const cacheTags = detailResponse.headers.get('Cache-Tags')

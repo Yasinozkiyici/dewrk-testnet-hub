@@ -1,115 +1,95 @@
-// @ts-nocheck
-'use client';
-
-import { useState, useEffect, Suspense } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import { TestnetFilters } from '@/components/TestnetFilters';
-import { TestnetTable } from '@/components/TestnetTable';
-import { TestnetDetailDrawer } from '@/components/TestnetDetailDrawer';
-import type { TestnetLite } from '@/types/api';
+import { headers } from 'next/headers';
+import { TestnetsTable, type TestnetListRow } from './testnets/TestnetsTable';
+import { TestnetDrawerPortal } from './testnets/TestnetDrawerPortal';
 
-type Testnet = TestnetLite;
-
-function LandingPageContent() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const [selectedTestnet, setSelectedTestnet] = useState<Testnet | null>(null);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
-  useEffect(() => {
-    const slug = searchParams.get('slug');
-    if (slug) {
-      setIsDrawerOpen(true);
-      // URL'den gelen slug için selectedTestnet'i set et
-      // Drawer kendi içinde veri çekecek
-    } else {
-      setIsDrawerOpen(false);
-      setSelectedTestnet(null);
-    }
-  }, [searchParams]);
-
-  const handleRowClick = (testnet: Testnet) => {
-    setSelectedTestnet(testnet);
-    setIsDrawerOpen(true);
-    // Update URL with slug parameter
-    const params = new URLSearchParams(searchParams);
-    params.set('slug', testnet.slug);
-    router.push(`/?${params.toString()}`, { scroll: false });
-  };
-
-  const handleCloseDrawer = () => {
-    setIsDrawerOpen(false);
-    setSelectedTestnet(null);
-    // Remove slug from URL
-    const params = new URLSearchParams(searchParams);
-    params.delete('slug');
-    const newUrl = params.toString() ? `/?${params.toString()}` : '/';
-    router.push(newUrl, { scroll: false });
-  };
-
-  return (
-    <div className="min-h-screen bg-[var(--bg-soft)]">
-      {/* Hero Section */}
-      <div className="landing-bg relative flex flex-col items-center justify-center px-6 py-24">
-        <div className="bg-noise absolute inset-0" aria-hidden />
-        <div className="relative z-10 mx-auto max-w-3xl text-center text-sm text-[var(--ink-2)]">
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/70 px-4 py-2 font-medium text-[var(--ink-1)] shadow-glass">
-            Dewrk Testnet Directory
-          </p>
-          <h1 className="mb-6 text-3xl font-semibold text-[var(--ink-1)] sm:text-4xl">
-            Discover live testnets, earn rewards, and ship faster.
-          </h1>
-          <p className="mb-10 text-sm text-[var(--ink-3)]">
-            Curated listings with up-to-date funding intel, task breakdowns, and admin tooling
-            tailored for high-signal web3 builders.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link
-              href="/admin"
-              className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/60 px-5 py-2.5 text-sm font-semibold text-[var(--ink-2)] shadow-glass transition hover:border-white/60 focus-visible:outline focus-visible:outline-2"
-            >
-              Admin dashboard
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="px-6 py-12">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-8 text-center">
-            <h2 className="mb-4 text-2xl font-semibold text-[var(--ink-1)]">
-              Live Testnet Programs
-            </h2>
-            <p className="text-sm text-[var(--ink-3)]">
-              Explore active testnet programs and start earning rewards today
-            </p>
-          </div>
-
-          {/* Filters */}
-          <TestnetFilters />
-
-          {/* Table */}
-          <TestnetTable onRowClick={handleRowClick} />
-        </div>
-      </div>
-
-      {/* Detail Drawer */}
-      <TestnetDetailDrawer
-        isOpen={isDrawerOpen}
-        onClose={handleCloseDrawer}
-        testnetSlug={searchParams.get('slug')}
-      />
-    </div>
-  );
+interface TestnetListResponse {
+  data: TestnetListRow[];
 }
 
-export default function LandingPage() {
+function getBaseUrl() {
+  const headersList = headers();
+  const forwardedProto = headersList.get('x-forwarded-proto');
+  const host = headersList.get('host');
+  if (host) {
+    return `${forwardedProto ?? 'https'}://${host}`;
+  }
+  return process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:4000';
+}
+
+async function fetchFeaturedTestnets() {
+  const baseUrl = getBaseUrl();
+  const url = new URL('/api/testnets', baseUrl);
+  const response = await fetch(url.toString(), { cache: 'force-cache' });
+  if (!response.ok) {
+    throw new Error('Failed to load testnets');
+  }
+  const payload = (await response.json()) as { items: TestnetListRow[] } | TestnetListResponse;
+
+  if ('items' in payload) {
+    return payload.items as TestnetListRow[];
+  }
+
+  return payload.data;
+}
+
+export default async function LandingPage() {
+  const testnets = await fetchFeaturedTestnets();
+  
+  const stats = {
+    total: testnets.length,
+    live: testnets.filter((t) => t.status === 'LIVE').length,
+    beta: testnets.filter((t) => t.status === 'BETA').length,
+    avgTime: Math.round(
+      testnets.reduce((acc, t) => acc + (t.estTimeMinutes || 0), 0) / testnets.length
+    ),
+  };
+
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[var(--bg-soft)] flex items-center justify-center">Loading...</div>}>
-      <LandingPageContent />
-    </Suspense>
+    <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-6 px-4 py-8 lg:px-6">
+      {/* Stats Cards */}
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div className="rounded-2xl border border-white/40 bg-white/60 px-4 py-3 shadow-glass">
+          <div className="text-xs font-medium uppercase tracking-wide text-[var(--ink-3)]">Total</div>
+          <div className="mt-1 text-2xl font-semibold text-[var(--ink-1)]">{stats.total}</div>
+        </div>
+        <div className="rounded-2xl border border-white/40 bg-white/60 px-4 py-3 shadow-glass">
+          <div className="text-xs font-medium uppercase tracking-wide text-[var(--ink-3)]">Live</div>
+          <div className="mt-1 text-2xl font-semibold text-green-600">{stats.live}</div>
+        </div>
+        <div className="rounded-2xl border border-white/40 bg-white/60 px-4 py-3 shadow-glass">
+          <div className="text-xs font-medium uppercase tracking-wide text-[var(--ink-3)]">Beta</div>
+          <div className="mt-1 text-2xl font-semibold text-blue-600">{stats.beta}</div>
+        </div>
+        <div className="rounded-2xl border border-white/40 bg-white/60 px-4 py-3 shadow-glass">
+          <div className="text-xs font-medium uppercase tracking-wide text-[var(--ink-3)]">Avg. Time</div>
+          <div className="mt-1 text-2xl font-semibold text-[var(--ink-1)]">{stats.avgTime}m</div>
+        </div>
+      </div>
+
+      {/* Compact Filter Bar */}
+      <div className="rounded-2xl border border-white/40 bg-white/60 px-4 py-3 shadow-glass">
+        <div className="flex flex-wrap items-center gap-3">
+          <input
+            type="search"
+            placeholder="Search testnets..."
+            className="flex-1 rounded-lg border border-white/40 bg-white/80 px-3 py-2 text-sm text-[var(--ink-1)] placeholder:text-[var(--ink-3)] focus:outline-none focus:ring-2 focus:ring-[var(--aqua)]"
+          />
+          <Link
+            href="/testnets"
+            className="rounded-lg border border-white/40 bg-white/80 px-4 py-2 text-xs font-semibold text-[var(--ink-1)] transition hover:border-white/60"
+          >
+            Advanced Filters
+          </Link>
+        </div>
+      </div>
+
+      {/* Testnets Table */}
+      <section className="flex flex-col gap-4">
+        <TestnetsTable testnets={testnets} />
+      </section>
+
+      <TestnetDrawerPortal />
+    </div>
   );
 }

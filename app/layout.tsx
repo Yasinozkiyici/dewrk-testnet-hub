@@ -1,6 +1,7 @@
-import type { Metadata } from 'next';
 import '../styles/globals.css';
 import { cn } from '@/lib/utils';
+import type { Metadata } from 'next';
+import { Header } from '@/components/layout/Header';
 
 export const metadata: Metadata = {
   title: 'Dewrk Testnet Hub',
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="absolute bottom-[-10vh] left-[-10vw] h-[45vh] w-[50vw] rounded-full bg-[radial-gradient(closest-side,rgba(251,146,60,0.18),transparent_70%)]" />
           </div>
         </div>
+        <Header />
         <main id="main" className="flex-1">
           {children}
         </main>

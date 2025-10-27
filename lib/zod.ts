@@ -63,7 +63,18 @@ export const testnetBaseSchema = z.object({
   categories: z.array(z.string()).default([]),
   highlights: z.array(z.string()).default([]),
   prerequisites: z.array(z.string()).default([]),
-  gettingStarted: z.array(z.string()).default([]),
+  gettingStarted: z
+    .array(
+      z.union([
+        z.string(),
+        z.object({
+          title: z.string().optional(),
+          body: z.string().optional(),
+          url: z.string().url().optional()
+        })
+      ])
+    )
+    .default([]),
   discordRoles: z.array(discordRoleSchema).default([]),
   
   // Optional description
@@ -112,10 +123,14 @@ export const testnetListItemSchema = z.object({
   updatedAt: z.string(),
   hasDashboard: z.boolean(),
   totalRaisedUSD: z.union([z.number(), z.string()]).nullable().optional(),
-  socials: z.object({
-    twitter: z.string().optional(),
-    discord: z.string().optional()
-  }).optional()
+  socials: z
+    .object({
+      twitter: z.string().optional(),
+      discord: z.string().optional(),
+      github: z.string().optional(),
+      website: z.string().optional()
+    })
+    .optional()
 });
 
 export const paginationSchema = z.object({
