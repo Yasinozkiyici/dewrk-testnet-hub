@@ -74,10 +74,7 @@ export default async function TestnetsPage({
               Showing <strong className="text-[var(--ink-1)]">{data.length}</strong> of{' '}
               <strong className="text-[var(--ink-1)]">{pagination.total}</strong>
             </span>
-            <div className="flex gap-2">
-              <LinkButton href="/" label="Browse overview" variant="outline" />
-              <LinkButton href="/admin" label="Open admin" variant="primary" />
-            </div>
+            <LinkButton href="/" label="← Back to overview" variant="outline" />
           </div>
         </div>
       </section>
