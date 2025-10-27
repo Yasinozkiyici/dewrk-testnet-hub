@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { headers } from 'next/headers';
 import prisma from '@/lib/db';
 import { Editor } from './Editor';
+import { cn } from '@/lib/utils';
 
 export const dynamic = 'force-dynamic';
 
