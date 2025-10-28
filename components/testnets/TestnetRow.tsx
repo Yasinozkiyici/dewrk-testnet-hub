@@ -41,13 +41,15 @@ export const TestnetRow = memo(function TestnetRow({ testnet, onActivate, isActi
         }
       }}
       className={cn(
-        'group h-[56px] cursor-pointer align-middle transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--mint)] focus-visible:ring-offset-0',
-        isActive ? 'bg-[var(--mint)]/10 ring-1 ring-[var(--mint)]/40' : 'hover:bg-white/70'
+        'group h-[58px] cursor-pointer align-middle transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--mint)] focus-visible:ring-offset-0',
+        isActive 
+          ? 'bg-[var(--mint)]/10 ring-1 ring-[var(--mint)]/40' 
+          : 'hover:bg-white/90 hover:shadow-sm'
       )}
       data-state={isActive ? 'active' : 'inactive'}
       aria-label={`${testnet.name} on ${networkLabel}`}
     >
-      <td className="px-3 py-3">
+      <td className="sticky left-0 z-10 bg-white/70 px-3 py-3 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.06)] group-hover:bg-white/90">
         <span className="sr-only">{`Open details for ${testnet.name}`}</span>
         <div className="flex items-center gap-3">
           <ProjectLogo
@@ -111,16 +113,35 @@ export const TestnetRow = memo(function TestnetRow({ testnet, onActivate, isActi
         )}
       </td>
 
-      <td className="px-3 py-3 text-right">
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            onActivate();
-          }}
-          className="inline-flex items-center gap-1 rounded-lg border border-white/50 bg-white/80 px-3 py-1.5 text-xs font-semibold text-[var(--ink-1)] transition hover:border-white/70 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--mint)]"
-        >
-          View
-        </button>
+      <td className="sticky right-0 z-10 bg-white/70 px-3 py-3 text-right shadow-[-2px_0_4px_-2px_rgba(0,0,0,0.06)] group-hover:bg-white/90">
+        <div className="flex items-center justify-end gap-2">
+          {dashboardUrl && (
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <a
+                  href={dashboardUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="inline-flex items-center gap-1 rounded-lg border border-white/40 bg-white/70 px-2.5 py-1.5 text-xs font-semibold text-[var(--ink-2)] transition hover:border-white/60 hover:bg-white hover:text-[var(--ink-1)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--mint)]"
+                  aria-label="Open dashboard"
+                >
+                  <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                </a>
+              </TooltipTrigger>
+              <TooltipContent>Open Dashboard</TooltipContent>
+            </Tooltip>
+          )}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onActivate();
+            }}
+            className="inline-flex items-center gap-1 rounded-lg border border-white/50 bg-white/90 px-3 py-1.5 text-xs font-semibold text-[var(--ink-1)] transition hover:border-[var(--mint)]/40 hover:bg-[var(--mint)]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--mint)]"
+          >
+            View
+          </button>
+        </div>
       </td>
     </tr>
   );

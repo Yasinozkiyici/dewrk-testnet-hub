@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Filter, Search } from 'lucide-react';
+import { Filter, Search, Link2, Check } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -101,16 +101,29 @@ export function Filters() {
     });
   };
 
+  const [copied, setCopied] = useState(false);
+
   const activeFilters = useMemo(() => {
     const items: string[] = [];
     if (status) items.push(`Status: ${status}`);
     if (difficulty) items.push(`Difficulty: ${difficulty}`);
     if (network) items.push(`Network: ${network}`);
     if (tags.length) items.push(`Tags: ${tags.join(', ')}`);
-    if (q) items.push(`Search: “${q}”`);
+    if (q) items.push(`Search: "${q}"`);
     if (sort && sort !== 'updatedAt:desc') items.push(`Sort: ${SORT_OPTIONS.find((option) => option.value === sort)?.label ?? sort}`);
     return items;
   }, [difficulty, network, q, sort, status, tags]);
+
+  const handleCopyUrl = async () => {
+    if (typeof window === 'undefined') return;
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (error) {
+      console.error('Failed to copy URL:', error);
+    }
+  };
 
   return (
     <form
@@ -123,10 +136,31 @@ export function Filters() {
           <Filter className="h-4 w-4" aria-hidden="true" /> Filters
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <Button type="button" variant="ghost" onClick={handleReset} disabled={pending}>
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={handleCopyUrl}
+            disabled={pending}
+            className="gap-1.5 text-xs"
+            title="Copy shareable URL"
+          >
+            {copied ? (
+              <>
+                <Check className="h-3.5 w-3.5" aria-hidden="true" />
+                Copied!
+              </>
+            ) : (
+              <>
+                <Link2 className="h-3.5 w-3.5" aria-hidden="true" />
+                Share
+              </>
+            )}
+          </Button>
+          <Button type="button" variant="ghost" size="sm" onClick={handleReset} disabled={pending}>
             Reset
           </Button>
-          <Button type="submit" disabled={pending}>
+          <Button type="submit" size="sm" disabled={pending}>
             Apply
           </Button>
         </div>

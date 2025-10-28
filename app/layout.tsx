@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { Header } from '@/components/layout/Header';
+import { KeyboardShortcutsHelp } from '@/components/layout/KeyboardShortcutsHelp';
 
 export const metadata: Metadata = {
   title: 'Dewrk Testnet Hub',
@@ -24,12 +25,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
-        <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-white/70 to-white/90" />
-          <div className="absolute inset-0 opacity-90">
-            <div className="absolute -top-24 -left-40 h-[60vh] w-[60vw] rounded-full bg-[radial-gradient(closest-side,rgba(111,214,255,0.35),transparent_70%)]" />
-            <div className="absolute top-1/3 right-[-20vw] h-[55vh] w-[55vw] rounded-full bg-[radial-gradient(closest-side,rgba(167,139,250,0.25),transparent_70%)]" />
-            <div className="absolute bottom-[-10vh] left-[-10vw] h-[45vh] w-[50vw] rounded-full bg-[radial-gradient(closest-side,rgba(251,146,60,0.18),transparent_70%)]" />
+        <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-white/75 to-white/95" />
+          <div className="absolute inset-0 opacity-60">
+            <div className="absolute -top-24 -left-40 h-[60vh] w-[60vw] rounded-full bg-[radial-gradient(closest-side,rgba(111,214,255,0.25),transparent_75%)] blur-3xl" />
+            <div className="absolute top-1/3 right-[-20vw] h-[55vh] w-[55vw] rounded-full bg-[radial-gradient(closest-side,rgba(167,139,250,0.18),transparent_75%)] blur-3xl" />
+            <div className="absolute bottom-[-10vh] left-[-10vw] h-[45vh] w-[50vw] rounded-full bg-[radial-gradient(closest-side,rgba(251,146,60,0.12),transparent_75%)] blur-3xl" />
           </div>
         </div>
         <Suspense fallback={null}>
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main" className="flex-1">
           {children}
         </main>
+        <KeyboardShortcutsHelp />
       </body>
     </html>
   );
