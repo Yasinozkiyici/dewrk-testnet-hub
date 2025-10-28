@@ -8,6 +8,8 @@ import { TestnetDrawerPortal } from './TestnetDrawerPortal';
 import { TESTNETS_TAG } from '@/lib/cache';
 import { cn } from '@/lib/utils';
 
+export const dynamic = 'force-dynamic';
+
 interface TestnetListResponse {
   data: TestnetListRow[];
   pagination: {
@@ -40,7 +42,7 @@ async function fetchTestnets(searchParams: Record<string, string | string[] | un
 
   const response = await fetch(url.toString(), {
     next: { tags: [TESTNETS_TAG] },
-    cache: 'force-cache'
+    cache: 'no-store'
   });
 
   if (!response.ok) {

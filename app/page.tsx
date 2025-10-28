@@ -3,6 +3,8 @@ import { headers } from 'next/headers';
 import { TestnetsTable, type TestnetListRow } from './testnets/TestnetsTable';
 import { TestnetDrawerPortal } from './testnets/TestnetDrawerPortal';
 
+export const dynamic = 'force-dynamic';
+
 interface TestnetListResponse {
   data: TestnetListRow[];
 }
@@ -20,7 +22,7 @@ function getBaseUrl() {
 async function fetchFeaturedTestnets() {
   const baseUrl = getBaseUrl();
   const url = new URL('/api/testnets', baseUrl);
-  const response = await fetch(url.toString(), { cache: 'force-cache' });
+  const response = await fetch(url.toString(), { cache: 'no-store' });
   if (!response.ok) {
     throw new Error('Failed to load testnets');
   }
