@@ -10,8 +10,15 @@ function getCanonical(slug: string) {
 }
 
 export async function generateStaticParams() {
-  const ecosystems = await prisma.ecosystem.findMany({ select: { slug: true } });
-  return ecosystems.map((ecosystem) => ({ slug: ecosystem.slug }));
+  try {
+    const ecosystems = await prisma.ecosystem.findMany({ select: { slug: true } });
+    return ecosystems.map((ecosystem) => ({ slug: ecosystem.slug }));
+  } catch (error) {
+    console.error('[ecosystems/[slug]] Failed to generate static params:', error);
+    // Return empty array to allow build to continue
+    // Pages will be generated on-demand at runtime
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: EcosystemParams): Promise<Metadata> {
