@@ -105,16 +105,21 @@ export async function GET(request: Request) {
     );
     const skip = (page - 1) * pageSize;
 
-    const [testnets, total] = await Promise.all([
-      prisma.testnet.findMany({
-        orderBy: { updatedAt: 'desc' },
-        skip,
-        take: pageSize
-      }),
-      prisma.testnet.count()
-    ]);
+    let testnets: any[] = [];
+    let total = 0;
 
-    if (!testnets.length) {
+    try {
+      [testnets, total] = await Promise.all([
+        prisma.testnet.findMany({
+          orderBy: { updatedAt: 'desc' },
+          skip,
+          take: pageSize
+        }),
+        prisma.testnet.count()
+      ]);
+      console.log(`[api/testnets] Found ${testnets.length} testnets from database, total: ${total}`);
+    } catch (dbError) {
+      console.error('[api/testnets] Database query failed:', dbError);
       const fallback = getMockProjectCardKPIs(pageSize);
       return NextResponse.json({
         items: fallback.map(mapMockDataToTestnetListRow),
@@ -125,7 +130,25 @@ export async function GET(request: Request) {
           totalPages: 0
         },
         timestamp: new Date().toISOString(),
-        source: 'mock'
+        source: 'mock',
+        error: dbError instanceof Error ? dbError.message : 'Database query failed'
+      }, { status: 500 });
+    }
+
+    if (!testnets.length) {
+      console.warn('[api/testnets] No testnets found in database, using mock data');
+      const fallback = getMockProjectCardKPIs(pageSize);
+      return NextResponse.json({
+        items: fallback.map(mapMockDataToTestnetListRow),
+        pagination: {
+          total: 0,
+          page,
+          pageSize,
+          totalPages: 0
+        },
+        timestamp: new Date().toISOString(),
+        source: 'mock',
+        warning: 'No testnets found in database'
       });
     }
 
