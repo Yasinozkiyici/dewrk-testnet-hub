@@ -132,11 +132,19 @@ export async function GET(request: Request) {
       
       if (countResult === 0) {
         console.warn('[api/testnets] Count is 0, checking if table exists...');
-        const tableCheck = await prisma.$queryRaw`SELECT COUNT(*) as count FROM "Testnet"`.catch((err) => {
+        
+        // Try with explicit public schema (most common)
+        const publicSchemaCheck = await prisma.$queryRaw`SELECT COUNT(*)::int as count FROM public."Testnet"`.catch((err) => {
+          console.error('[api/testnets] Public schema check failed:', err instanceof Error ? err.message : String(err));
+          return [{ count: 0 }];
+        });
+        console.log('[api/testnets] Public schema count:', JSON.stringify(publicSchemaCheck));
+        
+        const tableCheck = await prisma.$queryRaw`SELECT COUNT(*)::int as count FROM "Testnet"`.catch((err) => {
           console.error('[api/testnets] Raw table check failed:', err instanceof Error ? err.message : String(err));
           return [{ count: 0 }];
         });
-        console.log('[api/testnets] Raw table check:', tableCheck);
+        console.log('[api/testnets] Raw table check:', JSON.stringify(tableCheck));
       }
       
       [testnets, total] = await Promise.all([
