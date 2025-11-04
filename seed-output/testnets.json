@@ -1,0 +1,4885 @@
+[
+  {
+    "name": "0G-Newton-Testnet",
+    "slug": "0g-newton-testnet",
+    "network": "0G-Testnet",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "0G-Newton-Testnet is a public test network for 0G-Newton- with RPCs",
+    "websiteUrl": "https://0g.ai",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": null,
+    "hasDashboard": false,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "0G-Testnet"
+    ],
+    "highlights": [],
+    "prerequisites": [
+      "Review official docs for 0G-Newton-Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.0g.ai"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on 0G-Newton-Testnet",
+      "Monitor transactions via community explorer",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/0g.ai",
+    "createdAt": "2025-11-04T09:09:13.538Z"
+  },
+  {
+    "name": "Apex Fusion - Nexus testnet",
+    "slug": "apex-fusion-nexus-testnet",
+    "network": "Nexus testnet",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Apex Fusion - Nexus testnet is a public test network for Apex Fusion - Nexus with RPCs https://rpc.nexus.testnet.apexfusion.org/",
+    "websiteUrl": "https://apexfusion.org/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://explorer.nexus.testnet.apexfusion.org",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "Nexus testnet",
+      "EIP155"
+    ],
+    "highlights": [
+      "Explorer: https://explorer.nexus.testnet.apexfusion.org",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Apex Fusion - Nexus testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Apex Fusion - Nexus testnet",
+      "Track the transaction on https://explorer.nexus.testnet.apexfusion.org",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/apexfusion.org",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "APEX Testnet",
+    "slug": "apex-testnet",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "APEX Testnet is a public test network for APEX with RPCs https://rpc-testnet.apexlayer.xyz",
+    "websiteUrl": "https://docs.apexlayer.xyz/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://exp-testnet.apexlayer.xyz",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "ETH"
+    ],
+    "highlights": [
+      "Explorer: https://exp-testnet.apexlayer.xyz",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for APEX Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://sepoliafaucet.com/"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on APEX Testnet",
+      "Track the transaction on https://exp-testnet.apexlayer.xyz",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/docs.apexlayer.xyz",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Arbitrum Blueberry",
+    "slug": "arbitrum-blueberry",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Arbitrum Blueberry is a public test network for Arbitrum Blueberry with RPCs https://rpc.arb-blueberry.gelato.digital, wss://ws.arb-blueberry.gelato.digital",
+    "websiteUrl": "https://raas.gelato.network/rollups/details/public/arb-blueberry",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/arbitrum",
+    "discordUrl": "https://discord.gg/arbitrum",
+    "dashboardUrl": "https://arb-blueberry.gelatoscout.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": 123700000,
+    "tags": [
+      "Testnet",
+      "ETH"
+    ],
+    "highlights": [
+      "Explorer: https://arb-blueberry.gelatoscout.com",
+      "2 RPC endpoints",
+      "Funding: $123,700,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://arbitrum.io",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Arbitrum Blueberry",
+      "Track the transaction on https://arb-blueberry.gelatoscout.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/raas.gelato.network",
+    "createdAt": "2025-11-04T09:09:13.544Z"
+  },
+  {
+    "name": "Arbitrum Goerli",
+    "slug": "arbitrum-goerli",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Arbitrum Goerli is a public test network for Arbitrum Goerli with RPCs https://goerli-rollup.arbitrum.io/rpc, https://arbitrum-goerli.publicnode.com",
+    "websiteUrl": "https://arbitrum.io/",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/arbitrum",
+    "discordUrl": "https://discord.gg/arbitrum",
+    "dashboardUrl": "https://goerli.arbiscan.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": 123700000,
+    "tags": [
+      "Testnet",
+      "ETH"
+    ],
+    "highlights": [
+      "Explorer: https://goerli.arbiscan.io",
+      "3 RPC endpoints",
+      "Funding: $123,700,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://arbitrum.io",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Arbitrum Goerli",
+      "Track the transaction on https://goerli.arbiscan.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/arbitrum.io",
+    "createdAt": "2025-11-04T09:09:13.544Z"
+  },
+  {
+    "name": "Arbitrum Sepolia",
+    "slug": "arbitrum-sepolia",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Arbitrum Sepolia is a public test network for Arbitrum Sepolia with RPCs https://sepolia-rollup.arbitrum.io/rpc, https://arbitrum-sepolia.infura.io/v3/${INFURA_API_KEY}",
+    "websiteUrl": "https://arbitrum.io",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/arbitrum",
+    "discordUrl": "https://discord.gg/arbitrum",
+    "dashboardUrl": "https://sepolia.arbiscan.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": 123700000,
+    "tags": [
+      "Testnet",
+      "ETH"
+    ],
+    "highlights": [
+      "Explorer: https://sepolia.arbiscan.io",
+      "4 RPC endpoints",
+      "Funding: $123,700,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://arbitrum.io",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Arbitrum Sepolia",
+      "Track the transaction on https://sepolia.arbiscan.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/arbitrum.io",
+    "createdAt": "2025-11-04T09:09:13.544Z"
+  },
+  {
+    "name": "Autonity Bakerloo (Barada) Testnet",
+    "slug": "autonity-bakerloo-barada-testnet",
+    "network": "AUT",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Autonity Bakerloo (Barada) Testnet is a public test network for Autonity Bakerloo (Barada) with RPCs",
+    "websiteUrl": "https://autonity.org/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://bakerloo.autonity.org",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AUT"
+    ],
+    "highlights": [
+      "Explorer: https://bakerloo.autonity.org"
+    ],
+    "prerequisites": [
+      "Review official docs for Autonity Bakerloo (Barada) Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.autonity.org/"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Autonity Bakerloo (Barada) Testnet",
+      "Track the transaction on https://bakerloo.autonity.org",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/autonity.org",
+    "createdAt": "2025-11-04T09:09:13.545Z"
+  },
+  {
+    "name": "Autonity Bakerloo (Sumida) Testnet",
+    "slug": "autonity-bakerloo-sumida-testnet",
+    "network": "AUT",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Autonity Bakerloo (Sumida) Testnet is a public test network for Autonity Bakerloo (Sumida) with RPCs",
+    "websiteUrl": "https://autonity.org/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://bakerloo.autonity.org",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AUT"
+    ],
+    "highlights": [
+      "Explorer: https://bakerloo.autonity.org"
+    ],
+    "prerequisites": [
+      "Review official docs for Autonity Bakerloo (Sumida) Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.autonity.org/"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Autonity Bakerloo (Sumida) Testnet",
+      "Track the transaction on https://bakerloo.autonity.org",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/autonity.org",
+    "createdAt": "2025-11-04T09:09:13.545Z"
+  },
+  {
+    "name": "Autonity Bakerloo (Thames) Testnet",
+    "slug": "autonity-bakerloo-thames-testnet",
+    "network": "AUT",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Autonity Bakerloo (Thames) Testnet is a public test network for Autonity Bakerloo (Thames) with RPCs",
+    "websiteUrl": "https://autonity.org/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://bakerloo.autonity.org",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AUT"
+    ],
+    "highlights": [
+      "Explorer: https://bakerloo.autonity.org"
+    ],
+    "prerequisites": [
+      "Review official docs for Autonity Bakerloo (Thames) Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.autonity.org/"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Autonity Bakerloo (Thames) Testnet",
+      "Track the transaction on https://bakerloo.autonity.org",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/autonity.org",
+    "createdAt": "2025-11-04T09:09:13.545Z"
+  },
+  {
+    "name": "Autonity Bakerloo (Yamuna) Testnet",
+    "slug": "autonity-bakerloo-yamuna-testnet",
+    "network": "AUT",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Autonity Bakerloo (Yamuna) Testnet is a public test network for Autonity Bakerloo (Yamuna) with RPCs",
+    "websiteUrl": "https://autonity.org/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://bakerloo.autonity.org",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AUT"
+    ],
+    "highlights": [
+      "Explorer: https://bakerloo.autonity.org"
+    ],
+    "prerequisites": [
+      "Review official docs for Autonity Bakerloo (Yamuna) Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.autonity.org/"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Autonity Bakerloo (Yamuna) Testnet",
+      "Track the transaction on https://bakerloo.autonity.org",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/autonity.org",
+    "createdAt": "2025-11-04T09:09:13.545Z"
+  },
+  {
+    "name": "Autonity Piccadilly (Barada) Testnet",
+    "slug": "autonity-piccadilly-barada-testnet",
+    "network": "AUT",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Autonity Piccadilly (Barada) Testnet is a public test network for Autonity Piccadilly (Barada) with RPCs",
+    "websiteUrl": "https://autonity.org/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://piccadilly.autonity.org",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AUT"
+    ],
+    "highlights": [
+      "Explorer: https://piccadilly.autonity.org"
+    ],
+    "prerequisites": [
+      "Review official docs for Autonity Piccadilly (Barada) Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Autonity Piccadilly (Barada) Testnet",
+      "Track the transaction on https://piccadilly.autonity.org",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/autonity.org",
+    "createdAt": "2025-11-04T09:09:13.545Z"
+  },
+  {
+    "name": "Autonity Piccadilly (Sumida) Testnet",
+    "slug": "autonity-piccadilly-sumida-testnet",
+    "network": "AUT",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Autonity Piccadilly (Sumida) Testnet is a public test network for Autonity Piccadilly (Sumida) with RPCs",
+    "websiteUrl": "https://autonity.org/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://piccadilly.autonity.org",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AUT"
+    ],
+    "highlights": [
+      "Explorer: https://piccadilly.autonity.org"
+    ],
+    "prerequisites": [
+      "Review official docs for Autonity Piccadilly (Sumida) Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Autonity Piccadilly (Sumida) Testnet",
+      "Track the transaction on https://piccadilly.autonity.org",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/autonity.org",
+    "createdAt": "2025-11-04T09:09:13.545Z"
+  },
+  {
+    "name": "Autonity Piccadilly (Thames) Testnet",
+    "slug": "autonity-piccadilly-thames-testnet",
+    "network": "AUT",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Autonity Piccadilly (Thames) Testnet is a public test network for Autonity Piccadilly (Thames) with RPCs",
+    "websiteUrl": "https://autonity.org/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://piccadilly.autonity.org",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AUT"
+    ],
+    "highlights": [
+      "Explorer: https://piccadilly.autonity.org"
+    ],
+    "prerequisites": [
+      "Review official docs for Autonity Piccadilly (Thames) Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.autonity.org/"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Autonity Piccadilly (Thames) Testnet",
+      "Track the transaction on https://piccadilly.autonity.org",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/autonity.org",
+    "createdAt": "2025-11-04T09:09:13.545Z"
+  },
+  {
+    "name": "Autonity Piccadilly (Tiber) Testnet",
+    "slug": "autonity-piccadilly-tiber-testnet",
+    "network": "AUT",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Autonity Piccadilly (Tiber) Testnet is a public test network for Autonity Piccadilly (Tiber) with RPCs",
+    "websiteUrl": "https://autonity.org/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": null,
+    "hasDashboard": false,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AUT"
+    ],
+    "highlights": [],
+    "prerequisites": [
+      "Review official docs for Autonity Piccadilly (Tiber) Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Autonity Piccadilly (Tiber) Testnet",
+      "Monitor transactions via community explorer",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/autonity.org",
+    "createdAt": "2025-11-04T09:09:13.545Z"
+  },
+  {
+    "name": "Autonity Piccadilly (Yamuna) Testnet",
+    "slug": "autonity-piccadilly-yamuna-testnet",
+    "network": "AUT",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Autonity Piccadilly (Yamuna) Testnet is a public test network for Autonity Piccadilly (Yamuna) with RPCs",
+    "websiteUrl": "https://autonity.org/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://piccadilly.autonity.org",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AUT"
+    ],
+    "highlights": [
+      "Explorer: https://piccadilly.autonity.org"
+    ],
+    "prerequisites": [
+      "Review official docs for Autonity Piccadilly (Yamuna) Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Autonity Piccadilly (Yamuna) Testnet",
+      "Track the transaction on https://piccadilly.autonity.org",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/autonity.org",
+    "createdAt": "2025-11-04T09:09:13.545Z"
+  },
+  {
+    "name": "Autonomys Chronos Testnet",
+    "slug": "autonomys-chronos-testnet",
+    "network": "autonomys-chronos-testnet",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Autonomys Chronos Testnet is a public test network for Autonomys Chronos with RPCs https://auto-evm.chronos.autonomys.xyz/ws",
+    "websiteUrl": "https://www.autonomys.xyz",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://explorer.auto-evm.chronos.autonomys.xyz",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "autonomys-chronos-testnet",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "Explorer: https://explorer.auto-evm.chronos.autonomys.xyz",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Autonomys Chronos Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Autonomys Chronos Testnet",
+      "Track the transaction on https://explorer.auto-evm.chronos.autonomys.xyz",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/www.autonomys.xyz",
+    "createdAt": "2025-11-04T09:09:13.545Z"
+  },
+  {
+    "name": "Autonomys Taurus Testnet",
+    "slug": "autonomys-taurus-testnet",
+    "network": "autonomys-taurus-testnet",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Autonomys Taurus Testnet is a public test network for Autonomys Taurus with RPCs https://auto-evm.taurus.autonomys.xyz/ws",
+    "websiteUrl": "https://www.autonomys.xyz",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": null,
+    "hasDashboard": false,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "autonomys-taurus-testnet",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Autonomys Taurus Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Autonomys Taurus Testnet",
+      "Monitor transactions via community explorer",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/www.autonomys.xyz",
+    "createdAt": "2025-11-04T09:09:13.545Z"
+  },
+  {
+    "name": "Avalanche Fuji Testnet",
+    "slug": "avalanche-fuji-testnet",
+    "network": "AVAX",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Avalanche Fuji Testnet is a public test network for Avalanche Fuji with RPCs https://api.avax-test.network/ext/bc/C/rpc, https://avalanche-fuji-c-chain-rpc.publicnode.com",
+    "websiteUrl": "https://cchain.explorer.avax-test.network",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet.snowscan.xyz",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AVAX"
+    ],
+    "highlights": [
+      "Explorer: https://testnet.snowscan.xyz",
+      "3 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Avalanche Fuji Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.avax-test.network/"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Avalanche Fuji Testnet",
+      "Track the transaction on https://testnet.snowscan.xyz",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/cchain.explorer.avax-test.network",
+    "createdAt": "2025-11-04T09:09:13.545Z"
+  },
+  {
+    "name": "Base Goerli Testnet",
+    "slug": "base-goerli-testnet",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Base Goerli Testnet is a public test network for Base Goerli with RPCs https://goerli.base.org, https://base-goerli.gateway.tenderly.co",
+    "websiteUrl": "https://base.org",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/BuildOnBase",
+    "discordUrl": "https://discord.gg/base",
+    "dashboardUrl": "https://goerli.basescan.org",
+    "hasDashboard": true,
+    "totalRaisedUSD": 520580000,
+    "tags": [
+      "Testnet",
+      "ETH"
+    ],
+    "highlights": [
+      "Explorer: https://goerli.basescan.org",
+      "5 RPC endpoints",
+      "Funding: $520,580,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://base.org",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://www.coinbase.com/faucets/base-ethereum-goerli-faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Base Goerli Testnet",
+      "Track the transaction on https://goerli.basescan.org",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/base.org",
+    "createdAt": "2025-11-04T09:09:13.545Z"
+  },
+  {
+    "name": "Base Sepolia Testnet",
+    "slug": "base-sepolia-testnet",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Base Sepolia Testnet is a public test network for Base Sepolia with RPCs https://sepolia.base.org, https://base-sepolia-rpc.publicnode.com",
+    "websiteUrl": "https://base.org",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/BuildOnBase",
+    "discordUrl": "https://discord.gg/base",
+    "dashboardUrl": "https://sepolia.basescan.org",
+    "hasDashboard": true,
+    "totalRaisedUSD": 520580000,
+    "tags": [
+      "Testnet",
+      "ETH"
+    ],
+    "highlights": [
+      "Explorer: https://sepolia.basescan.org",
+      "3 RPC endpoints",
+      "Funding: $520,580,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://base.org",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Base Sepolia Testnet",
+      "Track the transaction on https://sepolia.basescan.org",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/base.org",
+    "createdAt": "2025-11-04T09:09:13.545Z"
+  },
+  {
+    "name": "Basecamp",
+    "slug": "basecamp",
+    "network": "CAMP",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Basecamp is a public test network for Basecamp with RPCs https://rpc.basecamp.t.raas.gelato.cloud",
+    "websiteUrl": "https://docs.campnetwork.xyz/",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/BuildOnBase",
+    "discordUrl": "https://discord.gg/base",
+    "dashboardUrl": "https://basecamp.cloud.blockscout.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": 520580000,
+    "tags": [
+      "Testnet",
+      "CAMP",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "Explorer: https://basecamp.cloud.blockscout.com",
+      "1 RPC endpoints",
+      "Funding: $520,580,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://base.org",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://www.campnetwork.xyz/faucet_l1"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Basecamp",
+      "Track the transaction on https://basecamp.cloud.blockscout.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/docs.campnetwork.xyz",
+    "createdAt": "2025-11-04T09:09:13.545Z"
+  },
+  {
+    "name": "Blast Sepolia Testnet",
+    "slug": "blast-sepolia-testnet",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Blast Sepolia Testnet is a public test network for Blast Sepolia with RPCs https://sepolia.blast.io, https://blast-sepolia.drpc.org",
+    "websiteUrl": "https://blast.io/",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/Blast_L2",
+    "discordUrl": "https://discord.gg/blastl2",
+    "dashboardUrl": "https://testnet.blastscan.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": 20000000,
+    "tags": [
+      "Testnet",
+      "ETH"
+    ],
+    "highlights": [
+      "Explorer: https://testnet.blastscan.io",
+      "3 RPC endpoints",
+      "Funding: $20,000,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://blast.io",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.quicknode.com/blast/sepolia"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Blast Sepolia Testnet",
+      "Track the transaction on https://testnet.blastscan.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/blast.io",
+    "createdAt": "2025-11-04T09:09:13.546Z"
+  },
+  {
+    "name": "Blast Testnet",
+    "slug": "blast-testnet",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Blast Testnet is a public test network for Blast with RPCs http://testnet-rpc.blastblockchain.com",
+    "websiteUrl": "https://docs.blastblockchain.com",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/Blast_L2",
+    "discordUrl": "https://discord.gg/blastl2",
+    "dashboardUrl": "http://testnet-explorer.blastblockchain.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": 20000000,
+    "tags": [
+      "Testnet",
+      "ETH"
+    ],
+    "highlights": [
+      "Explorer: http://testnet-explorer.blastblockchain.com",
+      "1 RPC endpoints",
+      "Funding: $20,000,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://blast.io",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Blast Testnet",
+      "Track the transaction on http://testnet-explorer.blastblockchain.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/docs.blastblockchain.com",
+    "createdAt": "2025-11-04T09:09:13.546Z"
+  },
+  {
+    "name": "Block Chain LOL Berachain Testnet",
+    "slug": "block-chain-lol-berachain-testnet",
+    "network": "Block Chain LOL Berachain",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Block Chain LOL Berachain Testnet is a public test network for Block Chain LOL Berachain with RPCs https://block-chain.alt.technology",
+    "websiteUrl": "https://block-chain.lol/",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/zksync",
+    "discordUrl": "https://discord.gg/zksync",
+    "dashboardUrl": "https://explorer.block-chain.lol",
+    "hasDashboard": true,
+    "totalRaisedUSD": 458000000,
+    "tags": [
+      "Testnet",
+      "Block Chain LOL Berachain"
+    ],
+    "highlights": [
+      "Explorer: https://explorer.block-chain.lol",
+      "1 RPC endpoints",
+      "Funding: $458,000,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://zksync.io",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.block-chain.lol/"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Block Chain LOL Berachain Testnet",
+      "Track the transaction on https://explorer.block-chain.lol",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/block-chain.lol",
+    "createdAt": "2025-11-04T09:09:13.546Z"
+  },
+  {
+    "name": "Blockton Blockchain",
+    "slug": "blockton-blockchain",
+    "network": "Blockton Blockchain",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Blockton Blockchain is a public test network for Blockton Blockchain with RPCs https://rpc.blocktonscan.com/",
+    "websiteUrl": "https://blocktoncoin.com",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://blocktonscan.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "Blockton Blockchain"
+    ],
+    "highlights": [
+      "Explorer: https://blocktonscan.com",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Blockton Blockchain",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.blocktonscan.com/"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Blockton Blockchain",
+      "Track the transaction on https://blocktonscan.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/blocktoncoin.com",
+    "createdAt": "2025-11-04T09:09:13.546Z"
+  },
+  {
+    "name": "Bobabase Testnet",
+    "slug": "bobabase-testnet",
+    "network": "Bobabase Testnet",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Bobabase Testnet is a public test network for Bobabase with RPCs https://bobabase.boba.network, wss://wss.bobabase.boba.network",
+    "websiteUrl": "https://boba.network",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/BuildOnBase",
+    "discordUrl": "https://discord.gg/base",
+    "dashboardUrl": "https://blockexplorer.bobabase.boba.network",
+    "hasDashboard": true,
+    "totalRaisedUSD": 520580000,
+    "tags": [
+      "Testnet",
+      "Bobabase Testnet"
+    ],
+    "highlights": [
+      "Explorer: https://blockexplorer.bobabase.boba.network",
+      "4 RPC endpoints",
+      "Funding: $520,580,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://base.org",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Bobabase Testnet",
+      "Track the transaction on https://blockexplorer.bobabase.boba.network",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/boba.network",
+    "createdAt": "2025-11-04T09:09:13.546Z"
+  },
+  {
+    "name": "Canto Testnet",
+    "slug": "canto-testnet",
+    "network": "Canto Tesnet",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Canto Testnet is a public test network for Canto with RPCs https://eth.plexnode.wtf/",
+    "websiteUrl": "https://canto.io",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet-explorer.canto.neobase.one",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "Canto Tesnet"
+    ],
+    "highlights": [
+      "Explorer: https://testnet-explorer.canto.neobase.one",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Canto Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Canto Testnet",
+      "Track the transaction on https://testnet-explorer.canto.neobase.one",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/canto.io",
+    "createdAt": "2025-11-04T09:09:13.546Z"
+  },
+  {
+    "name": "Celo Alfajores Testnet",
+    "slug": "celo-alfajores-testnet",
+    "network": "CELO",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Celo Alfajores Testnet is a public test network for Celo Alfajores with RPCs https://alfajores-forno.celo-testnet.org, wss://alfajores-forno.celo-testnet.org/ws",
+    "websiteUrl": "https://docs.celo.org/",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/CeloOrg",
+    "discordUrl": "https://discord.gg/celo",
+    "dashboardUrl": "https://alfajores.celoscan.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": 66500000,
+    "tags": [
+      "Testnet",
+      "CELO"
+    ],
+    "highlights": [
+      "Explorer: https://alfajores.celoscan.io",
+      "2 RPC endpoints",
+      "Funding: $66,500,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://celo.org",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://celo.org/developers/faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Celo Alfajores Testnet",
+      "Track the transaction on https://alfajores.celoscan.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/docs.celo.org",
+    "createdAt": "2025-11-04T09:09:13.547Z"
+  },
+  {
+    "name": "Celo Baklava Testnet",
+    "slug": "celo-baklava-testnet",
+    "network": "CELO",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Celo Baklava Testnet is a public test network for Celo Baklava with RPCs https://baklava-forno.celo-testnet.org",
+    "websiteUrl": "https://docs.celo.org/",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/CeloOrg",
+    "discordUrl": "https://discord.gg/celo",
+    "dashboardUrl": null,
+    "hasDashboard": false,
+    "totalRaisedUSD": 66500000,
+    "tags": [
+      "Testnet",
+      "CELO"
+    ],
+    "highlights": [
+      "1 RPC endpoints",
+      "Funding: $66,500,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://celo.org",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://docs.google.com/forms/d/e/1FAIpQLSdfr1BwUTYepVmmvfVUDRCwALejZ-TUva2YujNpvrEmPAX2pg/viewform"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Celo Baklava Testnet",
+      "Monitor transactions via community explorer",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/docs.celo.org",
+    "createdAt": "2025-11-04T09:09:13.547Z"
+  },
+  {
+    "name": "Celo Sepolia Testnet",
+    "slug": "celo-sepolia-testnet",
+    "network": "CELO",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Celo Sepolia Testnet is a public test network for Celo Sepolia with RPCs https://forno.celo-sepolia.celo-testnet.org",
+    "websiteUrl": "https://docs.celo.org",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/CeloOrg",
+    "discordUrl": "https://discord.gg/celo",
+    "dashboardUrl": "https://celo-sepolia.blockscout.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": 66500000,
+    "tags": [
+      "Testnet",
+      "CELO",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "Explorer: https://celo-sepolia.blockscout.com",
+      "1 RPC endpoints",
+      "Funding: $66,500,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://celo.org",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.celo.org"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Celo Sepolia Testnet",
+      "Track the transaction on https://celo-sepolia.blockscout.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/docs.celo.org",
+    "createdAt": "2025-11-04T09:09:13.547Z"
+  },
+  {
+    "name": "Chronicle Yellowstone - Lit Protocol Testnet",
+    "slug": "chronicle-yellowstone-lit-protocol-testnet",
+    "network": "LPY",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Chronicle Yellowstone - Lit Protocol Testnet is a public test network for Chronicle Yellowstone - Lit Protocol with RPCs https://yellowstone-rpc.litprotocol.com",
+    "websiteUrl": "https://litprotocol.com",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://yellowstone-explorer.litprotocol.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "LPY"
+    ],
+    "highlights": [
+      "Explorer: https://yellowstone-explorer.litprotocol.com",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Chronicle Yellowstone - Lit Protocol Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://developer.litprotocol.com/support/intro"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Chronicle Yellowstone - Lit Protocol Testnet",
+      "Track the transaction on https://yellowstone-explorer.litprotocol.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/litprotocol.com",
+    "createdAt": "2025-11-04T09:09:13.547Z"
+  },
+  {
+    "name": "Cytonic Ethereum Testnet",
+    "slug": "cytonic-ethereum-testnet",
+    "network": "CytonicEVM",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Cytonic Ethereum Testnet is a public test network for Cytonic Ethereum with RPCs http://rpc.evm.testnet.cytonic.com",
+    "websiteUrl": "https://cytonic.com",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://explorer.evm.testnet.cytonic.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "CytonicEVM"
+    ],
+    "highlights": [
+      "Explorer: https://explorer.evm.testnet.cytonic.com",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Cytonic Ethereum Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Cytonic Ethereum Testnet",
+      "Track the transaction on https://explorer.evm.testnet.cytonic.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/cytonic.com",
+    "createdAt": "2025-11-04T09:09:13.547Z"
+  },
+  {
+    "name": "Cytonic Settlement Layer Testnet",
+    "slug": "cytonic-settlement-layer-testnet",
+    "network": "CytonicSL",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Cytonic Settlement Layer Testnet is a public test network for Cytonic Settlement Layer with RPCs http://rpc.sl.testnet.cytonic.com",
+    "websiteUrl": "https://cytonic.com",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://explorer.sl.testnet.cytonic.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "CytonicSL"
+    ],
+    "highlights": [
+      "Explorer: https://explorer.sl.testnet.cytonic.com",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Cytonic Settlement Layer Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Cytonic Settlement Layer Testnet",
+      "Track the transaction on https://explorer.sl.testnet.cytonic.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/cytonic.com",
+    "createdAt": "2025-11-04T09:09:13.547Z"
+  },
+  {
+    "name": "Electroneum Testnet",
+    "slug": "electroneum-testnet",
+    "network": "Electroneum",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Electroneum Testnet is a public test network for Electroneum with RPCs https://rpc.ankr.com/electroneum_testnet",
+    "websiteUrl": "https://electroneum.com",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet-blockexplorer.electroneum.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "Electroneum",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "Explorer: https://testnet-blockexplorer.electroneum.com",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Electroneum Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.electroneum.com"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Electroneum Testnet",
+      "Track the transaction on https://testnet-blockexplorer.electroneum.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/electroneum.com",
+    "createdAt": "2025-11-04T09:09:13.548Z"
+  },
+  {
+    "name": "Ethereum Hoodi",
+    "slug": "ethereum-hoodi",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Ethereum Hoodi is a public test network for Ethereum Hoodi with RPCs https://rpc.hoodi.ethpandaops.io",
+    "websiteUrl": "https://hoodi.ethpandaops.io",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://light-hoodi.beaconcha.in",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "ETH",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "Explorer: https://light-hoodi.beaconcha.in",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Ethereum Hoodi",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.hoodi.ethpandaops.io"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Ethereum Hoodi",
+      "Track the transaction on https://light-hoodi.beaconcha.in",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/hoodi.ethpandaops.io",
+    "createdAt": "2025-11-04T09:09:13.548Z"
+  },
+  {
+    "name": "Ethereum Sepolia",
+    "slug": "ethereum-sepolia",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Ethereum Sepolia is a public test network for Ethereum Sepolia with RPCs https://rpc.sepolia.org, https://rpc2.sepolia.org",
+    "websiteUrl": "https://sepolia.otterscan.io",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://sepolia.etherscan.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "ETH"
+    ],
+    "highlights": [
+      "Explorer: https://sepolia.etherscan.io",
+      "12 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Ethereum Sepolia",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: http://fauceth.komputing.org?chain=11155111&address=${ADDRESS}"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Ethereum Sepolia",
+      "Track the transaction on https://sepolia.etherscan.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/sepolia.otterscan.io",
+    "createdAt": "2025-11-04T09:09:13.548Z"
+  },
+  {
+    "name": "Fantom Testnet",
+    "slug": "fantom-testnet",
+    "network": "FTM",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Fantom Testnet is a public test network for Fantom with RPCs https://rpc.testnet.fantom.network, https://fantom-testnet-rpc.publicnode.com",
+    "websiteUrl": "https://docs.fantom.foundation/quick-start/short-guide#fantom-testnet",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet.ftmscan.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "FTM"
+    ],
+    "highlights": [
+      "Explorer: https://testnet.ftmscan.com",
+      "5 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Fantom Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.fantom.network"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Fantom Testnet",
+      "Track the transaction on https://testnet.ftmscan.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/docs.fantom.foundation",
+    "createdAt": "2025-11-04T09:09:13.548Z"
+  },
+  {
+    "name": "Flare Testnet Coston2",
+    "slug": "flare-testnet-coston2",
+    "network": "FLR",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Flare Testnet Coston2 is a public test network for Flare  Coston2 with RPCs https://coston2-api.flare.network/ext/C/rpc, https://flare-testnet-coston2.rpc.thirdweb.com",
+    "websiteUrl": "https://flare.network",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://coston2-explorer.flare.network",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "FLR",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "Explorer: https://coston2-explorer.flare.network",
+      "7 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Flare Testnet Coston2",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.flare.network"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Flare Testnet Coston2",
+      "Track the transaction on https://coston2-explorer.flare.network",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/flare.network",
+    "createdAt": "2025-11-04T09:09:13.549Z"
+  },
+  {
+    "name": "Fraxtal Testnet",
+    "slug": "fraxtal-testnet",
+    "network": "FRAX",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Fraxtal Testnet is a public test network for Fraxtal with RPCs https://rpc.testnet.frax.com, https://fraxtal-holesky-rpc.publicnode.com",
+    "websiteUrl": "https://testnet.frax.com",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/fraxfinance",
+    "discordUrl": "https://discord.gg/frax",
+    "dashboardUrl": "https://holesky.fraxscan.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": 0,
+    "tags": [
+      "Testnet",
+      "FRAX"
+    ],
+    "highlights": [
+      "Explorer: https://holesky.fraxscan.com",
+      "3 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review documentation on https://frax.finance",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Fraxtal Testnet",
+      "Track the transaction on https://holesky.fraxscan.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/testnet.frax.com",
+    "createdAt": "2025-11-04T09:09:13.549Z"
+  },
+  {
+    "name": "Gnosis",
+    "slug": "gnosis",
+    "network": "GNO",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Gnosis is a public test network for Gnosis with RPCs https://rpc.gnosischain.com, https://rpc.gnosis.gateway.fm",
+    "websiteUrl": "https://docs.gnosischain.com",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://gnosisscan.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "GNO"
+    ],
+    "highlights": [
+      "Explorer: https://gnosisscan.io",
+      "12 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Gnosis",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://gnosisfaucet.com"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Gnosis",
+      "Track the transaction on https://gnosisscan.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/docs.gnosischain.com",
+    "createdAt": "2025-11-04T09:09:13.549Z"
+  },
+  {
+    "name": "Gnosis Chiado Testnet",
+    "slug": "gnosis-chiado-testnet",
+    "network": "GNO",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Gnosis Chiado Testnet is a public test network for Gnosis Chiado with RPCs https://rpc.chiadochain.net, https://rpc.chiado.gnosis.gateway.fm",
+    "websiteUrl": "https://docs.gnosischain.com",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://blockscout.chiadochain.net",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "GNO"
+    ],
+    "highlights": [
+      "Explorer: https://blockscout.chiadochain.net",
+      "7 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Gnosis Chiado Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://gnosisfaucet.com"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Gnosis Chiado Testnet",
+      "Track the transaction on https://blockscout.chiadochain.net",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/docs.gnosischain.com",
+    "createdAt": "2025-11-04T09:09:13.549Z"
+  },
+  {
+    "name": "GTON Testnet",
+    "slug": "gton-testnet",
+    "network": "GTON Testnet",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "GTON Testnet is a public test network for GTON with RPCs https://testnet.gton.network/",
+    "websiteUrl": "https://gton.capital",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://explorer.testnet.gton.network",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "GTON Testnet"
+    ],
+    "highlights": [
+      "Explorer: https://explorer.testnet.gton.network",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for GTON Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on GTON Testnet",
+      "Track the transaction on https://explorer.testnet.gton.network",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/gton.capital",
+    "createdAt": "2025-11-04T09:09:13.549Z"
+  },
+  {
+    "name": "Hedera Previewnet",
+    "slug": "hedera-previewnet",
+    "network": "Hedera",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Hedera Previewnet is a public test network for Hedera Previewnet with RPCs https://previewnet.hashio.io/api",
+    "websiteUrl": "https://hedera.com",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/zksync",
+    "discordUrl": "https://discord.gg/zksync",
+    "dashboardUrl": "https://hashscan.io/previewnet",
+    "hasDashboard": true,
+    "totalRaisedUSD": 458000000,
+    "tags": [
+      "Testnet",
+      "Hedera",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "Explorer: https://hashscan.io/previewnet",
+      "1 RPC endpoints",
+      "Funding: $458,000,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://zksync.io",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://portal.hedera.com"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Hedera Previewnet",
+      "Track the transaction on https://hashscan.io/previewnet",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/hedera.com",
+    "createdAt": "2025-11-04T09:09:13.550Z"
+  },
+  {
+    "name": "Hedera Testnet",
+    "slug": "hedera-testnet",
+    "network": "Hedera",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Hedera Testnet is a public test network for Hedera with RPCs https://testnet.hashio.io/api",
+    "websiteUrl": "https://hedera.com",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/zksync",
+    "discordUrl": "https://discord.gg/zksync",
+    "dashboardUrl": "https://hashscan.io/testnet",
+    "hasDashboard": true,
+    "totalRaisedUSD": 458000000,
+    "tags": [
+      "Testnet",
+      "Hedera",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "Explorer: https://hashscan.io/testnet",
+      "1 RPC endpoints",
+      "Funding: $458,000,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://zksync.io",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://portal.hedera.com"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Hedera Testnet",
+      "Track the transaction on https://hashscan.io/testnet",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/hedera.com",
+    "createdAt": "2025-11-04T09:09:13.550Z"
+  },
+  {
+    "name": "Injective",
+    "slug": "injective",
+    "network": "Injective",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Injective is a public test network for Injective with RPCs https://sentry.evm-rpc.injective.network, wss://sentry.evm-ws.injective.network",
+    "websiteUrl": "https://injective.com",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://blockscout.injective.network",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "Injective",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "Explorer: https://blockscout.injective.network",
+      "4 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Injective",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://injective.com/getinj"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Injective",
+      "Track the transaction on https://blockscout.injective.network",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/injective.com",
+    "createdAt": "2025-11-04T09:09:13.550Z"
+  },
+  {
+    "name": "Injective Testnet",
+    "slug": "injective-testnet",
+    "network": "Injective",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Injective Testnet is a public test network for Injective with RPCs https://k8s.testnet.json-rpc.injective.network, wss://k8s.testnet.ws.injective.network",
+    "websiteUrl": "https://injective.com",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet.blockscout.injective.network",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "Injective",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "Explorer: https://testnet.blockscout.injective.network",
+      "4 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Injective Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://testnet.faucet.injective.network"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Injective Testnet",
+      "Track the transaction on https://testnet.blockscout.injective.network",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/injective.com",
+    "createdAt": "2025-11-04T09:09:13.550Z"
+  },
+  {
+    "name": "Optimism Goerli Testnet",
+    "slug": "optimism-goerli-testnet",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Optimism Goerli Testnet is a public test network for Optimism Goerli with RPCs https://goerli.optimism.io, https://optimism-goerli-rpc.publicnode.com",
+    "websiteUrl": "https://optimism.io",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/optimism",
+    "discordUrl": "https://discord.gg/optimism",
+    "dashboardUrl": "https://optimism-goerli.blockscout.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": 178000000,
+    "tags": [
+      "Testnet",
+      "ETH"
+    ],
+    "highlights": [
+      "Explorer: https://optimism-goerli.blockscout.com",
+      "7 RPC endpoints",
+      "Funding: $178,000,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://optimism.io",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Optimism Goerli Testnet",
+      "Track the transaction on https://optimism-goerli.blockscout.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/optimism.io",
+    "createdAt": "2025-11-04T09:09:13.551Z"
+  },
+  {
+    "name": "Optimism Kovan",
+    "slug": "optimism-kovan",
+    "network": "ETH",
+    "status": "ENDED",
+    "difficulty": "EASY",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Optimism Kovan is a public test network for Optimism Kovan with RPCs https://kovan.optimism.io/",
+    "websiteUrl": "https://optimism.io",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/optimism",
+    "discordUrl": "https://discord.gg/optimism",
+    "dashboardUrl": "https://kovan-optimistic.etherscan.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": 178000000,
+    "tags": [
+      "Testnet",
+      "ETH"
+    ],
+    "highlights": [
+      "Explorer: https://kovan-optimistic.etherscan.io",
+      "1 RPC endpoints",
+      "Funding: $178,000,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://optimism.io",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: http://fauceth.komputing.org?chain=69&address=${ADDRESS}"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Optimism Kovan",
+      "Track the transaction on https://kovan-optimistic.etherscan.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/optimism.io",
+    "createdAt": "2025-11-04T09:09:13.551Z"
+  },
+  {
+    "name": "Scroll Sepolia Testnet",
+    "slug": "scroll-sepolia-testnet",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Scroll Sepolia Testnet is a public test network for Scroll Sepolia with RPCs https://sepolia-rpc.scroll.io, https://rpc.ankr.com/scroll_sepolia_testnet",
+    "websiteUrl": "https://scroll.io",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/Scroll_ZKP",
+    "discordUrl": "https://discord.gg/scroll",
+    "dashboardUrl": "https://sepolia.scrollscan.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": 83000000,
+    "tags": [
+      "Testnet",
+      "ETH"
+    ],
+    "highlights": [
+      "Explorer: https://sepolia.scrollscan.com",
+      "6 RPC endpoints",
+      "Funding: $83,000,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://scroll.io",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Scroll Sepolia Testnet",
+      "Track the transaction on https://sepolia.scrollscan.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/scroll.io",
+    "createdAt": "2025-11-04T09:09:13.552Z"
+  },
+  {
+    "name": "Mantle Sepolia Testnet",
+    "slug": "mantle-sepolia-testnet",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Mantle Sepolia Testnet is a public test network for Mantle Sepolia with RPCs https://rpc.sepolia.mantle.xyz",
+    "websiteUrl": "https://mantle.xyz",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/0xMantle",
+    "discordUrl": "https://discord.gg/mantle",
+    "dashboardUrl": "https://explorer.sepolia.mantle.xyz",
+    "hasDashboard": true,
+    "totalRaisedUSD": 200000000,
+    "tags": [
+      "Testnet",
+      "ETH"
+    ],
+    "highlights": [
+      "Explorer: https://explorer.sepolia.mantle.xyz",
+      "1 RPC endpoints",
+      "Funding: $200,000,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://mantle.xyz",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.sepolia.mantle.xyz"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Mantle Sepolia Testnet",
+      "Track the transaction on https://explorer.sepolia.mantle.xyz",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/mantle.xyz",
+    "createdAt": "2025-11-04T09:09:13.552Z"
+  },
+  {
+    "name": "Kakarot Starknet Sepolia",
+    "slug": "kakarot-starknet-sepolia",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Kakarot Starknet Sepolia is a public test network for Kakarot Starknet Sepolia with RPCs https://sepolia-rpc.kakarot.org",
+    "websiteUrl": "https://kakarot.org",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/Starknet",
+    "discordUrl": "https://discord.gg/starknet",
+    "dashboardUrl": "https://sepolia.kakarotscan.org",
+    "hasDashboard": true,
+    "totalRaisedUSD": 282500000,
+    "tags": [
+      "Testnet",
+      "ETH"
+    ],
+    "highlights": [
+      "Explorer: https://sepolia.kakarotscan.org",
+      "1 RPC endpoints",
+      "Funding: $282,500,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://starknet.io",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://sepolia-faucet.kakarot.org/"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Kakarot Starknet Sepolia",
+      "Track the transaction on https://sepolia.kakarotscan.org",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/kakarot.org",
+    "createdAt": "2025-11-04T09:09:13.552Z"
+  },
+  {
+    "name": "Linea Goerli",
+    "slug": "linea-goerli",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Linea Goerli is a public test network for Linea Goerli with RPCs https://rpc.goerli.linea.build, wss://rpc.goerli.linea.build",
+    "websiteUrl": "https://linea.build",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/LineaBuild",
+    "discordUrl": "https://discord.gg/linea",
+    "dashboardUrl": "https://goerli.lineascan.build",
+    "hasDashboard": true,
+    "totalRaisedUSD": 726000000,
+    "tags": [
+      "Testnet",
+      "ETH"
+    ],
+    "highlights": [
+      "Explorer: https://goerli.lineascan.build",
+      "4 RPC endpoints",
+      "Funding: $726,000,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://linea.build",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucetlink.to/goerli"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Linea Goerli",
+      "Track the transaction on https://goerli.lineascan.build",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/linea.build",
+    "createdAt": "2025-11-04T09:09:13.553Z"
+  },
+  {
+    "name": "Taiko Jolnir L2",
+    "slug": "taiko-jolnir-l2",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Taiko Jolnir L2 is a public test network for Taiko Jolnir L2 with RPCs https://rpc.jolnir.taiko.xyz",
+    "websiteUrl": "https://taiko.xyz",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/taikoxyz",
+    "discordUrl": "https://discord.gg/taikoxyz",
+    "dashboardUrl": "https://explorer.jolnir.taiko.xyz",
+    "hasDashboard": true,
+    "totalRaisedUSD": 37000000,
+    "tags": [
+      "Testnet",
+      "ETH"
+    ],
+    "highlights": [
+      "Explorer: https://explorer.jolnir.taiko.xyz",
+      "1 RPC endpoints",
+      "Funding: $37,000,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://taiko.xyz",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Taiko Jolnir L2",
+      "Track the transaction on https://explorer.jolnir.taiko.xyz",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/taiko.xyz",
+    "createdAt": "2025-11-04T09:09:13.556Z"
+  },
+  {
+    "name": "Manta Pacific Testnet",
+    "slug": "manta-pacific-testnet",
+    "network": "Manta Pacific",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Manta Pacific Testnet is a public test network for Manta Pacific with RPCs https://manta-testnet.calderachain.xyz/http, https://manta-pacific-testnet.drpc.org",
+    "websiteUrl": "https://manta-testnet.caldera.dev/",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/0xMantle",
+    "discordUrl": "https://discord.gg/mantle",
+    "dashboardUrl": "https://manta-testnet.calderaexplorer.xyz",
+    "hasDashboard": true,
+    "totalRaisedUSD": 200000000,
+    "tags": [
+      "Testnet",
+      "Manta Pacific",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "Explorer: https://manta-testnet.calderaexplorer.xyz",
+      "3 RPC endpoints",
+      "Funding: $200,000,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://mantle.xyz",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Manta Pacific Testnet",
+      "Track the transaction on https://manta-testnet.calderaexplorer.xyz",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/manta-testnet.caldera.dev",
+    "createdAt": "2025-11-04T09:09:13.556Z"
+  },
+  {
+    "name": "Berachain bArtio",
+    "slug": "berachain-bartio",
+    "network": "Berachain bArtio",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Berachain bArtio is a public test network for Berachain bArtio with RPCs",
+    "websiteUrl": "https://www.berachain.com",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/zksync",
+    "discordUrl": "https://discord.gg/zksync",
+    "dashboardUrl": "https://bartio.beratrail.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": 458000000,
+    "tags": [
+      "Testnet",
+      "Berachain bArtio"
+    ],
+    "highlights": [
+      "Explorer: https://bartio.beratrail.io",
+      "Funding: $458,000,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://zksync.io",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Berachain bArtio",
+      "Track the transaction on https://bartio.beratrail.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/www.berachain.com",
+    "createdAt": "2025-11-04T09:09:13.556Z"
+  },
+  {
+    "name": "Moonbase Alpha",
+    "slug": "moonbase-alpha",
+    "network": "MOON",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Moonbase Alpha is a public test network for Moonbase Alpha with RPCs https://rpc.api.moonbase.moonbeam.network, wss://wss.api.moonbase.moonbeam.network",
+    "websiteUrl": "https://docs.moonbeam.network/learn/platform/networks/moonbase/",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/BuildOnBase",
+    "discordUrl": "https://discord.gg/base",
+    "dashboardUrl": "https://moonbase.moonscan.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": 520580000,
+    "tags": [
+      "Testnet",
+      "MOON"
+    ],
+    "highlights": [
+      "Explorer: https://moonbase.moonscan.io",
+      "12 RPC endpoints",
+      "Funding: $520,580,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://base.org",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.moonbeam.network/"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Moonbase Alpha",
+      "Track the transaction on https://moonbase.moonscan.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/docs.moonbeam.network",
+    "createdAt": "2025-11-04T09:09:13.559Z"
+  },
+  {
+    "name": "Shardeum Liberty 2.X",
+    "slug": "shardeum-liberty-2x",
+    "network": "Shardeum",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Shardeum Liberty 2.X is a public test network for Shardeum Liberty 2.X with RPCs https://liberty20.shardeum.org/",
+    "websiteUrl": "https://docs.shardeum.org/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://explorer-liberty20.shardeum.org",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "Shardeum"
+    ],
+    "highlights": [
+      "Explorer: https://explorer-liberty20.shardeum.org",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Shardeum Liberty 2.X",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.liberty20.shardeum.org"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Shardeum Liberty 2.X",
+      "Track the transaction on https://explorer-liberty20.shardeum.org",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/docs.shardeum.org",
+    "createdAt": "2025-11-04T09:09:13.559Z"
+  },
+  {
+    "name": "Linea Sepolia",
+    "slug": "linea-sepolia",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Linea Sepolia is a public test network for Linea Sepolia with RPCs https://rpc.sepolia.linea.build, wss://rpc.sepolia.linea.build",
+    "websiteUrl": "https://linea.build",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/LineaBuild",
+    "discordUrl": "https://discord.gg/linea",
+    "dashboardUrl": "https://sepolia.lineascan.build",
+    "hasDashboard": true,
+    "totalRaisedUSD": 726000000,
+    "tags": [
+      "Testnet",
+      "ETH"
+    ],
+    "highlights": [
+      "Explorer: https://sepolia.lineascan.build",
+      "6 RPC endpoints",
+      "Funding: $726,000,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://linea.build",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Linea Sepolia",
+      "Track the transaction on https://sepolia.lineascan.build",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/linea.build",
+    "createdAt": "2025-11-04T09:09:13.560Z"
+  },
+  {
+    "name": "Polygon zkEVM Cardona Testnet",
+    "slug": "polygon-zkevm-cardona-testnet",
+    "network": "Polygon",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Points",
+    "rewardNote": null,
+    "shortDescription": "Polygon zkEVM Cardona Testnet is a public test network for Polygon zkEVM Cardona with RPCs https://rpc.cardona.zkevm-rpc.com",
+    "websiteUrl": "https://polygon.technology/polygon-zkevm",
+    "githubUrl": null,
+    "twitterUrl": "https://twitter.com/0xPolygon",
+    "discordUrl": "https://discord.gg/polygon",
+    "dashboardUrl": "https://cardona-zkevm.polygonscan.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": 451000000,
+    "tags": [
+      "Testnet",
+      "Polygon"
+    ],
+    "highlights": [
+      "Explorer: https://cardona-zkevm.polygonscan.com",
+      "1 RPC endpoints",
+      "Funding: $451,000,000"
+    ],
+    "prerequisites": [
+      "Review documentation on https://polygon.technology",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Polygon zkEVM Cardona Testnet",
+      "Track the transaction on https://cardona-zkevm.polygonscan.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/polygon.technology",
+    "createdAt": "2025-11-04T09:09:13.560Z"
+  },
+  {
+    "name": "Privix Chain Testnet",
+    "slug": "privix-chain-testnet",
+    "network": "PRIVIX",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Privix Chain Testnet is a public test network for Privix Chain with RPCs https://testnet-rpc.privixchain.xyz/, wss://testnet-rpc.privixchain.xyz/ws",
+    "websiteUrl": "https://privix.co/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet.privixscan.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "PRIVIX"
+    ],
+    "highlights": [
+      "Explorer: https://testnet.privixscan.io",
+      "2 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Privix Chain Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.privixchain.xyz"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Privix Chain Testnet",
+      "Track the transaction on https://testnet.privixscan.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/privix.co",
+    "createdAt": "2025-11-04T09:09:13.538Z"
+  },
+  {
+    "name": "0G-Galileo-Testnet",
+    "slug": "0g-galileo-testnet",
+    "network": "0G-Testnet",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "0G-Galileo-Testnet is a public test network for 0G-Galileo- with RPCs",
+    "websiteUrl": "https://0g.ai",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": null,
+    "hasDashboard": false,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "0G-Testnet"
+    ],
+    "highlights": [],
+    "prerequisites": [
+      "Review official docs for 0G-Galileo-Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on 0G-Galileo-Testnet",
+      "Monitor transactions via community explorer",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/0g.ai",
+    "createdAt": "2025-11-04T09:09:13.538Z"
+  },
+  {
+    "name": "0G-Testnet-Galileo",
+    "slug": "0g-testnet-galileo",
+    "network": "0G-Testnet",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "0G-Testnet-Galileo is a public test network for 0G--Galileo with RPCs https://evmrpc-testnet.0g.ai",
+    "websiteUrl": "https://0g.ai",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://chainscan-galileo.0g.ai",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "0G-Testnet"
+    ],
+    "highlights": [
+      "Explorer: https://chainscan-galileo.0g.ai",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for 0G-Testnet-Galileo",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.0g.ai"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on 0G-Testnet-Galileo",
+      "Track the transaction on https://chainscan-galileo.0g.ai",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/0g.ai",
+    "createdAt": "2025-11-04T09:09:13.538Z"
+  },
+  {
+    "name": "0xHash Testnet",
+    "slug": "0xhash-testnet",
+    "network": "HETH",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "0xHash Testnet is a public test network for 0xHash with RPCs https://rpc-test.0xhash.io",
+    "websiteUrl": "https://0xhash.io",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://test.0xhashscan.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "HETH",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "Explorer: https://test.0xhashscan.io",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for 0xHash Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on 0xHash Testnet",
+      "Track the transaction on https://test.0xhashscan.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/0xhash.io",
+    "createdAt": "2025-11-04T09:09:13.538Z"
+  },
+  {
+    "name": "1Money Network Testnet",
+    "slug": "1money-network-testnet",
+    "network": "1Money Testnet",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "1Money Network Testnet is a public test network for 1Money with RPCs https://testnet.1money.network",
+    "websiteUrl": "https://1money.com",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": null,
+    "hasDashboard": false,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "1Money Testnet",
+      "EIP155"
+    ],
+    "highlights": [
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for 1Money Network Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on 1Money Network Testnet",
+      "Monitor transactions via community explorer",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/1money.com",
+    "createdAt": "2025-11-04T09:09:13.538Z"
+  },
+  {
+    "name": "5ireChain Thunder Testnet",
+    "slug": "5irechain-thunder-testnet",
+    "network": "5ireChain",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "5ireChain Thunder Testnet is a public test network for 5ireChain Thunder with RPCs https://rpc.testnet.5ire.network",
+    "websiteUrl": "https://5ire.org",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet.5irescan.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "5ireChain"
+    ],
+    "highlights": [
+      "Explorer: https://testnet.5irescan.io",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for 5ireChain Thunder Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://testnet.5irescan.io/faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on 5ireChain Thunder Testnet",
+      "Track the transaction on https://testnet.5irescan.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/5ire.org",
+    "createdAt": "2025-11-04T09:09:13.538Z"
+  },
+  {
+    "name": "6Degree of Outreach - Testnet",
+    "slug": "6degree-of-outreach-testnet",
+    "network": "6DO",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "6Degree of Outreach - Testnet is a public test network for 6Degree of Outreach - with RPCs https://rpc-testnet.6dochain.com",
+    "websiteUrl": "https://6do.world",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://explorer-testnet.6dochain.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "6DO",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "Explorer: https://explorer-testnet.6dochain.com",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for 6Degree of Outreach - Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on 6Degree of Outreach - Testnet",
+      "Track the transaction on https://explorer-testnet.6dochain.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/6do.world",
+    "createdAt": "2025-11-04T09:09:13.538Z"
+  },
+  {
+    "name": "AB Core Testnet",
+    "slug": "ab-core-testnet",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "AB Core Testnet is a public test network for AB Core with RPCs https://rpc.core.testnet.ab.org",
+    "websiteUrl": "https://ab.org",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://explorer.core.testnet.ab.org",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "ETH"
+    ],
+    "highlights": [
+      "Explorer: https://explorer.core.testnet.ab.org",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for AB Core Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on AB Core Testnet",
+      "Track the transaction on https://explorer.core.testnet.ab.org",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/ab.org",
+    "createdAt": "2025-11-04T09:09:13.538Z"
+  },
+  {
+    "name": "Abey Testnet",
+    "slug": "abey-testnet",
+    "network": "Abey",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Abey Testnet is a public test network for Abey with RPCs https://testrpc.abeychain.com",
+    "websiteUrl": "https://abey.com",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet.abeyscan.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "Abey",
+      "EIP155"
+    ],
+    "highlights": [
+      "Explorer: https://testnet.abeyscan.com",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Abey Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://testnet-faucet.abeychain.com"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Abey Testnet",
+      "Track the transaction on https://testnet.abeyscan.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/abey.com",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Abstract Sepolia Testnet",
+    "slug": "abstract-sepolia-testnet",
+    "network": "Abstract Sepolia Testnet",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Abstract Sepolia Testnet is a public test network for Abstract Sepolia with RPCs https://api.testnet.abs.xyz",
+    "websiteUrl": "https://abs.xyz/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://sepolia.abscan.org",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "Abstract Sepolia Testnet"
+    ],
+    "highlights": [
+      "Explorer: https://sepolia.abscan.org",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Abstract Sepolia Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.triangleplatform.com/abstract/testnet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Abstract Sepolia Testnet",
+      "Track the transaction on https://sepolia.abscan.org",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/abs.xyz",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Abyss Protocol",
+    "slug": "abyss-protocol",
+    "network": "Abyss Protocol Testnet",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Abyss Protocol is a public test network for Abyss Protocol with RPCs https://testnet.rpc.abyssprotocol.ai/",
+    "websiteUrl": "https://abyssprotocol.ai/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet.abyssprotocol.ai",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "Abyss Protocol Testnet",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "Explorer: https://testnet.abyssprotocol.ai",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Abyss Protocol",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.abyssprotocol.ai/"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Abyss Protocol",
+      "Track the transaction on https://testnet.abyssprotocol.ai",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/abyssprotocol.ai",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Acala Mandala Testnet TC9",
+    "slug": "acala-mandala-testnet-tc9",
+    "network": "mACA",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Acala Mandala Testnet TC9 is a public test network for Acala Mandala  TC9 with RPCs https://eth-rpc-tc9.aca-staging.network, wss://eth-rpc-tc9.aca-staging.network",
+    "websiteUrl": "https://acala.network",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://blockscout.mandala.aca-staging.network",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "mACA",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "Explorer: https://blockscout.mandala.aca-staging.network",
+      "2 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Acala Mandala Testnet TC9",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Acala Mandala Testnet TC9",
+      "Track the transaction on https://blockscout.mandala.aca-staging.network",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/acala.network",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Acala Network Testnet",
+    "slug": "acala-network-testnet",
+    "network": "ACA",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Acala Network Testnet is a public test network for Acala with RPCs https://eth-rpc-acala-testnet.aca-staging.network, wss://eth-rpc-acala-testnet.aca-staging.network",
+    "websiteUrl": "https://acala.network",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://blockscout.acala-dev.aca-dev.network",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "ACA"
+    ],
+    "highlights": [
+      "Explorer: https://blockscout.acala-dev.aca-dev.network",
+      "2 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Acala Network Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Acala Network Testnet",
+      "Track the transaction on https://blockscout.acala-dev.aca-dev.network",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/acala.network",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Accumulate Kermit",
+    "slug": "accumulate-kermit",
+    "network": "Accumulate",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Accumulate Kermit is a public test network for Accumulate Kermit with RPCs https://kermit.accumulatenetwork.io/eth",
+    "websiteUrl": "https://accumulate.org",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://kermit.explorer.accumulatenetwork.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "Accumulate"
+    ],
+    "highlights": [
+      "Explorer: https://kermit.explorer.accumulatenetwork.io",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Accumulate Kermit",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://kermit.explorer.accumulatenetwork.io/faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Accumulate Kermit",
+      "Track the transaction on https://kermit.explorer.accumulatenetwork.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/accumulate.org",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "ADF Chain Testnet",
+    "slug": "adf-chain-testnet",
+    "network": "ADF Chain Testnet",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "ADF Chain Testnet is a public test network for ADF Chain with RPCs https://testnet.adftechnology.com/",
+    "websiteUrl": "https://www.adfstarworld.com/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet-explorer.adftechnology.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "ADF Chain Testnet"
+    ],
+    "highlights": [
+      "Explorer: https://testnet-explorer.adftechnology.com",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for ADF Chain Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on ADF Chain Testnet",
+      "Track the transaction on https://testnet-explorer.adftechnology.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/www.adfstarworld.com",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "ADIL Devnet",
+    "slug": "adil-devnet",
+    "network": "ADIL",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "ADIL Devnet is a public test network for ADIL with RPCs https://devnet.adilchain-rpc.io",
+    "websiteUrl": "https://adilchain.io",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://devnet.adilchain-scan.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "ADIL"
+    ],
+    "highlights": [
+      "Explorer: https://devnet.adilchain-scan.io",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for ADIL Devnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on ADIL Devnet",
+      "Track the transaction on https://devnet.adilchain-scan.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/adilchain.io",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "ADIL Testnet",
+    "slug": "adil-testnet",
+    "network": "ADIL",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "ADIL Testnet is a public test network for ADIL with RPCs https://testnet.adilchain-rpc.io",
+    "websiteUrl": "https://adilchain.io",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet.adilchain-scan.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "ADIL"
+    ],
+    "highlights": [
+      "Explorer: https://testnet.adilchain-scan.io",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for ADIL Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://testnet-faucet.adil-scan.io"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on ADIL Testnet",
+      "Track the transaction on https://testnet.adilchain-scan.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/adilchain.io",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Adiri",
+    "slug": "adiri",
+    "network": "TEL",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Adiri is a public test network for Adiri with RPCs https://rpc.telcoin.network, https://adiri.tel",
+    "websiteUrl": "https://telcoin.network",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://telscan.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "TEL"
+    ],
+    "highlights": [
+      "Explorer: https://telscan.io",
+      "6 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Adiri",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://telcoin.network/faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Adiri",
+      "Track the transaction on https://telscan.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/telcoin.network",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Aerochain Testnet",
+    "slug": "aerochain-testnet",
+    "network": "Aerochain",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Aerochain Testnet is a public test network for Aerochain with RPCs https://testnet-rpc.aerochain.id/",
+    "websiteUrl": "https://aerochaincoin.org/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet.aeroscan.id",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "Aerochain"
+    ],
+    "highlights": [
+      "Explorer: https://testnet.aeroscan.id",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Aerochain Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.aerochain.id/"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Aerochain Testnet",
+      "Track the transaction on https://testnet.aeroscan.id",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/aerochaincoin.org",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "AgentLayer Testnet",
+    "slug": "agentlayer-testnet",
+    "network": "AgentLayer",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "AgentLayer Testnet is a public test network for AgentLayer with RPCs https://testnet-rpc.agentlayer.xyz",
+    "websiteUrl": "https://agentlayer.xyz/home",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet-explorer.agentlayer.xyz",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AgentLayer"
+    ],
+    "highlights": [
+      "Explorer: https://testnet-explorer.agentlayer.xyz",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for AgentLayer Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on AgentLayer Testnet",
+      "Track the transaction on https://testnet-explorer.agentlayer.xyz",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/agentlayer.xyz",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "AIA Testnet",
+    "slug": "aia-testnet",
+    "network": "AIA",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "AIA Testnet is a public test network for AIA with RPCs https://aia-dataseed1-testnet.aiachain.org",
+    "websiteUrl": "https://aiachain.org",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet.aiascan.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AIA",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "Explorer: https://testnet.aiascan.com",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for AIA Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://aia-faucet-testnet.aiachain.org"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on AIA Testnet",
+      "Track the transaction on https://testnet.aiascan.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/aiachain.org",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "AIE Testnet",
+    "slug": "aie-testnet",
+    "network": "AIE",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "AIE Testnet is a public test network for AIE with RPCs https://rpc1-testnet.aiechain.io",
+    "websiteUrl": "https://testnet.aiescan.io",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet.aiescan.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AIE"
+    ],
+    "highlights": [
+      "Explorer: https://testnet.aiescan.io",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for AIE Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on AIE Testnet",
+      "Track the transaction on https://testnet.aiescan.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/testnet.aiescan.io",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "AILayer Testnet",
+    "slug": "ailayer-testnet",
+    "network": "AILayer",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "AILayer Testnet is a public test network for AILayer with RPCs https://testnet-rpc.ailayer.xyz, wss://testnet-rpc.ailayer.xyz",
+    "websiteUrl": "https://ailayer.xyz/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet-explorer.ailayer.xyz",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AILayer"
+    ],
+    "highlights": [
+      "Explorer: https://testnet-explorer.ailayer.xyz",
+      "2 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for AILayer Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on AILayer Testnet",
+      "Track the transaction on https://testnet-explorer.ailayer.xyz",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/ailayer.xyz",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "AIOZ Network Testnet",
+    "slug": "aioz-network-testnet",
+    "network": "AIOZ",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "AIOZ Network Testnet is a public test network for AIOZ with RPCs https://eth-ds.testnet.aioz.network",
+    "websiteUrl": "https://aioz.network",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet.explorer.aioz.network",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AIOZ"
+    ],
+    "highlights": [
+      "Explorer: https://testnet.explorer.aioz.network",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for AIOZ Network Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on AIOZ Network Testnet",
+      "Track the transaction on https://testnet.explorer.aioz.network",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/aioz.network",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "AirDAO Testnet",
+    "slug": "airdao-testnet",
+    "network": "ambnet-test",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "AirDAO Testnet is a public test network for AirDAO with RPCs https://network.ambrosus-test.io",
+    "websiteUrl": "https://testnet.airdao.io",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet.airdao.io/explorer",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "ambnet-test"
+    ],
+    "highlights": [
+      "Explorer: https://testnet.airdao.io/explorer",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for AirDAO Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on AirDAO Testnet",
+      "Track the transaction on https://testnet.airdao.io/explorer",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/testnet.airdao.io",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "AIW3 Testnet",
+    "slug": "aiw3-testnet",
+    "network": "AIW3",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "AIW3 Testnet is a public test network for AIW3 with RPCs https://rpc-testnet.aiw3.io/",
+    "websiteUrl": "https://aiw3.io/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://scan-testnet.aiw3.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AIW3"
+    ],
+    "highlights": [
+      "Explorer: https://scan-testnet.aiw3.io",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for AIW3 Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on AIW3 Testnet",
+      "Track the transaction on https://scan-testnet.aiw3.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/aiw3.io",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Alaya Dev Testnet",
+    "slug": "alaya-dev-testnet",
+    "network": "Alaya",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Alaya Dev Testnet is a public test network for Alaya Dev with RPCs https://devnetopenapi.alaya.network/rpc, wss://devnetopenapi.alaya.network/ws",
+    "websiteUrl": "https://www.alaya.network/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://devnetscan.alaya.network",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "Alaya"
+    ],
+    "highlights": [
+      "Explorer: https://devnetscan.alaya.network",
+      "2 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Alaya Dev Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.alaya.network/faucet/?id=f93426c0887f11eb83b900163e06151c"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Alaya Dev Testnet",
+      "Track the transaction on https://devnetscan.alaya.network",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/www.alaya.network",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "ALDChain Testnet",
+    "slug": "aldchain-testnet",
+    "network": "ALD",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "ALDChain Testnet is a public test network for ALDChain with RPCs https://testnet-rpc.aldrickb.xyz",
+    "websiteUrl": "https://aldrickb.com/projects",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet-explorer.aldrickb.xyz",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "ALD",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "Explorer: https://testnet-explorer.aldrickb.xyz",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for ALDChain Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.aldrickb.xyz"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on ALDChain Testnet",
+      "Track the transaction on https://testnet-explorer.aldrickb.xyz",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/aldrickb.com",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Algen Layer2 Testnet",
+    "slug": "algen-layer2-testnet",
+    "network": "ALG L2",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Algen Layer2 Testnet is a public test network for Algen Layer2 with RPCs https://rpc.alg2-test.algen.network",
+    "websiteUrl": "https://www.algen.network",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://scan.alg2-test.algen.network",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "ALG L2"
+    ],
+    "highlights": [
+      "Explorer: https://scan.alg2-test.algen.network",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Algen Layer2 Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Algen Layer2 Testnet",
+      "Track the transaction on https://scan.alg2-test.algen.network",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/www.algen.network",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Algen Testnet",
+    "slug": "algen-testnet",
+    "network": "ALG",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Algen Testnet is a public test network for Algen with RPCs https://rpc.test.algen.network",
+    "websiteUrl": "https://www.algen.network",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://scan.test.algen.network",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "ALG"
+    ],
+    "highlights": [
+      "Explorer: https://scan.test.algen.network",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Algen Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Algen Testnet",
+      "Track the transaction on https://scan.test.algen.network",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/www.algen.network",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "ALIENX Hal Testnet",
+    "slug": "alienx-hal-testnet",
+    "network": "ALIENX Hal",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "ALIENX Hal Testnet is a public test network for ALIENX Hal with RPCs https://hal-rpc.alienxchain.io/http, https://hal.rpc.caldera.xyz/http",
+    "websiteUrl": "https://alienxchain.io/home",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://hal-explorer.alienxchain.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "ALIENX Hal"
+    ],
+    "highlights": [
+      "Explorer: https://hal-explorer.alienxchain.io",
+      "2 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for ALIENX Hal Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on ALIENX Hal Testnet",
+      "Track the transaction on https://hal-explorer.alienxchain.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/alienxchain.io",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "All About Healthy",
+    "slug": "all-about-healthy",
+    "network": "AAH",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "All About Healthy is a public test network for All About Healthy with RPCs https://rpc.c4ex.net",
+    "websiteUrl": "https://c4ex.net",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://exp.c4ex.net",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AAH"
+    ],
+    "highlights": [
+      "Explorer: https://exp.c4ex.net",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for All About Healthy",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://t.me/c4eiAirdrop"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on All About Healthy",
+      "Track the transaction on https://exp.c4ex.net",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/c4ex.net",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Altar Testnet",
+    "slug": "altar-testnet",
+    "network": "Altar",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Altar Testnet is a public test network for Altar with RPCs https://altar-rpc.ceremonies.ai/",
+    "websiteUrl": "https://ceremonies.gitbook.io",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://altar-explorer.ceremonies.ai",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "Altar"
+    ],
+    "highlights": [
+      "Explorer: https://altar-explorer.ceremonies.ai",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Altar Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://sepoliafaucet.com/"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Altar Testnet",
+      "Track the transaction on https://altar-explorer.ceremonies.ai",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/ceremonies.gitbook.io",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Alterium L2 Testnet",
+    "slug": "alterium-l2-testnet",
+    "network": "ALT",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Alterium L2 Testnet is a public test network for Alterium L2 with RPCs https://l2-testnet-rpc.altscan.org",
+    "websiteUrl": "https://alteriumprotocol.org",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://l2-testnet.altscan.org",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "ALT"
+    ],
+    "highlights": [
+      "Explorer: https://l2-testnet.altscan.org",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Alterium L2 Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Alterium L2 Testnet",
+      "Track the transaction on https://l2-testnet.altscan.org",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/alteriumprotocol.org",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Alterscope Testnet",
+    "slug": "alterscope-testnet",
+    "network": "AlterscopeTest",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Alterscope Testnet is a public test network for Alterscope with RPCs",
+    "websiteUrl": "https://alterscope.org",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": null,
+    "hasDashboard": false,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AlterscopeTest"
+    ],
+    "highlights": [],
+    "prerequisites": [
+      "Review official docs for Alterscope Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Alterscope Testnet",
+      "Monitor transactions via community explorer",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/alterscope.org",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "AltLayer Testnet",
+    "slug": "altlayer-testnet",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "AltLayer Testnet is a public test network for AltLayer with RPCs https://testnet-rollup-api.altlayer.io",
+    "websiteUrl": "https://altlayer.io",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet-rollup-explorer.altlayer.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "ETH",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "Explorer: https://testnet-rollup-explorer.altlayer.io",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for AltLayer Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on AltLayer Testnet",
+      "Track the transaction on https://testnet-rollup-explorer.altlayer.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/altlayer.io",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "AlveyChain Testnet",
+    "slug": "alveychain-testnet",
+    "network": "tALV",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "AlveyChain Testnet is a public test network for AlveyChain with RPCs https://testnet-rpc.alvey.io",
+    "websiteUrl": "https://alveychain.com/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://alveytestnet.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "tALV"
+    ],
+    "highlights": [
+      "Explorer: https://alveytestnet.com",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for AlveyChain Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.alveytestnet.com"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on AlveyChain Testnet",
+      "Track the transaction on https://alveytestnet.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/alveychain.com",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Alyx Chain Testnet",
+    "slug": "alyx-chain-testnet",
+    "network": "Alyx Chain Testnet",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Alyx Chain Testnet is a public test network for Alyx Chain with RPCs https://testnet-rpc.alyxchain.com",
+    "websiteUrl": "https://www.alyxchain.com",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet.alyxscan.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "Alyx Chain Testnet"
+    ],
+    "highlights": [
+      "Explorer: https://testnet.alyxscan.com",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Alyx Chain Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.alyxchain.com"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Alyx Chain Testnet",
+      "Track the transaction on https://testnet.alyxscan.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/www.alyxchain.com",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Amana Testnet",
+    "slug": "amana-testnet",
+    "network": "MEER",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Amana Testnet is a public test network for Amana with RPCs",
+    "websiteUrl": "https://github.com/Qitmeer",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": null,
+    "hasDashboard": false,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "MEER"
+    ],
+    "highlights": [],
+    "prerequisites": [
+      "Review official docs for Amana Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Amana Testnet",
+      "Monitor transactions via community explorer",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/github.com",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Amauti",
+    "slug": "amauti",
+    "network": "RAILS",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Amauti is a public test network for Amauti with RPCs https://testnet.steamexchange.io",
+    "websiteUrl": "https://steamexchange.io",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://build.steamexchange.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "RAILS"
+    ],
+    "highlights": [
+      "Explorer: https://build.steamexchange.io",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Amauti",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://depot.steamexchange.io/faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Amauti",
+      "Track the transaction on https://build.steamexchange.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/steamexchange.io",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Amoy",
+    "slug": "amoy",
+    "network": "Polygon",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Amoy is a public test network for Amoy with RPCs https://rpc-amoy.polygon.technology, https://polygon-amoy-bor-rpc.publicnode.com",
+    "websiteUrl": "https://polygon.technology/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://amoy.polygonscan.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "Polygon"
+    ],
+    "highlights": [
+      "Explorer: https://amoy.polygonscan.com",
+      "3 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Amoy",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.polygon.technology/"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Amoy",
+      "Track the transaction on https://amoy.polygonscan.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/polygon.technology",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "AmStar Testnet",
+    "slug": "amstar-testnet",
+    "network": "AmStar",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "AmStar Testnet is a public test network for AmStar with RPCs https://testnet-rpc.amstarscan.com",
+    "websiteUrl": "https://sinso.io",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet.amstarscan.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AmStar"
+    ],
+    "highlights": [
+      "Explorer: https://testnet.amstarscan.com",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for AmStar Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on AmStar Testnet",
+      "Track the transaction on https://testnet.amstarscan.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/sinso.io",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Ancient8 Testnet",
+    "slug": "ancient8-testnet",
+    "network": "Ancient8",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Ancient8 Testnet is a public test network for Ancient8 with RPCs https://rpcv2-testnet.ancient8.gg",
+    "websiteUrl": "https://ancient8.gg/",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://scanv2-testnet.ancient8.gg",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "Ancient8"
+    ],
+    "highlights": [
+      "Explorer: https://scanv2-testnet.ancient8.gg",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Ancient8 Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Ancient8 Testnet",
+      "Track the transaction on https://scanv2-testnet.ancient8.gg",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/ancient8.gg",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Animechain Testnet",
+    "slug": "animechain-testnet",
+    "network": "Animechain",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Animechain Testnet is a public test network for Animechain with RPCs https://rpc.kanda.animechain.ai",
+    "websiteUrl": "https://animechain.ai",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://explorer.kanda.animechain.ai",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "Animechain"
+    ],
+    "highlights": [
+      "Explorer: https://explorer.kanda.animechain.ai",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Animechain Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Animechain Testnet",
+      "Track the transaction on https://explorer.kanda.animechain.ai",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/animechain.ai",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Anomaly Andromeda Testnet",
+    "slug": "anomaly-andromeda-testnet",
+    "network": "anomaly-andromeda-testnet",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Anomaly Andromeda Testnet is a public test network for Anomaly Andromeda with RPCs https://rpc.anomaly-andromeda.anomalygames.io, wss://ws.anomaly-andromeda.anomalygames.io",
+    "websiteUrl": "https://raas.gelato.network/rollups/details/public/anomaly-andromeda-testnet",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://andromeda.anomalyscan.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "anomaly-andromeda-testnet"
+    ],
+    "highlights": [
+      "Explorer: https://andromeda.anomalyscan.io",
+      "2 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Anomaly Andromeda Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Anomaly Andromeda Testnet",
+      "Track the transaction on https://andromeda.anomalyscan.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/raas.gelato.network",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Antofy Mainnet",
+    "slug": "antofy-mainnet",
+    "network": "ABN",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Antofy Mainnet is a public test network for Antofy Mainnet with RPCs https://rpc.antofy.io",
+    "websiteUrl": "https://antofy.io",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://antofyscan.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "ABN"
+    ],
+    "highlights": [
+      "Explorer: https://antofyscan.com",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Antofy Mainnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.antofy.io"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Antofy Mainnet",
+      "Track the transaction on https://antofyscan.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/antofy.io",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Antofy Testnet",
+    "slug": "antofy-testnet",
+    "network": "ABN",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Antofy Testnet is a public test network for Antofy with RPCs https://testnet-rpc.antofy.io",
+    "websiteUrl": "https://antofy.io",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://test.antofyscan.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "ABN"
+    ],
+    "highlights": [
+      "Explorer: https://test.antofyscan.com",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Antofy Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://faucet.antofy.io"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Antofy Testnet",
+      "Track the transaction on https://test.antofyscan.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/antofy.io",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Anytype EVM Chain",
+    "slug": "anytype-evm-chain",
+    "network": "ETH",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Anytype EVM Chain is a public test network for Anytype EVM Chain with RPCs https://geth.anytype.io",
+    "websiteUrl": "https://evm.anytype.io",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://explorer.anytype.io",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "ETH"
+    ],
+    "highlights": [
+      "Explorer: https://explorer.anytype.io",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Anytype EVM Chain",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://evm.anytype.io/faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Anytype EVM Chain",
+      "Track the transaction on https://explorer.anytype.io",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/evm.anytype.io",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "AppChain Testnet",
+    "slug": "appchain-testnet",
+    "network": "AppChain Testnet",
+    "status": "LIVE",
+    "difficulty": "MEDIUM",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "AppChain Testnet is a public test network for AppChain with RPCs https://appchaintestnet.rpc.caldera.xyz/http, wss://appchaintestnet.rpc.caldera.xyz/ws",
+    "websiteUrl": "https://appchain.xyz",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://appchaintestnet.explorer.caldera.xyz",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AppChain Testnet"
+    ],
+    "highlights": [
+      "Explorer: https://appchaintestnet.explorer.caldera.xyz",
+      "2 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for AppChain Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the community faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on AppChain Testnet",
+      "Track the transaction on https://appchaintestnet.explorer.caldera.xyz",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": false,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/appchain.xyz",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "AppLayer Testnet",
+    "slug": "applayer-testnet",
+    "network": "AppLayer",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "AppLayer Testnet is a public test network for AppLayer with RPCs https://testnet-api.applayer.com",
+    "websiteUrl": "https://applayer.com",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": "https://testnet-explorer.applayer.com",
+    "hasDashboard": true,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AppLayer",
+      "EIP55",
+      "EIP155",
+      "EIP1559"
+    ],
+    "highlights": [
+      "Explorer: https://testnet-explorer.applayer.com",
+      "1 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for AppLayer Testnet",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://testnet-faucet.applayer.com"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on AppLayer Testnet",
+      "Track the transaction on https://testnet-explorer.applayer.com",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/applayer.com",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  },
+  {
+    "name": "Aquachain",
+    "slug": "aquachain",
+    "network": "AQUA",
+    "status": "LIVE",
+    "difficulty": "EASY",
+    "rewardType": "Tokens",
+    "rewardNote": null,
+    "shortDescription": "Aquachain is a public test network for Aquachain with RPCs https://c.onical.org, https://tx.aquacha.in/api",
+    "websiteUrl": "https://aquachain.github.io",
+    "githubUrl": null,
+    "twitterUrl": null,
+    "discordUrl": null,
+    "dashboardUrl": null,
+    "hasDashboard": false,
+    "totalRaisedUSD": null,
+    "tags": [
+      "Testnet",
+      "AQUA"
+    ],
+    "highlights": [
+      "2 RPC endpoints"
+    ],
+    "prerequisites": [
+      "Review official docs for Aquachain",
+      "Configure a compatible wallet with the published RPC URL",
+      "Request funds from the faucet: https://aquacha.in/faucet"
+    ],
+    "gettingStarted": [
+      "Deploy and verify a contract on Aquachain",
+      "Monitor transactions via community explorer",
+      "Share feedback or bug reports with the team"
+    ],
+    "discordRoles": [],
+    "hasFaucet": true,
+    "kycRequired": false,
+    "requiresWallet": true,
+    "rewardCategory": null,
+    "rewardRangeUSD": null,
+    "estTimeMinutes": 30,
+    "logoUrl": "https://logo.clearbit.com/aquachain.github.io",
+    "createdAt": "2025-11-04T09:09:13.539Z"
+  }
+]

@@ -12,6 +12,8 @@
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:seed": "tsx prisma/seed.ts",
+    "db:deploy-production": "tsx scripts/deploy-production-db.ts",
+    "db:quick-deploy": "tsx scripts/quick-deploy-production.ts",
     "seed:generate": "node scripts/generate-seed.mjs",
     "seed:validate": "node scripts/validate-seed.mjs",
     "seed:make-prisma": "node scripts/make-prisma-seed.mjs",

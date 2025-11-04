@@ -147,17 +147,26 @@ async function seedTestnets() {
   });
 }
 
-async function main() {
+export async function main() {
   try {
     await seedTestnets();
     await seedEcosystems(prisma);
     await seedLeaderboards(prisma);
   } finally {
-    await prisma.$disconnect();
+    // Only disconnect if running directly (not imported)
+    // When imported, caller manages the connection
+    if (process.env.SEED_AUTO_DISCONNECT !== 'false') {
+      await prisma.$disconnect();
+    }
   }
 }
 
-main().catch((error) => {
-  console.error('❌ Seed failed', error);
-  process.exit(1);
-});
+// Only run if executed directly (not imported)
+// Check if this file is being run directly
+const isMainModule = typeof require !== 'undefined' && require.main === module;
+if (isMainModule) {
+  main().catch((error) => {
+    console.error('❌ Seed failed', error);
+    process.exit(1);
+  });
+}

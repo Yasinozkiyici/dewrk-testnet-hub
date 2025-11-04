@@ -47,8 +47,10 @@ tsc
 # Data logs
 /data/update.log
 
-# Seed pipeline outputs
-/seed-output
+# Seed pipeline outputs (except testnets.json which is needed for production)
+/seed-output/*
+!/seed-output/testnets.json
+!/seed-output/.gitkeep
 
 # IDE
 .vscode
