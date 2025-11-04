@@ -41,6 +41,39 @@ function mapTestnetForList(testnet: Awaited<ReturnType<typeof prisma.testnet.fin
   };
 }
 
+function mapMockDataToTestnetListRow(mock: ReturnType<typeof getMockProjectCardKPIs>[0]): any {
+  return {
+    id: mock.id,
+    name: mock.name,
+    slug: mock.slug,
+    network: mock.lead.network || 'Unknown',
+    status: typeof mock.status === 'object' ? mock.status.current : mock.status,
+    difficulty: 'MEDIUM',
+    shortDescription: null,
+    logoUrl: null,
+    estTimeMinutes: mock.deadline.estimatedTimeMinutes,
+    rewardType: null,
+    rewardNote: null,
+    kycRequired: false,
+    requiresWallet: true,
+    tags: mock.techStack.tags || [],
+    tasksCount: 0,
+    updatedAt: new Date().toISOString(),
+    hasDashboard: false,
+    totalRaisedUSD: mock.funding.totalRaisedUSD,
+    dashboardUrl: null,
+    websiteUrl: null,
+    githubUrl: null,
+    twitterUrl: null,
+    discordUrl: null,
+    startDate: null,
+    hasFaucet: false,
+    rewardCategory: null,
+    rewardRangeUSD: null,
+    discordRolesCount: 0
+  };
+}
+
 export async function GET(request: Request) {
   try {
     // Prisma bağlantı kontrolü
@@ -48,7 +81,7 @@ export async function GET(request: Request) {
       console.error('[api/testnets] DATABASE_URL is not set');
       const fallback = getMockProjectCardKPIs(40);
       return NextResponse.json({
-        items: fallback,
+        items: fallback.map(mapMockDataToTestnetListRow),
         pagination: {
           total: 0,
           page: 1,
@@ -84,7 +117,7 @@ export async function GET(request: Request) {
     if (!testnets.length) {
       const fallback = getMockProjectCardKPIs(pageSize);
       return NextResponse.json({
-        items: fallback,
+        items: fallback.map(mapMockDataToTestnetListRow),
         pagination: {
           total: 0,
           page,
@@ -121,9 +154,10 @@ export async function GET(request: Request) {
     const message = error instanceof Error ? error.message : 'Unknown error';
     const stack = error instanceof Error ? error.stack : undefined;
     console.error('[api/testnets] Failed to load testnets', message, stack);
+    const fallback = getMockProjectCardKPIs(6);
     return NextResponse.json(
       {
-        items: getMockProjectCardKPIs(6),
+        items: fallback.map(mapMockDataToTestnetListRow),
         source: 'mock',
         error: message
       },
