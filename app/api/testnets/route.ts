@@ -3,6 +3,8 @@ import { prisma } from '@/lib/prisma';
 import { TESTNETS_TAG, testnetTag, safeRevalidateTag } from '@/lib/cache';
 import { getMockProjectCardKPIs } from '@/lib/mock-kpi-data';
 
+export const dynamic = 'force-dynamic';
+
 function mapTestnetForList(testnet: Awaited<ReturnType<typeof prisma.testnet.findFirst>>) {
   if (!testnet) return null;
   const discordRoles = Array.isArray(testnet.discordRoles as any) ? (testnet.discordRoles as any[]) : [];
