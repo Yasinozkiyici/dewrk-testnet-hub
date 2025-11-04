@@ -5,6 +5,8 @@ import { safeRevalidateTag } from '@/lib/cache';
 
 const HEALTH_TAG = 'health';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     safeRevalidateTag(HEALTH_TAG);

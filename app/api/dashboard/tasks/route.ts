@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { withAuth } from '@/lib/auth-guards';
 import { prisma } from '@/lib/prisma';
 
+export const dynamic = 'force-dynamic';
+
 /**
  * GET /api/dashboard/tasks
  * Get user's tasks across testnets
@@ -49,4 +51,3 @@ export const GET = withAuth(async (req: NextRequest, user) => {
     );
   }
 });
-

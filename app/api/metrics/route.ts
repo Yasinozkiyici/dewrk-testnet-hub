@@ -4,6 +4,8 @@ import { prisma } from '@/lib/prisma';
 
 const METRICS_TAG = 'metrics';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     await revalidateTag(METRICS_TAG);
@@ -30,4 +32,3 @@ export async function GET() {
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
-

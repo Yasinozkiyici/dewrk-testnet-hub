@@ -5,6 +5,8 @@ import { safeRevalidateTag } from '@/lib/cache';
 
 const GUIDES_TAG = 'guides';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     safeRevalidateTag(GUIDES_TAG);

@@ -5,6 +5,8 @@ function getExpectedPassword(): string {
   return process.env.ADMIN_PANEL_PASSWORD ?? process.env.NEXT_PUBLIC_ADMIN_PASS ?? '';
 }
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: Request) {
   try {
     const { password } = await request.json().catch(() => ({ password: '' }));
@@ -40,5 +42,4 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
-
 

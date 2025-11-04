@@ -4,6 +4,8 @@ import { prisma } from '@/lib/prisma';
 
 const ECOSYSTEMS_TAG = 'ecosystems';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();

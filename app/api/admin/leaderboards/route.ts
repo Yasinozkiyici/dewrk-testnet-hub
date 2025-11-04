@@ -5,6 +5,8 @@ import { prisma } from '@/lib/prisma';
 const LEADERBOARDS_TAG = 'leaderboards';
 const METRICS_TAG = 'metrics';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();

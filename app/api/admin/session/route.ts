@@ -4,6 +4,8 @@ import { ADMIN_COOKIE_NAME } from '@/lib/auth';
 
 const PASS_KEYS = ['ADMIN_PASSPHRASE', 'NEXT_PUBLIC_ADMIN_PASS'] as const;
 
+export const dynamic = 'force-dynamic';
+
 function getConfiguredPassphrase(): string | null {
   for (const key of PASS_KEYS) {
     const value = process.env[key];

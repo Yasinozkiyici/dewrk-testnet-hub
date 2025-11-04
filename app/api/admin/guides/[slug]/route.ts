@@ -7,6 +7,8 @@ import { getGuideBySlug } from '@/lib/content/guides';
 const GUIDES_DIR = path.join(process.cwd(), 'content', 'guides');
 const GUIDES_TAG = 'guides';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(_: Request, { params }: { params: { slug: string } }) {
   try {
     const guide = await getGuideBySlug(params.slug);

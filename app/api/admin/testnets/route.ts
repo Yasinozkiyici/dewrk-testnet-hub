@@ -4,6 +4,8 @@ import { safeUrl } from '@/lib/format';
 import { safeRevalidateTag, TESTNETS_TAG, testnetTag } from '@/lib/cache';
 import { toAdminTestnetRecord } from '@/lib/admin/testnet-record';
 
+export const dynamic = 'force-dynamic';
+
 let lastCall = 0;
 function rateLimit() {
   const now = Date.now();

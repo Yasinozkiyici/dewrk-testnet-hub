@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { withAuth } from '@/lib/auth-guards';
 import { prisma } from '@/lib/prisma';
 
+export const dynamic = 'force-dynamic';
+
 /**
  * GET /api/dashboard/api-keys
  * Get user's API keys
@@ -68,4 +70,3 @@ export const POST = withAuth(async (req: NextRequest, user) => {
     );
   }
 });
-

@@ -5,6 +5,8 @@ import { safeRevalidateTag } from '@/lib/cache';
 
 const ECOSYSTEMS_TAG = 'ecosystems';
 
+export const dynamic = 'force-dynamic';
+
 type EcosystemPayload = {
   id?: string;
   slug: string;

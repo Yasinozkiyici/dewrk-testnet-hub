@@ -5,6 +5,8 @@ import { safeRevalidateTag } from '@/lib/cache';
 
 const LEADERBOARDS_TAG = 'leaderboards';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     safeRevalidateTag(LEADERBOARDS_TAG);

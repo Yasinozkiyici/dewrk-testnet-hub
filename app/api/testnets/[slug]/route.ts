@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { TESTNETS_TAG, testnetTag, safeRevalidateTag } from '@/lib/cache';
 
+export const dynamic = 'force-dynamic';
+
 function mapTestnetDetail(testnet: NonNullable<Awaited<ReturnType<typeof prisma.testnet.findUnique>>>) {
   return {
     id: testnet.id,
