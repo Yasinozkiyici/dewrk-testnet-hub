@@ -69,7 +69,17 @@ export default async function LandingPage({
 }: {
   searchParams?: { page?: string; pageSize?: string; [key: string]: string | string[] | undefined };
 }) {
-  const { data, pagination } = await fetchFeaturedTestnets(searchParams || {});
+  let data: TestnetListRow[] = [];
+  let pagination = { total: 0, page: 1, pageSize: 40, totalPages: 0 };
+
+  try {
+    const result = await fetchFeaturedTestnets(searchParams || {});
+    data = result.data;
+    pagination = result.pagination;
+  } catch (error) {
+    console.error('[page] Failed to fetch testnets', error);
+    // Fallback: boş array ile devam et
+  }
 
   return (
     <>

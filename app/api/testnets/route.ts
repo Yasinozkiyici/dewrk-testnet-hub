@@ -41,6 +41,24 @@ function mapTestnetForList(testnet: Awaited<ReturnType<typeof prisma.testnet.fin
 
 export async function GET(request: Request) {
   try {
+    // Prisma bağlantı kontrolü
+    if (!process.env.DATABASE_URL) {
+      console.error('[api/testnets] DATABASE_URL is not set');
+      const fallback = getMockProjectCardKPIs(40);
+      return NextResponse.json({
+        items: fallback,
+        pagination: {
+          total: 0,
+          page: 1,
+          pageSize: 40,
+          totalPages: 0
+        },
+        timestamp: new Date().toISOString(),
+        source: 'mock',
+        error: 'DATABASE_URL not configured'
+      }, { status: 500 });
+    }
+
     safeRevalidateTag(TESTNETS_TAG);
 
     const { searchParams } = new URL(request.url);
@@ -99,7 +117,8 @@ export async function GET(request: Request) {
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unknown error';
-    console.error('[api/testnets] Failed to load testnets', message);
+    const stack = error instanceof Error ? error.stack : undefined;
+    console.error('[api/testnets] Failed to load testnets', message, stack);
     return NextResponse.json(
       {
         items: getMockProjectCardKPIs(6),
