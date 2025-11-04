@@ -77,7 +77,17 @@ function mapMockDataToTestnetListRow(mock: ReturnType<typeof getMockProjectCardK
 export async function GET(request: Request) {
   try {
     // Prisma bağlantı kontrolü
-    if (!process.env.DATABASE_URL) {
+    const dbUrl = process.env.DATABASE_URL;
+    const directUrl = process.env.DIRECT_URL;
+    
+    console.log('[api/testnets] Environment check:', {
+      hasDatabaseUrl: !!dbUrl,
+      databaseUrlPrefix: dbUrl ? dbUrl.substring(0, 50) + '...' : 'MISSING',
+      hasDirectUrl: !!directUrl,
+      directUrlPrefix: directUrl ? directUrl.substring(0, 50) + '...' : 'MISSING'
+    });
+
+    if (!dbUrl) {
       console.error('[api/testnets] DATABASE_URL is not set');
       const fallback = getMockProjectCardKPIs(40);
       return NextResponse.json({
