@@ -29,7 +29,7 @@ export default async function GuidesOgImage() {
           <h1 style={{ fontSize: 68, fontWeight: 600 }}>Testnet Playbooks</h1>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             {featured.map((guide) => (
-              <div key={guide.slug} style={{ fontSize: 28 }}>
+              <div key={guide.slug} style={{ fontSize: 28, display: 'flex', flexDirection: 'column' }}>
                 <div style={{ fontWeight: 600 }}>{guide.title}</div>
                 <div style={{ fontSize: 20, opacity: 0.75 }}>{guide.excerpt ?? guide.description ?? ''}</div>
               </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { FormEvent, useMemo, useState, useTransition } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -11,7 +12,7 @@ const ADMIN_PASS_ENABLED = Boolean(
   process.env.NEXT_PUBLIC_ADMIN_PASS && process.env.NEXT_PUBLIC_ADMIN_PASS.length > 0
 );
 
-export default function LoginPage() {
+function LoginForm() {
   const searchParams = useSearchParams();
   const redirectTo = useMemo(() => searchParams.get("redirect") ?? "/dashboard", [searchParams]);
   const [adminPass, setAdminPass] = useState("");
@@ -117,5 +118,13 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <LoginForm />
+    </Suspense>
   );
 }

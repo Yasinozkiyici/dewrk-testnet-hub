@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import prisma from '@/lib/db';
@@ -20,21 +21,45 @@ async function checkAdminAuth() {
   return adminKey && adminKey === process.env.ADMIN_KEY;
 }
 
-export default async function AdminDashboardPage() {
-  if (!(await checkAdminAuth())) {
-    redirect('/');
-  }
+function DashboardContent() {
+  return (
+    <div className="space-y-6">
+      <div>
+        <h1 className="text-2xl font-bold text-[var(--ink-1)]">Dashboard</h1>
+        <p className="mt-1 text-sm text-[var(--ink-2)]">Overview of your admin activity</p>
+      </div>
 
+      {/* Stats Grid */}
+      <div className="grid gap-4 md:grid-cols-3">
+        <div className="rounded-2xl border border-white/40 bg-white/80 p-6 shadow-glass">
+          <div className="text-sm font-medium text-[var(--ink-2)]">Total Testnets</div>
+          <div className="mt-2 text-3xl font-bold text-[var(--ink-1)]">Loading...</div>
+        </div>
+        {/* TODO: Add more stats (users, activity, etc.) */}
+      </div>
+
+      {/* Recent Activity */}
+      <div className="rounded-2xl border border-white/40 bg-white/80 p-6 shadow-glass">
+        <h2 className="text-sm font-bold uppercase tracking-wide text-[var(--ink-1)]">
+          Recent Testnets
+        </h2>
+        <div className="mt-4 space-y-2">
+          <div className="text-[var(--ink-2)]">Loading...</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+async function DashboardStats() {
   // Fetch dashboard stats
-  const [testnetsCount, recentTestnets, recentActivity] = await Promise.all([
+  const [testnetsCount, recentTestnets] = await Promise.all([
     prisma.testnet.count(),
     prisma.testnet.findMany({
       take: 5,
       orderBy: { updatedAt: 'desc' },
       select: { id: true, name: true, slug: true, updatedAt: true }
-    }),
-    // TODO: Fetch from activity log when implemented
-    Promise.resolve([])
+    })
   ]);
 
   return (
@@ -81,6 +106,18 @@ export default async function AdminDashboardPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default async function AdminDashboardPage() {
+  if (!(await checkAdminAuth())) {
+    redirect('/');
+  }
+
+  return (
+    <Suspense fallback={<DashboardContent />}>
+      <DashboardStats />
+    </Suspense>
   );
 }
 

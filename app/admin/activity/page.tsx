@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { ActivityLog } from '@/components/admin/ActivityLog';
@@ -15,6 +16,10 @@ async function checkAdminAuth() {
   const headersList = headers();
   const adminKey = headersList.get('x-admin-key');
   return adminKey && adminKey === process.env.ADMIN_KEY;
+}
+
+function ActivityLogContent({ filters }: { filters: any }) {
+  return <ActivityLog filters={filters} />;
 }
 
 export default async function ActivityLogPage({
@@ -43,7 +48,9 @@ export default async function ActivityLogPage({
         </p>
       </div>
 
-      <ActivityLog filters={filters} />
+      <Suspense fallback={<div className="text-[var(--ink-2)]">Loading activity log...</div>}>
+        <ActivityLogContent filters={filters} />
+      </Suspense>
     </div>
   );
 }

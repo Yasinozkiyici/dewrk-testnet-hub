@@ -30,9 +30,9 @@ export default async function EcosystemsOgImage() {
         }}
       >
         <div style={{ textTransform: 'uppercase', letterSpacing: 8, fontSize: 18, color: '#2DD4BF' }}>Ecosystems</div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 24 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24 }}>
           {ecosystems.map((ecosystem) => (
-            <div key={ecosystem.slug} style={{ background: '#111C2E', borderRadius: 24, padding: 24 }}>
+            <div key={ecosystem.slug} style={{ background: '#111C2E', borderRadius: 24, padding: 24, flex: '1 1 calc(50% - 12px)', minWidth: 0 }}>
               <div style={{ fontSize: 28, fontWeight: 600 }}>{ecosystem.name}</div>
               <div style={{ marginTop: 12, fontSize: 20, opacity: 0.72 }}>{ecosystem.shortDescription ?? ''}</div>
               <div style={{ marginTop: 18, fontSize: 18, display: 'flex', gap: 16 }}>
