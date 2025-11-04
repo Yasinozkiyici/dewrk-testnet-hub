@@ -4,6 +4,12 @@ import { PrismaClient, Difficulty, Status } from '@prisma/client';
 import { seedEcosystems } from './ecosystems';
 import { seedLeaderboards } from './leaderboard';
 
+// Use DIRECT_URL for seeding to avoid pooler limitations
+// Override DATABASE_URL if DIRECT_URL is available
+if (process.env.DIRECT_URL && !process.env.DATABASE_URL?.includes('pooler')) {
+  process.env.DATABASE_URL = process.env.DIRECT_URL;
+}
+
 const prisma = new PrismaClient();
 const TESTNET_DATA_PATH = path.join(process.cwd(), 'seed-output', 'testnets.json');
 
