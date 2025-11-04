@@ -4,17 +4,26 @@ import { prisma } from '@/lib/prisma';
 import { LEADERBOARDS } from '@/prisma/leaderboard';
 import { LeaderboardSection } from '@/components/leaderboards/LeaderboardSection';
 
+export const dynamic = 'force-dynamic';
+
 export default async function LeaderboardsPage() {
-  const leaderboards = await prisma.leaderboard.findMany({
-    where: { isActive: true },
-    include: {
-      entries: {
-        orderBy: { rank: 'asc' },
-        take: 10
-      }
-    },
-    orderBy: { displayOrder: 'asc' }
-  });
+  let leaderboards: Awaited<ReturnType<typeof prisma.leaderboard.findMany>> = [];
+  
+  try {
+    leaderboards = await prisma.leaderboard.findMany({
+      where: { isActive: true },
+      include: {
+        entries: {
+          orderBy: { rank: 'asc' },
+          take: 10
+        }
+      },
+      orderBy: { displayOrder: 'asc' }
+    });
+  } catch (error) {
+    console.error('[leaderboards/page] Failed to fetch leaderboards:', error);
+    // Fallback to seed data
+  }
 
   const data = leaderboards.length ? leaderboards : LEADERBOARDS;
   const itemListElements = data.flatMap((board) =>

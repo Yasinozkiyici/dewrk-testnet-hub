@@ -2,21 +2,29 @@ import { ImageResponse } from 'next/og';
 import { prisma } from '@/lib/prisma';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
 export default async function LeaderboardsOgImage() {
-  const leaderboards = await prisma.leaderboard.findMany({
-    where: { isActive: true },
-    include: {
-      entries: {
-        orderBy: { rank: 'asc' },
-        take: 3
-      }
-    },
-    orderBy: { displayOrder: 'asc' },
-    take: 1
-  });
+  let leaderboards: Awaited<ReturnType<typeof prisma.leaderboard.findMany>> = [];
+  
+  try {
+    leaderboards = await prisma.leaderboard.findMany({
+      where: { isActive: true },
+      include: {
+        entries: {
+          orderBy: { rank: 'asc' },
+          take: 3
+        }
+      },
+      orderBy: { displayOrder: 'asc' },
+      take: 1
+    });
+  } catch (error) {
+    console.error('[leaderboards/opengraph-image] Failed to fetch leaderboards:', error);
+    // Use empty array as fallback
+  }
 
   const board = leaderboards[0];
   const entries = board?.entries ?? [];
@@ -40,7 +48,7 @@ export default async function LeaderboardsOgImage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <h1 style={{ fontSize: 70, fontWeight: 600 }}>Top Builders</h1>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            {entries.map((entry, index) => (
+            {entries.length > 0 ? entries.map((entry, index) => (
               <div key={entry.entityId} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 30 }}>
                 <span style={{ display: 'flex', gap: 16 }}>
                   <span style={{ opacity: 0.6 }}>{index + 1}</span>
@@ -48,7 +56,9 @@ export default async function LeaderboardsOgImage() {
                 </span>
                 <span style={{ fontWeight: 600 }}>{Number(entry.metricValue).toLocaleString('en-US')}</span>
               </div>
-            ))}
+            )) : (
+              <div style={{ fontSize: 30, opacity: 0.7 }}>Leaderboard data coming soon</div>
+            )}
           </div>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 24 }}>

@@ -10,6 +10,13 @@ function getCanonical(slug: string) {
 }
 
 export async function generateStaticParams() {
+  // Skip static generation during build if DATABASE_URL is not available or incorrect
+  // Pages will be generated on-demand at runtime
+  if (!process.env.DATABASE_URL || process.env.DATABASE_URL.includes('db.vuczvmlkmtsewpbjfwar.supabase.co:6543')) {
+    console.warn('[ecosystems/[slug]] Skipping static params generation - DATABASE_URL not configured correctly for build');
+    return [];
+  }
+  
   try {
     const ecosystems = await prisma.ecosystem.findMany({ select: { slug: true } });
     return ecosystems.map((ecosystem) => ({ slug: ecosystem.slug }));
