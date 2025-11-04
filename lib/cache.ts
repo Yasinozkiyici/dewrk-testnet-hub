@@ -6,10 +6,20 @@ export function testnetTag(slug: string) {
   return `testnet:${slug}`;
 }
 
+export function safeRevalidateTag(tag: string) {
+  try {
+    revalidateTag(tag);
+  } catch (error) {
+    if (process.env.NODE_ENV !== 'test') {
+      console.warn('[cache] Failed to revalidate tag', tag, error);
+    }
+  }
+}
+
 export async function revalidateTestnetsList() {
-  await revalidateTag(TESTNETS_TAG);
+  safeRevalidateTag(TESTNETS_TAG);
 }
 
 export async function revalidateTestnet(slug: string) {
-  await revalidateTag(testnetTag(slug));
+  safeRevalidateTag(testnetTag(slug));
 }

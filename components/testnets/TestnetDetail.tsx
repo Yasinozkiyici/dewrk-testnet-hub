@@ -15,6 +15,7 @@ import { formatTimeMinutes, formatUpdatedAt, formatUSD, safeUrl } from '@/lib/fo
 import { DIFFICULTY_VARIANTS, NA_CHIP_CLASS, STATUS_VARIANTS, TAG_CHIP_CLASS, cn } from '@/lib/ui';
 import type { TestnetDetailRecord } from './types';
 import { ProjectLogo } from './ProjectLogo';
+import { trackJoinTestnet, trackOpenDashboard } from '@/lib/analytics';
 
 interface TestnetDetailProps {
   testnet: TestnetDetailRecord;
@@ -37,6 +38,12 @@ export function TestnetDetail({ testnet, variant = 'page' }: TestnetDetailProps)
   const kycLabel = testnet.kycRequired ? 'KYC required' : 'No KYC';
   const walletLabel = testnet.requiresWallet ? 'Wallet required' : 'Wallet optional';
   const tasksCount = typeof testnet.tasksCount === 'number' ? testnet.tasksCount : testnet.tasks.length;
+  const startDisplay = (() => {
+    if (!testnet.startDate) return null;
+    const d = new Date(testnet.startDate);
+    if (Number.isNaN(d.getTime())) return null;
+    return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+  })();
 
   const hasHighlights = Array.isArray(testnet.highlights) && testnet.highlights.length > 0;
   const hasPrerequisites = Array.isArray(testnet.prerequisites) && testnet.prerequisites.length > 0;
@@ -77,6 +84,10 @@ export function TestnetDetail({ testnet, variant = 'page' }: TestnetDetailProps)
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-white/50 bg-white/80 px-4 py-2 text-xs font-semibold text-[var(--ink-1)] shadow-sm transition hover:border-white/70 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--mint)]"
+              onClick={() => {
+                trackJoinTestnet(testnet.slug, testnet.name);
+                trackOpenDashboard();
+              }}
             >
               Open dashboard <ExternalLink className="h-4 w-4" aria-hidden="true" />
             </a>
@@ -97,13 +108,12 @@ export function TestnetDetail({ testnet, variant = 'page' }: TestnetDetailProps)
         )}
 
         <div className="mt-6 grid gap-4 text-xs text-[var(--ink-3)] sm:grid-cols-2">
+          <MetaStat label="Reward category" value={testnet.rewardCategory ?? null} />
+          <MetaStat label="Reward range (USD)" value={formatUSD(testnet.rewardRangeUSD).isEmpty ? null : formatUSD(testnet.rewardRangeUSD).display} />
           <MetaStat label="Estimated time" value={estTime === 'N/A' ? null : estTime} />
-          <MetaStat
-            label="Reward"
-            value={testnet.rewardType ?? null}
-            helper={testnet.rewardNote ?? undefined}
-          />
+          <MetaStat label="Faucet" value={testnet.hasFaucet ? 'Available' : null} />
           <MetaStat label="Tasks" value={tasksCount ? `${tasksCount}` : null} />
+          <MetaStat label="Start date" value={startDisplay} />
           <MetaStat label="Updated" value={updated.iso ? updated.relative : null} title={updated.iso} />
         </div>
       </section>
@@ -149,7 +159,7 @@ export function TestnetDetail({ testnet, variant = 'page' }: TestnetDetailProps)
               {funding.isEmpty ? (
                 <span className={NA_CHIP_CLASS}>N/A</span>
               ) : (
-                <p className="text-xl font-semibold text-[var(--ink-1)]">{funding.display}</p>
+                <p className="text-sm font-medium text-[var(--ink-1)]">{funding.display}</p>
               )}
             </div>
             {testnet.dashboardUrl && testnet.hasDashboard && (
@@ -158,6 +168,10 @@ export function TestnetDetail({ testnet, variant = 'page' }: TestnetDetailProps)
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-white/50 bg-white/80 px-4 py-2 text-xs font-semibold text-[var(--ink-1)] transition hover:border-white/70 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--mint)]"
+                onClick={() => {
+                  trackJoinTestnet(testnet.slug, testnet.name);
+                  trackOpenDashboard();
+                }}
               >
                 Open dashboard <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </a>

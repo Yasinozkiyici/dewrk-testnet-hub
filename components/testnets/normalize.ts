@@ -148,6 +148,10 @@ export function normalizeTestnetDetail(raw: unknown): TestnetDetailRecord {
   const estTime = toNumber(record.estTimeMinutes ?? record.est_time_minutes);
   const totalRaised = record.totalRaisedUSD ?? record.total_raised_usd;
   const updatedAt = (record.updatedAt ?? record.updated_at) as string | null | undefined;
+  const startDate = (record.startDate ?? record.start_date) as string | null | undefined;
+  const hasFaucet = (record.hasFaucet ?? record.has_faucet) as boolean | null | undefined;
+  const rewardCategory = (record.rewardCategory ?? record.reward_category) as string | null | undefined;
+  const rewardRangeUSD = record.rewardRangeUSD ?? record.reward_range_usd;
 
   const socials = normaliseSocials(record.socials, record);
   const gettingStarted = normalizeGettingStarted(record.gettingStarted ?? record.getting_started);
@@ -170,6 +174,10 @@ export function normalizeTestnetDetail(raw: unknown): TestnetDetailRecord {
     estTimeMinutes: estTime ?? undefined,
     rewardType: (record.rewardType ?? record.reward_type) as string | null | undefined,
     rewardNote: (record.rewardNote ?? record.reward_note) as string | null | undefined,
+    rewardCategory: rewardCategory ?? undefined,
+    rewardRangeUSD: (typeof rewardRangeUSD === 'number' || typeof rewardRangeUSD === 'string') ? rewardRangeUSD : undefined,
+    hasFaucet: typeof hasFaucet === 'boolean' ? hasFaucet : undefined,
+    startDate: typeof startDate === 'string' ? startDate : undefined,
     kycRequired: typeof record.kycRequired === 'boolean' ? record.kycRequired : (record.kyc_required as boolean | undefined),
     requiresWallet:
       typeof record.requiresWallet === 'boolean'

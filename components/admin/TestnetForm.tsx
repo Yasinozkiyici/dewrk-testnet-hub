@@ -12,7 +12,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ChipInput } from '@/components/ui/chip-input';
 import { MultiField } from '@/components/ui/multi-field';
 import type { AdminFormValues } from '@/components/admin/types';
@@ -21,7 +20,7 @@ import { cn } from '@/lib/utils';
 interface TestnetFormProps {
   form: UseFormReturn<AdminFormValues>;
   status: 'idle' | 'saving' | 'success' | 'error';
-  statusOptions: readonly ['LIVE', 'PAUSED', 'ENDED', 'UPCOMING'];
+  statusOptions: readonly ['LIVE', 'TBA', 'ENDED', 'UPCOMING'];
   difficultyOptions: readonly ['EASY', 'MEDIUM', 'HARD'];
   onSubmit: (values: AdminFormValues) => void;
   discordRolesArray: UseFieldArrayReturn<AdminFormValues, 'discordRoles'>;
@@ -55,7 +54,10 @@ export function TestnetForm({
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit(onSubmit)(e);
+      }}
       className="flex flex-col gap-6 rounded-3xl border border-white/40 bg-white/80 p-6 shadow-glass"
     >
       <Section title="Basics" description="Primary metadata shown on listings and detail views.">
@@ -71,40 +73,42 @@ export function TestnetForm({
               name="status"
               control={control}
               render={({ field }) => (
-                <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger data-testid="status-select">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {statusOptions.map((option) => (
-                      <SelectItem key={option} value={option}>
-                        {option}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <select
+                  {...field}
+                  data-testid="status-select"
+                  onChange={(e) => {
+                    field.onChange(e);
+                    e.stopPropagation();
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                  onFocus={(e) => {
+                    e.stopPropagation();
+                  }}
+                  className="h-10 w-full rounded-lg border border-white/40 bg-white/80 px-3 text-sm text-[var(--ink-1)] shadow-inner focus:outline-none focus:ring-2 focus:ring-[var(--mint)]/40"
+                >
+                  {statusOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
               )}
             />
           </Field>
           <Field label="Difficulty">
-            <Controller
-              name="difficulty"
-              control={control}
-              render={({ field }) => (
-                <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger data-testid="difficulty-select">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {difficultyOptions.map((option) => (
-                      <SelectItem key={option} value={option}>
-                        {option}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              )}
-            />
+            <select
+              {...register('difficulty')}
+              data-testid="difficulty-select"
+              className="h-10 w-full rounded-lg border border-white/40 bg-white/80 px-3 text-sm text-[var(--ink-1)] shadow-inner focus:outline-none focus:ring-2 focus:ring-[var(--mint)]/40"
+            >
+              {difficultyOptions.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
           </Field>
         </div>
         <Field label="Short description" error={errors.shortDescription?.message}>
@@ -134,21 +138,49 @@ export function TestnetForm({
         </div>
       </Section>
 
-      <Section title="Programme metrics" description="Reward expectations and time investment.">
+      <Section title="Rewards" description="Ödül bilgileri ve ilgili ayarlar.">
         <div className="grid gap-4 md:grid-cols-3">
-          <Field label="Estimated time (minutes)" error={errors.estTimeMinutes?.message}>
-            <Input {...register('estTimeMinutes')} placeholder="120" inputMode="numeric" />
+          <Field label="Reward Category">
+            <Input {...register('rewardCategory')} placeholder="Token Airdrop, Points, NFT…" />
+          </Field>
+          <Field label="Reward Range (USD)">
+            <Input {...register('rewardRangeUSD')} placeholder="10000" inputMode="decimal" />
           </Field>
           <Field label="Reward type" error={errors.rewardType?.message}>
             <Input {...register('rewardType')} placeholder="Token, points, etc." />
           </Field>
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
           <Field label="Reward note" error={errors.rewardNote?.message}>
             <Input {...register('rewardNote')} placeholder="Additional context" />
           </Field>
+          <Controller
+            name="hasFaucet"
+            control={control}
+            render={({ field }) => (
+              <ToggleField label="Has Faucet" description="Proje için faucet mevcut.">
+                <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+              </ToggleField>
+            )}
+          />
+          <Field label="Total Raised (USD)" error={errors.totalRaisedUSD?.message}>
+            <Input {...register('totalRaisedUSD')} placeholder="500000" inputMode="decimal" />
+          </Field>
         </div>
-        <Field label="Total funding (USD)" error={errors.totalRaisedUSD?.message}>
-          <Input {...register('totalRaisedUSD')} placeholder="500000" inputMode="decimal" />
-        </Field>
+      </Section>
+
+      <Section title="Timeline" description="Başlangıç tarihi ve ileride eklenecek bitiş tarihi.">
+        <div className="grid gap-4 md:grid-cols-3">
+          <Field label="Start Date">
+            <Input {...register('startDate')} type="date" />
+          </Field>
+          <Field label="End Date (soon)">
+            <Input disabled placeholder="Coming soon" />
+          </Field>
+          <Field label="Estimated time (minutes)" error={errors.estTimeMinutes?.message}>
+            <Input {...register('estTimeMinutes')} placeholder="120" inputMode="numeric" />
+          </Field>
+        </div>
       </Section>
 
       <Section title="Access requirements" description="Control what contributors need before joining.">
@@ -274,7 +306,14 @@ export function TestnetForm({
         </div>
       </Section>
 
-      <Section title="Discord roles" description="Document community roles and unlock criteria.">
+      <Section title="Community" description="Discord rollerini liste veya JSON olarak girin.">
+        <Field label="Discord Roles (JSON)">
+          <Textarea
+            {...register('discordRolesJson')}
+            rows={5}
+            placeholder='[{"role":"Alpha Tester","requirement":"3 tasks","perks":"Early access"}]'
+          />
+        </Field>
         <div className="space-y-4">
           {discordRolesArray.fields.map((field, index) => (
             <div key={field.id} className="rounded-2xl border border-white/40 bg-white/70 p-4 shadow-sm">

@@ -6,6 +6,7 @@ import type { TestnetListRow } from './types';
 import { TestnetRow } from './TestnetRow';
 import { NA_CHIP_CLASS, cn } from '@/lib/ui';
 import { TooltipProvider } from '@/components/ui/tooltip';
+import { ProjectLogo } from '@/components/testnets/ProjectLogo';
 
 interface TestnetTableProps {
   rows: TestnetListRow[];
@@ -75,53 +76,66 @@ export function TestnetTable({ rows, activeSlug, onSelect }: TestnetTableProps) 
 
   return (
     <TooltipProvider delayDuration={120} skipDelayDuration={0}>
-      <div className="rounded-3xl border border-white/30 bg-white/70 shadow-glass overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[1280px] table-fixed border-collapse text-sm text-[var(--ink-2)]" role="table">
-            <caption className="sr-only">Testnet programs directory</caption>
-            <colgroup>
-              <col className="w-[24%]" />
-              <col className="w-[10%]" />
-              <col className="w-[10%]" />
-              <col className="w-[10%]" />
-              <col className="w-[18%]" />
-              <col className="w-[8%]" />
-              <col className="w-[10%]" />
-              <col className="w-[10%]" />
-            </colgroup>
-            <thead className="bg-white/80 text-[11px] font-semibold uppercase tracking-wide text-[var(--ink-3)]">
-              <tr>
-                <th scope="col" className="sticky left-0 z-10 bg-white/80 px-3 py-3 text-left shadow-[2px_0_4px_-2px_rgba(0,0,0,0.08)]">
-                  Name & Network
-                </th>
-                <th scope="col" className="px-3 py-3 text-left">Status</th>
-                <th scope="col" className="px-3 py-3 text-left">Difficulty</th>
-                <th scope="col" className="px-3 py-3 text-left">Est. Time</th>
-                <th scope="col" className="px-3 py-3 text-left">Reward</th>
-                <th scope="col" className="px-3 py-3 text-center">Tasks</th>
-                <th scope="col" className="px-3 py-3 text-left">Updated</th>
-                <th scope="col" className="sticky right-0 z-10 bg-white/80 px-3 py-3 text-right shadow-[-2px_0_4px_-2px_rgba(0,0,0,0.08)]">
-                  Action
-                </th>
+      <div className="rounded-2xl border border-border/30 bg-white/40 backdrop-blur-md shadow-sm overflow-hidden">
+        <table className="w-full border-collapse text-sm">
+          <thead className="bg-white/60 backdrop-blur-sm">
+            <tr className="text-xs uppercase text-muted-foreground tracking-wide">
+              <th className="px-5 py-3 text-left font-medium">Project</th>
+              <th className="px-5 py-3 text-left font-medium">Status</th>
+              <th className="px-5 py-3 text-left font-medium">Reward</th>
+              <th className="px-5 py-3 text-right font-medium">Total Raised</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((t) => (
+              <tr
+                key={t.slug}
+                onClick={() => handleActivate(t)}
+                className={cn(
+                  'cursor-pointer transition-all hover:bg-white/70',
+                  activeSlug === t.slug ? 'bg-white/60' : ''
+                )}
+              >
+                <td className="px-5 py-4">
+                  <div className="flex items-center gap-3">
+                    <ProjectLogo
+                      name={t.name}
+                      slug={t.slug}
+                      logoUrl={t.logoUrl}
+                      websiteUrl={t.websiteUrl}
+                      githubUrl={t.githubUrl}
+                      size={38}
+                      roundedClassName="rounded-md"
+                    />
+                    <div>
+                      <p className="font-medium text-[15px] leading-tight">{t.name}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">{t.network}</p>
+                    </div>
+                  </div>
+                </td>
+                <td className="px-5 py-4">
+                  <span
+                    className={cn(
+                      'inline-flex px-2 py-0.5 rounded-full text-xs font-medium',
+                      t.status === 'LIVE' ? 'bg-emerald-50 text-emerald-700' : 'bg-gray-100 text-gray-500'
+                    )}
+                  >
+                    {t.status}
+                  </span>
+                </td>
+                <td className="px-5 py-4 text-muted-foreground">{t.rewardType ?? 'Points'}</td>
+                <td className="px-5 py-4 text-right font-semibold">
+                  ${typeof t.totalRaisedUSD === 'number'
+                    ? t.totalRaisedUSD.toLocaleString()
+                    : Number(t.totalRaisedUSD ?? 0).toLocaleString()}
+                </td>
               </tr>
-            </thead>
-            <tbody className="divide-y divide-white/40">
-              {data.map((row) => (
-                <TestnetRow
-                  key={row.id}
-                  testnet={row}
-                  isActive={activeSlug === row.slug}
-                  onActivate={() => handleActivate(row)}
-                />
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
         {isPending && (
           <div className="border-t border-white/40 bg-white/60 px-4 py-3 text-right">
-            <span className={cn(NA_CHIP_CLASS, 'inline-flex items-center gap-1 bg-white/80 text-[var(--ink-2)]')}>
-              Updating…
-            </span>
+            <span className={cn(NA_CHIP_CLASS, 'inline-flex items-center gap-1 bg-white/80 text-[var(--ink-2)]')}>Updating…</span>
           </div>
         )}
       </div>

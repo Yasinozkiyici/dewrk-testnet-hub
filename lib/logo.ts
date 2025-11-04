@@ -91,8 +91,25 @@ export function buildLogoCandidates(options: {
   primary?: string;
   websiteUrl?: string;
   githubUrl?: string;
+  slug?: string;
 }): string[] {
   const candidates: string[] = [];
+
+  if (options.slug) {
+    const slug = options.slug.toLowerCase();
+    const localVariants = [
+      `/logos/${slug}.png`,
+      `/logos/${slug}.svg`,
+      `/logos/${slug}.webp`,
+      `/logos/${slug}.jpg`,
+      `/logos/${slug}.jpeg`
+    ];
+    for (const variant of localVariants) {
+      if (!candidates.includes(variant)) {
+        candidates.push(variant);
+      }
+    }
+  }
 
   // 1) Primary logo URL
   if (options.primary && isValidUrl(options.primary)) {

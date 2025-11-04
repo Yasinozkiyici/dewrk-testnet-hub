@@ -1,12 +1,20 @@
-import Link from 'next/link';
 import { headers } from 'next/headers';
+import { Suspense } from 'react';
 import { TestnetsTable, type TestnetListRow } from './testnets/TestnetsTable';
 import { TestnetDrawerPortal } from './testnets/TestnetDrawerPortal';
+import { HeroSection } from '@/components/hero/HeroSection';
+import { FilterChipsBar } from '@/components/filters/FilterChipsBar';
 
 export const dynamic = 'force-dynamic';
 
 interface TestnetListResponse {
   data: TestnetListRow[];
+  pagination: {
+    total: number;
+    page: number;
+    pageSize: number;
+    totalPages: number;
+  };
 }
 
 function getBaseUrl() {
@@ -19,81 +27,74 @@ function getBaseUrl() {
   return process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:4000';
 }
 
-async function fetchFeaturedTestnets() {
+async function fetchFeaturedTestnets(searchParams: Record<string, string | string[] | undefined> = {}) {
   const baseUrl = getBaseUrl();
   const url = new URL('/api/testnets', baseUrl);
+
+  Object.entries(searchParams).forEach(([key, value]) => {
+    if (typeof value === 'string' && value.length) {
+      url.searchParams.set(key, value);
+    }
+  });
+
+  if (!url.searchParams.has('pageSize')) {
+    url.searchParams.set('pageSize', '40');
+  }
+
   const response = await fetch(url.toString(), { cache: 'no-store' });
   if (!response.ok) {
-    throw new Error('Failed to load testnets');
-  }
-  const payload = (await response.json()) as { items: TestnetListRow[] } | TestnetListResponse;
-
-  if ('items' in payload) {
-    return payload.items as TestnetListRow[];
+    return { data: [], pagination: { total: 0, page: 1, pageSize: 40, totalPages: 0 } } as TestnetListResponse;
   }
 
-  return payload.data;
+  const json = await response.json();
+  const items: TestnetListRow[] = Array.isArray(json?.items)
+    ? (json.items as TestnetListRow[])
+    : (json?.data as TestnetListRow[] | undefined) ?? [];
+  
+  const paginationData = json?.pagination || {
+    total: items.length,
+    page: 1,
+    pageSize: items.length,
+    totalPages: 1
+  };
+  
+  return {
+    data: items,
+    pagination: paginationData
+  } as TestnetListResponse;
 }
 
-export default async function LandingPage() {
-  const testnets = await fetchFeaturedTestnets();
-  
-  const stats = {
-    total: testnets.length,
-    live: testnets.filter((t) => t.status === 'LIVE').length,
-    beta: testnets.filter((t) => t.status === 'BETA').length,
-    avgTime: Math.round(
-      testnets.reduce((acc, t) => acc + (t.estTimeMinutes || 0), 0) / testnets.length
-    ),
-  };
+export default async function LandingPage({
+  searchParams
+}: {
+  searchParams?: { page?: string; pageSize?: string; [key: string]: string | string[] | undefined };
+}) {
+  const { data, pagination } = await fetchFeaturedTestnets(searchParams || {});
 
   return (
-    <div className="mx-auto w-full max-w-[1280px] px-6 py-8"
-      style={{ '--page-gutter': '24px' } as React.CSSProperties}
-    >
-      {/* Stats Cards */}
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <div className="rounded-2xl border border-white/40 bg-white/60 px-4 py-3 shadow-glass">
-          <div className="text-xs font-medium uppercase tracking-wide text-[var(--ink-3)]">Total</div>
-          <div className="mt-1 text-2xl font-semibold text-[var(--ink-1)]">{stats.total}</div>
-        </div>
-        <div className="rounded-2xl border border-white/40 bg-white/60 px-4 py-3 shadow-glass">
-          <div className="text-xs font-medium uppercase tracking-wide text-[var(--ink-3)]">Live</div>
-          <div className="mt-1 text-2xl font-semibold text-green-600">{stats.live}</div>
-        </div>
-        <div className="rounded-2xl border border-white/40 bg-white/60 px-4 py-3 shadow-glass">
-          <div className="text-xs font-medium uppercase tracking-wide text-[var(--ink-3)]">Beta</div>
-          <div className="mt-1 text-2xl font-semibold text-blue-600">{stats.beta}</div>
-        </div>
-        <div className="rounded-2xl border border-white/40 bg-white/60 px-4 py-3 shadow-glass">
-          <div className="text-xs font-medium uppercase tracking-wide text-[var(--ink-3)]">Avg. Time</div>
-          <div className="mt-1 text-2xl font-semibold text-[var(--ink-1)]">{stats.avgTime}m</div>
-        </div>
+    <>
+      {/* ROOT CAUSE FIX: Gereksiz wrapper div kaldırıldı.
+          Layout zaten flex min-h-screen flex-col yapısını sağlıyor,
+          burada tekrar wrapper eklemek gereksiz ve potansiyel scroll sorunları yaratabilir. */}
+      <div className="pt-6">
+        <HeroSection />
+      </div>
+      {/* Hero divider & spacing */}
+      <div className="mx-auto mt-6 w-full max-w-[1400px] px-4 lg:px-6">
+        <div className="border-t border-white/20" />
       </div>
 
-      {/* Compact Filter Bar */}
-      <div className="rounded-2xl border border-white/40 bg-white/60 px-4 py-3 shadow-glass">
-        <div className="flex flex-wrap items-center gap-3">
-          <input
-            type="search"
-            placeholder="Search testnets..."
-            className="flex-1 rounded-lg border border-white/40 bg-white/80 px-3 py-2 text-sm text-[var(--ink-1)] placeholder:text-[var(--ink-3)] focus:outline-none focus:ring-2 focus:ring-[var(--aqua)]"
-          />
-          <Link
-            href="/testnets"
-            className="rounded-lg border border-white/40 bg-white/80 px-4 py-2 text-xs font-semibold text-[var(--ink-1)] transition hover:border-white/60"
-          >
-            Advanced Filters
-          </Link>
-        </div>
-      </div>
+      <div className="mx-auto w-full max-w-[1400px] px-4 lg:px-6">
+        <Suspense fallback={<div className="h-12" />}>
+          <FilterChipsBar />
+        </Suspense>
 
-      {/* Testnets Table */}
-      <section className="flex flex-col gap-4">
-        <TestnetsTable testnets={testnets} />
-      </section>
+        <section className="py-8">
+          <TestnetsTable testnets={data ?? []} pagination={pagination} />
+        </section>
+      </div>
 
       <TestnetDrawerPortal />
-    </div>
+    </>
   );
 }

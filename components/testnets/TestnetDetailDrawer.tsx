@@ -1,12 +1,14 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { X } from 'lucide-react';
+import { Github, Globe, X, ExternalLink, Rocket, MessageCircle, Trophy, CheckCircle2, ClipboardList } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { TestnetDetail } from './TestnetDetail';
 import { normalizeTestnetDetail } from './normalize';
 import type { TestnetDetailRecord } from './types';
+import { ProjectLogo } from '@/components/testnets/ProjectLogo';
 
 interface TestnetDetailDrawerProps {
   slug: string | null;
@@ -62,6 +64,8 @@ export function TestnetDetailDrawer({ slug, open, onClose }: TestnetDetailDrawer
   useEffect(() => {
     if (open) {
       previousFocus.current = document.activeElement;
+      // ROOT CAUSE FIX: Body scroll'u kapatarak background scroll'u engelliyoruz
+      // Drawer içindeki scroll container (panelRef) kendi scroll'unu sağlayacak
       document.body.style.overflow = 'hidden';
       document.documentElement.classList.add('drawer-open');
       setTimeout(() => {
@@ -117,7 +121,204 @@ export function TestnetDetailDrawer({ slug, open, onClose }: TestnetDetailDrawer
       return <DrawerSkeleton />;
     }
 
-    return <TestnetDetail testnet={detail} variant="drawer" />;
+    // Tab-based professional drawer UI
+    const websiteUrl = detail.websiteUrl || detail.socials?.website;
+    const githubUrl = detail.githubUrl || detail.socials?.github;
+    const discordUrl = detail.discordUrl || detail.socials?.discord;
+    const dashboardUrl = detail.dashboardUrl;
+
+    return (
+      <div className="h-full w-[520px] border-l border-border/40 bg-gradient-to-b from-white/95 to-white/80 backdrop-blur-xl overflow-y-auto p-6">
+        <Tabs defaultValue="overview" className="space-y-6">
+          {/* Header */}
+          <div className="flex items-center gap-4">
+            <ProjectLogo
+              name={detail.name}
+              slug={detail.slug}
+              logoUrl={detail.logoUrl}
+              websiteUrl={websiteUrl ?? undefined}
+              githubUrl={githubUrl ?? undefined}
+              size={48}
+              roundedClassName="rounded-lg"
+            />
+            <div className="flex-1">
+              <h2 className="text-lg font-semibold">{detail.name}</h2>
+              <p className="text-xs text-muted-foreground">{detail.network}</p>
+            </div>
+            {detail.status && (
+              <span
+                className={`px-2 py-0.5 text-xs rounded-full font-medium ${
+                  detail.status === 'LIVE'
+                    ? 'bg-emerald-50 text-emerald-700'
+                    : 'bg-muted text-muted-foreground'
+                }`}
+              >
+                {detail.status}
+              </span>
+            )}
+          </div>
+
+          {/* Tabs Navigation */}
+          <TabsList className="grid grid-cols-3 gap-2 bg-muted/30 rounded-xl p-1 w-full border-white/30 bg-white/60">
+            <TabsTrigger value="overview" className="text-sm font-medium data-[state=active]:bg-white/80 data-[state=active]:text-foreground">
+              Overview
+            </TabsTrigger>
+            <TabsTrigger value="rewards" className="text-sm font-medium data-[state=active]:bg-white/80 data-[state=active]:text-foreground">
+              Role Rewards
+            </TabsTrigger>
+            <TabsTrigger value="tasks" className="text-sm font-medium data-[state=active]:bg-white/80 data-[state=active]:text-foreground">
+              Testnet Tasks
+            </TabsTrigger>
+          </TabsList>
+
+          {/* Overview Tab */}
+          <TabsContent value="overview" className="space-y-6 mt-0 border-0 bg-transparent p-0">
+            <div className="rounded-2xl border border-border/30 bg-white/60 p-5 shadow-sm">
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                {detail.shortDescription || 'No description available for this testnet.'}
+              </p>
+
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  ['Reward', detail.rewardType || 'Points'],
+                  ['Estimated Time', detail.estTimeMinutes ? `${detail.estTimeMinutes} min` : 'N/A'],
+                  ['Tasks', detail.tasksCount ?? 0],
+                  ['Faucet', detail.hasFaucet ? 'Available' : 'N/A'],
+                ].map(([label, value]) => (
+                  <div
+                    key={label}
+                    className="rounded-xl border border-border/20 bg-muted/20 p-4 flex flex-col"
+                  >
+                    <span className="text-xs uppercase text-muted-foreground tracking-wide mb-1">
+                      {label}
+                    </span>
+                    <span className="text-sm font-medium">{value}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="border-t border-border/20 pt-4 mt-4 flex items-center justify-between">
+                <div className="text-sm font-medium">
+                  Total Raised:{' '}
+                  <span className="ml-1 text-muted-foreground">
+                    ${typeof detail.totalRaisedUSD === 'number'
+                      ? detail.totalRaisedUSD.toLocaleString()
+                      : Number(detail.totalRaisedUSD ?? 0).toLocaleString()}
+                  </span>
+                </div>
+                <div className="flex items-center gap-3 text-muted-foreground">
+                  {websiteUrl && (
+                    <a href={websiteUrl} target="_blank" rel="noreferrer" aria-label="Website">
+                      <Globe className="h-4 w-4" />
+                    </a>
+                  )}
+                  {githubUrl && (
+                    <a href={githubUrl} target="_blank" rel="noreferrer" aria-label="GitHub">
+                      <Github className="h-4 w-4" />
+                    </a>
+                  )}
+                  {dashboardUrl && (
+                    <a href={dashboardUrl} target="_blank" rel="noreferrer" aria-label="Dashboard">
+                      <Rocket className="h-4 w-4" />
+                    </a>
+                  )}
+                  {discordUrl && (
+                    <a href={discordUrl} target="_blank" rel="noreferrer" aria-label="Discord">
+                      <MessageCircle className="h-4 w-4" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Getting Started */}
+            {detail.gettingStarted && detail.gettingStarted.length > 0 && (
+              <div className="rounded-2xl border border-border/30 bg-gradient-to-b from-white/70 to-white/40 p-5 shadow-sm">
+                <h3 className="text-sm font-semibold mb-3">Getting Started</h3>
+                <ol className="list-decimal ml-5 space-y-2 text-sm text-muted-foreground">
+                  {detail.gettingStarted.map((step, i) => (
+                    <li key={i} className="leading-relaxed">
+                      {typeof step === 'string' ? step : step.title || step.body || ''}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
+          </TabsContent>
+
+          {/* Rewards Tab */}
+          <TabsContent value="rewards" className="space-y-4 mt-0 border-0 bg-transparent p-0">
+            {detail.discordRoles && detail.discordRoles.length > 0 ? (
+              <div className="space-y-3">
+                {detail.discordRoles.map((role, i) => (
+                  <div
+                    key={i}
+                    className="rounded-xl border border-border/30 bg-white/60 p-4 flex items-center justify-between shadow-sm"
+                  >
+                    <div className="flex-1">
+                      <h4 className="text-sm font-semibold">{role.role}</h4>
+                      <p className="text-xs text-muted-foreground mt-0.5">{role.requirement}</p>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <Trophy className="h-4 w-4 text-amber-500" />
+                      <span className="text-muted-foreground">{role.perks}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="rounded-2xl border border-border/30 bg-white/60 p-8 text-center shadow-sm">
+                <Trophy className="h-8 w-8 text-muted-foreground mx-auto mb-2 opacity-50" />
+                <p className="text-sm text-muted-foreground">No Discord roles found for this testnet.</p>
+              </div>
+            )}
+          </TabsContent>
+
+          {/* Tasks Tab */}
+          <TabsContent value="tasks" className="space-y-4 mt-0 border-0 bg-transparent p-0">
+            {detail.tasks && detail.tasks.length > 0 ? (
+              <div className="space-y-3">
+                {detail.tasks.map((task, i) => (
+                  <div
+                    key={i}
+                    className="rounded-xl border border-border/30 bg-white/60 p-4 flex items-start justify-between shadow-sm hover:bg-white/80 transition-all"
+                  >
+                    <div className="flex-1">
+                      <h4 className="text-sm font-semibold">{task.title}</h4>
+                      {task.description && (
+                        <p className="text-xs text-muted-foreground mt-0.5">{task.description}</p>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2 ml-3">
+                      {task.url ? (
+                        <>
+                          <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                          <a
+                            href={task.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-xs text-primary hover:underline"
+                          >
+                            Open
+                          </a>
+                        </>
+                      ) : (
+                        <ClipboardList className="h-4 w-4 text-muted-foreground" />
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="rounded-2xl border border-border/30 bg-white/60 p-8 text-center shadow-sm">
+                <ClipboardList className="h-8 w-8 text-muted-foreground mx-auto mb-2 opacity-50" />
+                <p className="text-sm text-muted-foreground">No tasks found for this testnet.</p>
+              </div>
+            )}
+          </TabsContent>
+        </Tabs>
+      </div>
+    );
   }, [slug, state, load]);
 
   if (!open) return null;
@@ -130,13 +331,17 @@ export function TestnetDetailDrawer({ slug, open, onClose }: TestnetDetailDrawer
         aria-hidden="true"
         style={{ zIndex: 'var(--z-backdrop)' }}
       />
+      {/* ROOT CAUSE FIX: Scroll sorunu düzeltildi.
+          1. Çift scroll container sorunu: Sadece ana panel'de overflow-y-auto var
+          2. Flex scroll sorunu: flex-1 olan içerik div'ine min-h-0 eklenerek flexbox'ın scroll'a izin vermesi sağlandı
+          Flexbox'ta flex-1 kullanıldığında, child'ın min-height: 0 olması gerekir ki overflow çalışsın. */}
       <div
         ref={panelRef}
-        className="relative ml-auto flex h-full w-full max-w-[700px] flex-col overflow-y-auto bg-white shadow-2xl focus-visible:outline-none"
+        className="relative ml-auto flex h-full w-full max-w-[520px] max-h-[90vh] flex-col bg-white shadow-2xl focus-visible:outline-none"
         tabIndex={-1}
         style={{ zIndex: 'calc(var(--z-drawer) + 1)' }}
       >
-        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-gray-200 bg-white px-6 py-4">
+        <div className="sticky top-0 z-10 flex shrink-0 items-center justify-between border-b border-gray-200 bg-white px-6 py-4">
           <h2 className="text-lg font-semibold text-[var(--ink-1)]">Testnet Details</h2>
           <Button
             variant="ghost"
@@ -148,7 +353,7 @@ export function TestnetDetailDrawer({ slug, open, onClose }: TestnetDetailDrawer
             <X className="h-5 w-5" />
           </Button>
         </div>
-        <div className="flex-1 overflow-y-auto p-6">{content}</div>
+        <div className="min-h-0 flex-1 overflow-y-auto">{content}</div>
       </div>
     </div>
   );

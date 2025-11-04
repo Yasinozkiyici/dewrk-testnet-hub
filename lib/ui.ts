@@ -5,7 +5,7 @@ export const CHIP_BASE =
 
 export const STATUS_VARIANTS: Record<string, string> = {
   LIVE: `${CHIP_BASE} border-emerald-200 bg-emerald-100 text-emerald-700`,
-  PAUSED: `${CHIP_BASE} border-amber-200 bg-amber-100 text-amber-700`,
+  TBA: `${CHIP_BASE} border-amber-200 bg-amber-100 text-amber-700`,
   ENDED: `${CHIP_BASE} border-slate-200 bg-slate-100 text-slate-600`,
   UPCOMING: `${CHIP_BASE} border-sky-200 bg-sky-100 text-sky-700`
 };

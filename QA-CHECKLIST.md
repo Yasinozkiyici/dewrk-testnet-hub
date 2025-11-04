@@ -125,21 +125,291 @@
 
 ### Schema Validation
 ```bash
-npm run test:schemas
+pnpm test:schemas
 # Runs testnet-detail.test.ts
 ```
 
 ### API Tests
 ```bash
-npm run test:api
-# Runs api-testnet-detail.test.ts
+pnpm test:api
+# Runs all API contract tests in tests/api/
 ```
 
 ### E2E Tests
 ```bash
-npm run test:e2e:detail
-# Runs Playwright tests for detail page
+pnpm test:e2e
+# Runs all Playwright tests
 ```
+
+### Smoke Tests
+```bash
+pnpm test:e2e:smoke
+# Runs critical smoke tests for deployment verification
+```
+
+### Admin Tests
+```bash
+pnpm test:e2e:admin
+# Runs admin action tests
+```
+
+---
+
+## 🚀 Deployment & Smoke Test Steps
+
+### Pre-Deployment Checklist
+
+- [ ] **Database Migrations**
+  ```bash
+  # Local: Run migrations
+  pnpm db:migrate
+  
+  # Production: Deploy migrations
+  pnpm db:migrate:deploy
+  ```
+
+- [ ] **Environment Variables**
+  ```bash
+  # Verify all required env vars are set:
+  # - NEXT_PUBLIC_SUPABASE_URL
+  # - NEXT_PUBLIC_SUPABASE_ANON_KEY
+  # - SUPABASE_SERVICE_ROLE_KEY
+  # - DATABASE_URL
+  # - SENTRY_DSN (optional)
+  ```
+
+- [ ] **Build Verification**
+  ```bash
+  # Run production build
+  pnpm build
+  
+  # Check for build errors
+  # TypeScript errors should be 0
+  ```
+
+### Post-Deployment Smoke Tests
+
+#### 1. Health Check
+```bash
+curl https://your-domain.com/api/health
+# Expected: {"ok":true,"status":"ok"}
+```
+
+#### 2. API Endpoints
+```bash
+# Testnets list
+curl https://your-domain.com/api/testnets
+# Expected: {"items":[...]}
+
+# Testnet detail
+curl https://your-domain.com/api/testnets/[any-slug]
+# Expected: {...testnet data...} or 404
+
+# Hero endpoints
+curl https://your-domain.com/api/hero/summary
+curl https://your-domain.com/api/hero/trending
+curl https://your-domain.com/api/hero/gainers
+```
+
+#### 3. Critical Pages
+```bash
+# Homepage
+curl -I https://your-domain.com/
+# Expected: 200 OK
+
+# Testnets page
+curl -I https://your-domain.com/testnets
+# Expected: 200 OK
+
+# Admin page (should redirect or require auth)
+curl -I https://your-domain.com/admin
+# Expected: 200 OK or 401/403
+```
+
+#### 4. Playwright Smoke Tests
+```bash
+# Run automated smoke tests
+pnpm test:e2e:smoke
+
+# Tests cover:
+# - Homepage loads
+# - Testnet list loads
+# - Testnet detail opens
+# - API endpoints respond
+# - No critical JavaScript errors
+```
+
+#### 5. Admin Actions Test
+```bash
+# Run admin critical actions test
+pnpm test:e2e:admin
+
+# Tests cover:
+# - Create testnet
+# - Update testnet
+# - Cache invalidation
+# - Error handling
+# - Validation
+```
+
+### Manual Smoke Test Checklist
+
+1. **Homepage**
+   - [ ] Page loads without errors
+   - [ ] Hero section visible
+   - [ ] Testnet table visible
+   - [ ] Filters work
+   - [ ] No console errors
+
+2. **Testnet Detail**
+   - [ ] Click testnet row → drawer opens
+   - [ ] Drawer content loads
+   - [ ] Scroll works in drawer
+   - [ ] Close button works
+
+3. **Navigation**
+   - [ ] All nav links work
+   - [ ] URL changes correctly
+   - [ ] Back button works
+
+4. **Admin Panel** (if accessible)
+   - [ ] Admin page loads
+   - [ ] Form renders
+   - [ ] Create testnet works
+   - [ ] Update testnet works
+   - [ ] Preview updates
+
+5. **API Endpoints**
+   - [ ] `/api/testnets` returns data
+   - [ ] `/api/testnets/[slug]` returns detail
+   - [ ] `/api/health` returns ok
+   - [ ] Error responses have proper status codes
+
+### Automated Test Coverage
+
+#### API Tests (Vitest)
+- [x] `/api/testnets` - GET endpoint
+- [x] `/api/testnets/[slug]` - GET endpoint
+- [x] `/api/admin/testnets/upsert` - POST endpoint
+- [x] `/api/health` - GET endpoint
+- [x] `/api/hero/summary` - GET endpoint
+- [x] `/api/hero/trending` - GET endpoint
+- [x] `/api/hero/gainers` - GET endpoint
+
+#### E2E Tests (Playwright)
+- [x] Critical smoke tests
+- [x] Admin actions flow
+- [x] Testnet detail drawer
+- [x] Error handling
+
+### Test Commands
+
+```bash
+# Run all API tests
+pnpm test:api
+
+# Run all E2E tests
+pnpm test:e2e
+
+# Run only smoke tests
+pnpm test:e2e tests/e2e/smoke-critical.spec.ts
+
+# Run only admin tests
+pnpm test:e2e tests/e2e/admin-critical.spec.ts
+
+# Run with coverage
+pnpm test:api --coverage
+
+# Run in watch mode
+pnpm test:api --watch
+```
+
+### CI/CD Integration
+
+```yaml
+# Example GitHub Actions workflow
+- name: Run API Tests
+  run: pnpm test:api
+
+- name: Run Smoke Tests
+  run: pnpm test:e2e:smoke
+
+- name: Run Admin Tests
+  run: pnpm test:e2e:admin
+```
+
+## 🎛️ Admin Panel Regression Tests
+
+### Admin Navigation
+- [ ] Sidebar navigation works (all sections accessible)
+- [ ] Breadcrumbs show correct path
+- [ ] Active section highlighted in sidebar
+- [ ] Collapsible sections expand/collapse correctly
+
+### Content Management
+- [ ] Create new testnet succeeds
+- [ ] Edit existing testnet works
+- [ ] Live preview updates in real-time
+- [ ] Save button shows loading state
+- [ ] Success toast appears after save
+- [ ] Undo option works (within 5 seconds)
+- [ ] Form validation shows inline errors
+- [ ] Invalid URLs show error message
+
+### Permissions
+- [ ] Admin role sees all actions
+- [ ] Editor role cannot delete
+- [ ] Viewer role sees read-only UI
+- [ ] Buttons hidden for unauthorized actions
+
+### Activity Log
+- [ ] Activity log page loads
+- [ ] Filters work (resource type, action)
+- [ ] Search filters results
+- [ ] Recent activity shows on dashboard
+
+### Error Handling
+- [ ] Network errors show user-friendly message
+- [ ] Validation errors prevent save
+- [ ] 404 redirects gracefully
+- [ ] Rate limiting shows appropriate message
+
+### Regression Steps
+
+1. **Admin Navigation**
+   ```bash
+   # Navigate through all admin sections
+   # Verify sidebar highlights active section
+   # Check breadcrumbs update correctly
+   ```
+
+2. **Content CRUD**
+   ```bash
+   # Create → Edit → Delete testnet
+   # Verify each operation works
+   # Check activity log records changes
+   ```
+
+3. **Permissions**
+   ```bash
+   # Switch user roles (if possible)
+   # Verify UI adapts to role
+   # Test unauthorized action prevention
+   ```
+
+4. **Validation**
+   ```bash
+   # Submit form with invalid data
+   # Verify inline errors appear
+   # Fix errors and verify save succeeds
+   ```
+
+5. **Undo/Restore**
+   ```bash
+   # Save a change
+   # Click undo within 5 seconds
+   # Verify change is reverted
+   ```
 
 ## 📊 Success Metrics
 

@@ -1,102 +1,112 @@
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { headers } from 'next/headers';
-import prisma from '@/lib/db';
-import { Editor } from './Editor';
-import { cn } from '@/lib/utils';
+import { prisma } from '@/lib/prisma';
+import { AdminControlPanel } from '@/components/admin/AdminControlPanel';
+import { listGuideSummaries } from '@/lib/content/guides';
+import { readLatestRefreshLog } from '@/lib/jobs/refresh';
+import NewsletterForm from '@/components/newsletter-form';
+import { serverGuard } from '@/lib/auth-guards';
+import { redirect } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
-// Admin guard middleware
-function checkAdminAuth() {
-  // Development modunda admin erişimini otomatik olarak ver
-  if (process.env.NODE_ENV === 'development') {
-    return true;
-  }
-  
-  const headersList = headers();
-  const adminKey = headersList.get('x-admin-key');
-  
-  if (!adminKey || adminKey !== process.env.ADMIN_KEY) {
-    return false;
-  }
-  return true;
-}
+const VALID_TABS = new Set([
+  'testnets',
+  'ecosystems',
+  'leaderboard',
+  'ai-insights',
+  'growth',
+  'guides',
+  'system',
+  'health'
+]);
 
 export default async function AdminPage({
   searchParams
 }: {
   searchParams: Record<string, string | string[] | undefined>;
 }) {
-  // Check admin authentication
-  if (!checkAdminAuth()) {
-    return (
-      <div className="mx-auto flex max-w-6xl gap-6 px-4 py-14">
-        <div className="flex-1 text-center">
-          <h1 className="text-2xl font-semibold text-gray-900 mb-4">Access Denied</h1>
-          <p className="text-gray-600">You need admin privileges to access this page.</p>
-        </div>
-      </div>
-    );
+  const guard = await serverGuard('admin');
+  if (guard.redirect) {
+    const target = guard.redirect === '/login'
+      ? `/login?redirect=${encodeURIComponent('/admin')}`
+      : guard.redirect;
+    redirect(target);
   }
-  const slugParam = typeof searchParams.slug === 'string' ? searchParams.slug : undefined;
 
-  const testnets = await prisma.testnet.findMany({
-    select: { id: true, name: true, slug: true },
-    orderBy: { updatedAt: 'desc' }
-  });
+  const tabParam = typeof searchParams?.tab === 'string' ? searchParams.tab : undefined;
+  const currentTab = tabParam && VALID_TABS.has(tabParam) ? tabParam : 'testnets';
+  const safeEcosystems = prisma.ecosystem
+    .findMany({
+      select: { id: true, name: true, slug: true, networkType: true, totalFunding: true, totalTestnets: true, activeTestnets: true },
+      orderBy: { displayOrder: 'asc' }
+    })
+    .catch(() => [] as any[]);
 
-  const selected = slugParam
-    ? await prisma.testnet.findUnique({
-        where: { slug: slugParam },
-        include: { tasks: { orderBy: { order: 'asc' } } }
-      })
-    : null;
+  const safeLeaderboard = prisma.leaderboard
+    .findUnique({
+      where: { slug: 'builder-points-all-time' },
+      include: { entries: { orderBy: { rank: 'asc' }, take: 12 } }
+    })
+    .catch(() => null);
 
-  if (slugParam && !selected) {
-    notFound();
-  }
+  const safeCounts = Promise.all([
+    prisma.testnet.count().catch(() => 0),
+    prisma.ecosystem.count().catch(() => 0),
+    prisma.leaderboardEntry.count().catch(() => 0)
+  ]);
+
+  const [testnets, ecosystems, leaderboard, guides, lastLog, metrics] = await Promise.all([
+    prisma.testnet.findMany({
+      select: { id: true, name: true, slug: true, status: true, rewardType: true, totalRaisedUSD: true },
+      orderBy: { updatedAt: 'desc' }
+    }),
+    safeEcosystems,
+    safeLeaderboard,
+    listGuideSummaries(),
+    readLatestRefreshLog(),
+    safeCounts
+  ]);
+
+  const metricsSummary = {
+    testnets: metrics[0],
+    ecosystems: metrics[1],
+    leaderboardUsers: metrics[2],
+    lastSync: lastLog?.timestamp ?? null,
+    lastJobDurationMs: lastLog?.durationMs ?? null
+  };
 
   return (
-    <div className="mx-auto flex min-h-screen max-w-[1400px] gap-6 px-4 py-8">
-      {/* Sidebar */}
-      <aside className="sticky top-20 h-fit w-64 shrink-0 rounded-2xl border border-white/40 bg-white/80 p-5 shadow-glass">
-        <div className="mb-5 flex items-center justify-between">
-          <h2 className="text-sm font-bold uppercase tracking-wide text-[var(--ink-1)]">Testnets</h2>
-          <span className="rounded-full bg-[var(--mint)]/20 px-2 py-0.5 text-xs font-semibold text-[var(--ink-2)]">
-            {testnets.length}
-          </span>
+    <div className="mx-auto w-full max-w-6xl px-4 py-10 lg:px-0">
+      <h1 className="text-2xl font-semibold text-[var(--ink-1)]">Admin Control Center</h1>
+      <p className="mt-2 text-sm text-[var(--ink-2)]">
+        Manage live datasets, guides, and weekly automation for Dewrk.
+      </p>
+      <div className="mt-8">
+        <AdminControlPanel
+          currentTab={currentTab}
+          role="admin"
+          metrics={metricsSummary}
+          testnets={testnets}
+          ecosystems={ecosystems}
+          leaderboard={(leaderboard?.entries ?? []).map((entry) => ({
+            leaderboardSlug: 'builder-points-all-time',
+            entityId: entry.entityId,
+            entityName: entry.entityName,
+            metricValue: Number(entry.metricValue),
+            rank: entry.rank,
+            source: (entry.metadata as { source?: string })?.source ?? null
+          }))}
+          guides={guides.map((guide) => ({ slug: guide.slug, title: guide.title }))}
+          lastLog={lastLog}
+        />
+        <div className="mt-8">
+          <NewsletterForm
+            title="Admin Updates"
+            description="Receive internal release notes, incident reviews, and growth experiments."
+            buttonLabel="Join Admin List"
+            successMessage="You're on the admin update list."
+          />
         </div>
-        
-        <Link
-          href="/admin"
-          className="mb-4 flex items-center justify-center gap-2 rounded-lg bg-[var(--mint)] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[var(--aqua)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--mint)]"
-        >
-          + New Testnet
-        </Link>
-        
-        <div className="mt-4 space-y-1 overflow-y-auto max-h-[600px]" data-testid="testnet-list">
-          {testnets.map((item) => (
-            <Link
-              key={item.id}
-              href={`/admin?slug=${item.slug}`}
-              className={cn(
-                "block rounded-lg px-3 py-2.5 text-sm transition",
-                slugParam === item.slug
-                  ? "bg-[var(--mint)]/10 font-semibold text-[var(--ink-1)] border border-[var(--mint)]/30"
-                  : "text-[var(--ink-2)] hover:bg-white/80 hover:text-[var(--ink-1)]"
-              )}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
-      </aside>
-      
-      {/* Main Content */}
-      <main className="flex-1 min-w-0">
-        <Editor initialTestnet={selected} />
-      </main>
+      </div>
     </div>
   );
 }

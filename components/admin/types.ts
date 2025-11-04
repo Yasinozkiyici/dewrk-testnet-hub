@@ -1,7 +1,7 @@
 export type AdminFormValues = {
   name: string;
   network: string;
-  status: 'LIVE' | 'PAUSED' | 'ENDED' | 'UPCOMING';
+  status: 'LIVE' | 'TBA' | 'ENDED' | 'UPCOMING';
   difficulty: 'EASY' | 'MEDIUM' | 'HARD';
   shortDescription: string;
   description: string;
@@ -10,7 +10,11 @@ export type AdminFormValues = {
   estTimeMinutes: string;
   rewardType: string;
   rewardNote: string;
+  rewardCategory: string;
+  rewardRangeUSD: string;
   totalRaisedUSD: string;
+  hasFaucet: boolean;
+  startDate: string;
   kycRequired: boolean;
   requiresWallet: boolean;
   hasDashboard: boolean;
@@ -25,5 +29,6 @@ export type AdminFormValues = {
   prerequisites: string[];
   gettingStarted: Array<{ title: string; body: string; url: string }>;
   discordRoles: Array<{ role: string; requirement: string; perks: string }>;
+  discordRolesJson?: string;
   tasks: Array<{ title: string; description: string; url: string; reward: string; order: number }>;
 };

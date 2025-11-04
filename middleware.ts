@@ -1,26 +1,40 @@
-import { NextResponse } from 'next/server';
-import * as jose from 'jose';
+import { NextRequest, NextResponse } from 'next/server';
 
-async function verifyAdminToken(req: Request) {
-  if (process.env.NODE_ENV !== 'production') return true;
-  const auth = req.headers.get('authorization') || '';
-  const token = auth.replace(/^Bearer\s+/i, '');
-  if (!token) return false;
-  const secret = new TextEncoder().encode(process.env.SUPABASE_JWT_SECRET!);
-  const { payload } = await jose.jwtVerify(token, secret).catch(() => ({ payload: {} as any }));
-  return payload?.role === 'admin';
+const ADMIN_COOKIE_NAME = 'dewrk_admin';
+
+function hasAdminCookie(request: NextRequest) {
+  const cookieHeader = request.headers.get('cookie');
+  if (!cookieHeader) return false;
+  return cookieHeader.split(';').some((section) => {
+    const [name, value] = section.split('=').map((part) => part.trim());
+    return name === ADMIN_COOKIE_NAME && Boolean(value);
+  });
 }
 
-export async function middleware(req: Request) {
-  const url = new URL(req.url);
-  if (url.pathname.startsWith('/api/admin/')) {
-    const ok = await verifyAdminToken(req);
-    if (!ok) return NextResponse.json({ error: 'forbidden' }, { status: 403 });
-    const res = NextResponse.next();
-    res.headers.set('x-admin-authenticated', 'true');
-    return res;
+export async function middleware(request: NextRequest) {
+  const pathname = request.nextUrl.pathname;
+  
+  // Only protect admin API routes (except session endpoint which needs to work without auth)
+  if (!pathname.startsWith('/api/admin/')) {
+    return NextResponse.next();
   }
-  return NextResponse.next();
+
+  // Allow session endpoint to work without auth check
+  if (pathname === '/api/admin/session') {
+    return NextResponse.next();
+  }
+
+  // Development mode: allow all admin routes
+  if (process.env.NODE_ENV !== 'production') {
+    return NextResponse.next();
+  }
+
+  // Production: require admin cookie
+  if (hasAdminCookie(request)) {
+    return NextResponse.next();
+  }
+
+  return NextResponse.json({ error: 'forbidden' }, { status: 403 });
 }
 
 export const config = { matcher: ['/api/admin/:path*'] };

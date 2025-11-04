@@ -44,6 +44,12 @@ tsc
 /prisma/dev.db-journal
 /prisma/prisma/
 
+# Data logs
+/data/update.log
+
+# Seed pipeline outputs
+/seed-output
+
 # IDE
 .vscode
 .cursor

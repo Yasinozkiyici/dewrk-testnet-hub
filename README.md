@@ -101,7 +101,7 @@ styles/globals.css       # frozen mesh + tokens
 ```
 
 ## Deployment Notes (Vercel)
-- Add Supabase secrets to Vercel env (`DATABASE_URL`, `SHADOW_DATABASE_URL`, Supabase keys)
+- Add Supabase secrets to Vercel env (`DATABASE_URL`, `DIRECT_URL`, `SHADOW_DATABASE_URL`, Supabase keys)
 - Run `pnpm db:deploy` in a protected migration step (see CI template below)
 - Ensure `pnpm db:seed` is run only in lower environments
 

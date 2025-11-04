@@ -80,7 +80,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'pnpm dev',
+    command: 'next dev -p 3002',
     url: 'http://localhost:3002',
     reuseExistingServer: !process.env.CI,
   },

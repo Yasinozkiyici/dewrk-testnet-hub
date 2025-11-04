@@ -38,7 +38,7 @@ export function TestnetTableSkeleton({ rows = 8 }: TestnetTableSkeletonProps) {
           </thead>
           <tbody className="divide-y divide-white/40">
             {Array.from({ length: rows }).map((_, rowIndex) => (
-              <tr key={rowIndex} className="h-[58px]">
+              <tr key={rowIndex} className="h-[60px]">
                 <td className="sticky left-0 z-10 bg-white/70 px-3 py-3 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.06)]">
                   <div className="flex items-center gap-3">
                     <Skeleton className="h-8 w-8 rounded-lg" />

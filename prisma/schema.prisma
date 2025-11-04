@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./prisma/dev.db"
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 enum Difficulty {
@@ -15,7 +16,7 @@ enum Difficulty {
 
 enum Status {
   LIVE
-  PAUSED
+  TBA
   ENDED
   UPCOMING
 }
@@ -50,6 +51,11 @@ model Testnet {
   hasDashboard     Boolean  @default(false)
   totalRaisedUSD   Float?
   discordRoles     Json?
+  // Additive fields
+  startDate        DateTime?
+  hasFaucet        Boolean?
+  rewardCategory   String?
+  rewardRangeUSD   Decimal?
   socials          Json?    @ignore
   tasks            Task[]
   tasksCount       Int      @default(0)
@@ -97,5 +103,181 @@ model AuditLog {
   createdAt DateTime @default(now())
 
   @@index([resource, resourceId])
+  @@index([createdAt])
+}
+
+model Leaderboard {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  title           String
+  description     String?
+  category        String   // "contributors", "projects", "ecosystems"
+  metricType      String   // "tasks_completed", "funding", "testnets_launched"
+  period          String   // "daily", "weekly", "monthly", "all_time"
+  isActive        Boolean  @default(true)
+  displayOrder    Int      @default(0)
+  iconUrl         String?
+  featured        Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  entries         LeaderboardEntry[]
+
+  @@index([category, isActive])
+  @@index([displayOrder])
+}
+
+model LeaderboardEntry {
+  id            String   @id @default(cuid())
+  leaderboardId String
+  rank          Int
+  entityId      String   // User wallet, project slug, ecosystem name
+  entityName    String
+  entityImage   String?
+  metricValue   Float    // The metric value for ranking
+  change        Float?   // Change from previous period
+  metadata      Json?    // Additional data (e.g., testnet count, tasks completed)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  leaderboard Leaderboard @relation(fields: [leaderboardId], references: [id], onDelete: Cascade)
+
+  @@index([leaderboardId, rank])
+  @@index([entityId])
+  @@unique([leaderboardId, entityId])
+}
+
+model Ecosystem {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  name            String
+  shortDescription String?
+  description     String?
+  networkType     String   // "L1", "L2", "Rollup", "Sidechain"
+  logoUrl         String?
+  heroImageUrl    String?
+  websiteUrl      String?
+  twitterUrl      String?
+  discordUrl      String?
+  githubUrl       String?
+  totalTestnets   Int      @default(0)
+  totalFunding    Float?   @default(0)
+  activeTestnets  Int      @default(0)
+  featured        Boolean  @default(false)
+  displayOrder    Int      @default(0)
+  metadata        Json?    // Additional ecosystem data
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([networkType])
+  @@index([featured, displayOrder])
+}
+
+model Guide {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  title           String
+  excerpt         String?
+  content         String   // Markdown content
+  author          String?
+  category        String   // "getting_started", "advanced", "troubleshooting"
+  tags            Json?    // Array of tags
+  featured        Boolean  @default(false)
+  published       Boolean  @default(false)
+  publishedAt     DateTime?
+  views           Int      @default(0)
+  readingTime     Int?     // Estimated reading time in minutes
+  coverImageUrl   String?
+  seoTitle        String?
+  seoDescription  String?
+  displayOrder    Int      @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([category, published])
+  @@index([featured, displayOrder])
+  @@index([published, publishedAt])
+}
+
+model ApiEndpoint {
+  id              String   @id @default(cuid())
+  path            String   @unique // e.g., "/api/testnets"
+  method          String   @default("GET") // GET, POST, PUT, DELETE
+  title           String
+  description     String?
+  category        String   // "testnets", "leaderboards", "ecosystems", "guides"
+  authRequired    Boolean  @default(false)
+  rateLimit       Int?     // Requests per minute
+  exampleRequest  String?  // Example curl or code
+  exampleResponse String?  // Example JSON response
+  parameters      Json?    // Query params, body schema
+  responseSchema  Json?    // Response structure
+  version         String   @default("v1")
+  deprecated      Boolean  @default(false)
+  deprecatedAt    DateTime?
+  displayOrder    Int      @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([category, deprecated])
+  @@index([displayOrder])
+}
+
+model Referral {
+  id        String   @id @default(cuid())
+  code      String
+  userAgent String?
+  ipAddress String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  @@index([code])
+  @@index([createdAt])
+}
+
+model NewsletterSubscription {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  status    String   @default("subscribed")
+  source    String?  // mailchimp | substack | fallback
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+model AiDiscovery {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  network   String?
+  category  String?
+  summary   String?
+  sourceUrl String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  @@index([category])
+  @@index([createdAt])
+}
+
+model InsightSnapshot {
+  id               String   @id @default(cuid())
+  topCategory      String?
+  emergingProjects Json?
+  userCorrelation  Json?
+  forYou           Json?
+  createdAt        DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+model UserEvent {
+  id        String   @id @default(cuid())
+  eventName String
+  payload   Json?
+  referrer  String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  @@index([eventName])
   @@index([createdAt])
 }

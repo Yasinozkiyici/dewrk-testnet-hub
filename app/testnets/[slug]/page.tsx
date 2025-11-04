@@ -6,6 +6,8 @@ import { TESTNETS_TAG, testnetTag } from '@/lib/cache';
 import { TestnetDetail } from '@/components/testnets/TestnetDetail';
 import { normalizeTestnetDetail } from '@/components/testnets/normalize';
 import type { TestnetDetailRecord } from '@/components/testnets/types';
+import { prisma } from '@/lib/prisma';
+import type { Metadata } from 'next';
 
 function getBaseUrl() {
   const headersList = headers();
@@ -41,6 +43,26 @@ export default async function TestnetDetailPage({ params }: { params: { slug: st
     notFound();
   }
   const detail = result;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Dataset',
+    name: detail.name,
+    description: detail.shortDescription ?? undefined,
+    url: `${getBaseUrl()}/testnets/${detail.slug}`,
+    creator: {
+      '@type': 'Organization',
+      name: 'Dewrk'
+    },
+    keywords: detail.tags,
+    variableMeasured: [
+      detail.totalRaisedUSD
+        ? { '@type': 'PropertyValue', name: 'totalRaisedUSD', value: detail.totalRaisedUSD }
+        : null,
+      detail.rewardType
+        ? { '@type': 'PropertyValue', name: 'rewardType', value: detail.rewardType }
+        : null
+    ].filter(Boolean)
+  };
 
   return (
     <div className="mx-auto flex w-full max-w-[980px] flex-col gap-8 px-4 py-14 lg:px-6">
@@ -51,6 +73,40 @@ export default async function TestnetDetailPage({ params }: { params: { slug: st
         <ArrowLeft className="h-4 w-4" /> Back to listings
       </Link>
       <TestnetDetail testnet={detail} variant="page" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </div>
   );
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  try {
+    const t = await prisma.testnet.findUnique({ where: { slug: params.slug } });
+    const titleBase = t?.name ? `${t.name} — ${t.network} Testnet | Dewrk` : 'Testnet Detail | Dewrk';
+    const desc = t?.shortDescription || 'Explore verified Web3 testnets and developer rewards.';
+    const base = process.env.NEXT_PUBLIC_APP_URL ?? 'https://dewrk.com';
+    const url = `${base.replace(/\/$/, '')}/testnets/${params.slug}`;
+    const ogImage = `${url}/opengraph-image`;
+    return {
+      title: titleBase,
+      description: desc,
+      alternates: { canonical: url },
+      openGraph: {
+        title: t?.name ? `${t.name} Testnet — ${t.network}` : 'Dewrk Testnet',
+        description: desc,
+        url,
+        siteName: 'Dewrk',
+        images: [{ url: ogImage, width: 1200, height: 630, alt: t?.name ? `${t.name} Testnet Overview` : 'Dewrk' }],
+        locale: 'en_US',
+        type: 'website'
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: t?.name ? `${t.name} Testnet` : 'Dewrk Testnet',
+        description: desc,
+        images: [ogImage]
+      }
+    };
+  } catch {
+    return { title: 'Testnet | Dewrk' };
+  }
 }

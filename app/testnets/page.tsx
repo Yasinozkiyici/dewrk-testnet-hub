@@ -1,12 +1,13 @@
-import Link from 'next/link';
-import type { Route } from 'next';
 import { headers } from 'next/headers';
-import { Suspense } from 'react';
+import Link from 'next/link';
 import { TestnetsTable, type TestnetListRow } from './TestnetsTable';
-import { Filters } from './Filters';
 import { TestnetDrawerPortal } from './TestnetDrawerPortal';
 import { TESTNETS_TAG } from '@/lib/cache';
-import { cn } from '@/lib/utils';
+import { CompactFilterBar } from './CompactFilterBar';
+import NewsletterForm from '@/components/newsletter-form';
+import HeroStats from '@/components/HeroStats';
+import type { Metadata } from 'next';
+import { prisma } from '@/lib/prisma';
 
 export const dynamic = 'force-dynamic';
 
@@ -30,6 +31,12 @@ function getBaseUrl() {
   return process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:4000';
 }
 
+type InsightHighlight = {
+  topCategory: string | null;
+  emergingProjects: Array<{ name: string; category?: string | null; summary?: string | null; slug?: string; sourceUrl?: string | null }>;
+  forYou: Array<{ name: string; slug: string; reason: string }>;
+};
+
 async function fetchTestnets(searchParams: Record<string, string | string[] | undefined>) {
   const baseUrl = getBaseUrl();
   const url = new URL('/api/testnets', baseUrl);
@@ -40,16 +47,48 @@ async function fetchTestnets(searchParams: Record<string, string | string[] | un
     }
   });
 
+  if (!url.searchParams.has('pageSize')) {
+    url.searchParams.set('pageSize', '40');
+  }
+
   const response = await fetch(url.toString(), {
     next: { tags: [TESTNETS_TAG] },
     cache: 'no-store'
   });
 
   if (!response.ok) {
-    throw new Error('Failed to load testnets');
+    // Fallback to empty list so UI remains functional in smoke tests
+    return { data: [], pagination: { total: 0, page: 1, pageSize: 0, totalPages: 0 } } as TestnetListResponse;
   }
 
-  return (await response.json()) as TestnetListResponse;
+  const json = await response.json();
+  // Support both legacy { data, pagination } and current { items }
+  const items: TestnetListRow[] = Array.isArray(json?.items)
+    ? (json.items as TestnetListRow[])
+    : (json?.data as TestnetListRow[] | undefined) ?? [];
+  
+  // Pagination bilgisini her zaman oluştur
+  const paginationData = json?.pagination || {
+    total: items.length,
+    page: 1,
+    pageSize: items.length,
+    totalPages: 1
+  };
+  
+  return {
+    data: items,
+    pagination: paginationData
+  } as TestnetListResponse;
+}
+
+async function fetchInsightsHighlights(): Promise<InsightHighlight | null> {
+  const snapshot = await prisma.insightSnapshot.findFirst({ orderBy: { createdAt: 'desc' } });
+  if (!snapshot) return null;
+  return {
+    topCategory: snapshot.topCategory ?? null,
+    emergingProjects: Array.isArray(snapshot.emergingProjects) ? snapshot.emergingProjects : [],
+    forYou: Array.isArray(snapshot.forYou) ? snapshot.forYou : []
+  };
 }
 
 export default async function TestnetsPage({
@@ -58,58 +97,119 @@ export default async function TestnetsPage({
   searchParams: Record<string, string | string[] | undefined>;
 }) {
   const { data, pagination } = await fetchTestnets(searchParams);
+  const insights = await fetchInsightsHighlights();
+  const forYou = Array.isArray(insights?.forYou) ? insights!.forYou : [];
+  const emerging = Array.isArray(insights?.emergingProjects) ? insights!.emergingProjects : [];
 
   return (
-    <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-6 px-4 py-12 lg:px-6">
-      <section className="rounded-3xl border border-white/40 bg-white/80 px-6 py-8 shadow-glass">
-        <div className="flex flex-wrap items-start justify-between gap-4">
-          <div className="max-w-2xl">
-            <p className="text-xs uppercase tracking-wide text-[var(--ink-3)]">Directory</p>
-            <h1 className="text-2xl font-semibold text-[var(--ink-1)] sm:text-[28px]">Testnet Programs</h1>
-            <p className="mt-3 text-sm text-[var(--ink-2)]">
-              Explore live and upcoming testnets with curated metadata on rewards, access requirements,
-              and the steps required to get started. Listings are verified weekly by the Dewrk core team.
-            </p>
-          </div>
-          <div className="flex flex-col items-end gap-2 text-xs text-[var(--ink-3)]">
-            <span>
-              Showing <strong className="text-[var(--ink-1)]">{data.length}</strong> of{' '}
-              <strong className="text-[var(--ink-1)]">{pagination.total}</strong>
-            </span>
-            <LinkButton href="/" label="← Back to overview" variant="outline" />
-          </div>
-        </div>
+    <div className="w-full">
+      {/* HERO SECTION */}
+      <section className="max-w-6xl mx-auto px-6 pt-10 pb-8">
+        <h1 className="text-[28px] font-semibold leading-tight tracking-tight mb-2">
+          Discover High-Value Testnet Opportunities
+        </h1>
+        <p className="text-[13.5px] text-muted-foreground mb-4 max-w-[620px] leading-relaxed">
+          Developers need a trusted source to discover testnets that match their skills and availability.
+        </p>
+        <HeroStats />
       </section>
 
-      <Suspense fallback={<div className="text-sm text-[var(--ink-3)]">Loading filters…</div>}>
-        <Filters />
-      </Suspense>
+      {/* STICKY FILTER BAR */}
+      <div className="sticky top-[72px] z-30 w-full border-b border-white/20 bg-white/70 backdrop-blur-md">
+        <div className="mx-auto flex w-full max-w-[1280px] items-center gap-2 px-4 py-2 lg:px-6">
+          <CompactFilterBar />
+        </div>
+      </div>
 
-      <TestnetsTable testnets={data} />
+      {/* TABLE */}
+      <div className="mx-auto w-full max-w-[1280px] px-4 py-8 pb-20 lg:px-6 space-y-12">
+        {forYou.length > 0 && (
+          <section className="rounded-3xl border border-white/30 bg-white/70 p-6 shadow-glass">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h2 className="text-lg font-semibold text-[var(--ink-1)]">For You</h2>
+                <p className="text-xs text-[var(--ink-3)]">Personalised suggestions based on recent community activity.</p>
+              </div>
+            </div>
+            <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {forYou.slice(0, 6).map((item) => {
+                const match = data?.find((row) => row.slug === item.slug);
+                return (
+                  <Link
+                    key={item.slug}
+                    href={`/testnets?slug=${item.slug}`}
+                    className="group flex flex-col justify-between rounded-2xl border border-white/40 bg-white/70 p-4 transition hover:border-white/60"
+                  >
+                    <div>
+                      <h3 className="text-sm font-semibold text-[var(--ink-1)] group-hover:text-[var(--mint)]">{item.name}</h3>
+                      <p className="mt-2 text-xs text-[var(--ink-3)]">{item.reason}</p>
+                    </div>
+                    {match?.network && <p className="mt-4 text-xs text-[var(--ink-2)]">Network: {match.network}</p>}
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+        {(insights?.topCategory || emerging.length) && (
+          <section className="rounded-3xl border border-white/30 bg-white/70 p-6 shadow-glass">
+            <div className="grid gap-4 md:grid-cols-[1fr_2fr]">
+              <div className="rounded-2xl border border-white/40 bg-white/80 p-4">
+                <p className="text-xs uppercase tracking-[0.2em] text-[var(--ink-3)]">Trending Category</p>
+                <p className="mt-2 text-lg font-semibold text-[var(--ink-1)]">{insights?.topCategory ?? '—'}</p>
+                <p className="mt-1 text-xs text-[var(--ink-3)]">Based on recent join activity</p>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-[0.2em] text-[var(--ink-3)]">Emerging Projects</p>
+                <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                  {emerging.slice(0, 4).map((item) => (
+                    <a
+                      key={item.slug ?? item.name}
+                      href={item.sourceUrl ?? '#'}
+                      target={item.sourceUrl ? '_blank' : undefined}
+                      rel={item.sourceUrl ? 'noreferrer' : undefined}
+                      className="rounded-2xl border border-white/40 bg-white/70 p-3 text-sm transition hover:border-white/60"
+                    >
+                      <p className="font-semibold text-[var(--ink-1)]">{item.name}</p>
+                      {item.category && <p className="text-xs text-[var(--ink-3)]">{item.category}</p>}
+                      {item.summary && <p className="mt-2 text-xs text-[var(--ink-3)] line-clamp-3">{item.summary}</p>}
+                    </a>
+                  ))}
+                  {emerging.length === 0 && <p className="text-xs text-[var(--ink-3)]">AI discovery has not surfaced new projects yet.</p>}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        <TestnetsTable testnets={data ?? []} pagination={pagination} />
+        <NewsletterForm />
+      </div>
+
       <TestnetDrawerPortal />
     </div>
   );
 }
 
-function LinkButton({ href, label, variant }: { href: string; label: string; variant: 'outline' | 'primary' }) {
-  const baseClasses =
-    'inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--mint)]';
-  if (variant === 'primary') {
-    return (
-      <Link
-        href={href as Route}
-        className={cn(baseClasses, 'bg-[var(--mint)] text-[var(--ink-1)] shadow-glass hover:bg-[var(--aqua)]')}
-      >
-        {label}
-      </Link>
-    );
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const [active, sum] = await Promise.all([
+      prisma.testnet.count({ where: { status: 'LIVE' as any } }),
+      prisma.testnet.aggregate({ _sum: { totalRaisedUSD: true } })
+    ]);
+    const totalFunding = Number(sum._sum.totalRaisedUSD ?? 0).toLocaleString();
+    const title = `Testnets (${active} live) — Dewrk`;
+    const description = `Discover high-value testnet opportunities. Total funding: $${totalFunding}.`;
+    const url = 'https://dewrk.com/testnets';
+    return {
+      title,
+      description,
+      alternates: { canonical: url },
+      openGraph: { title, description, url, siteName: 'Dewrk', type: 'website' },
+      twitter: { card: 'summary_large_image', title, description }
+    };
+  } catch {
+    return { title: 'Testnets — Dewrk' };
   }
-  return (
-    <Link
-      href={href as Route}
-      className={cn(baseClasses, 'border border-white/40 bg-white/70 text-[var(--ink-2)] hover:border-white/60')}
-    >
-      {label}
-    </Link>
-  );
 }

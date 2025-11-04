@@ -31,9 +31,10 @@ export function ProjectLogo({
       buildLogoCandidates({
         primary: logoUrl ?? undefined,
         websiteUrl: websiteUrl ?? undefined,
-        githubUrl: githubUrl ?? undefined
+        githubUrl: githubUrl ?? undefined,
+        slug
       }),
-    [logoUrl, websiteUrl, githubUrl]
+    [logoUrl, websiteUrl, githubUrl, slug]
   );
 
   const [index, setIndex] = useState(0);
