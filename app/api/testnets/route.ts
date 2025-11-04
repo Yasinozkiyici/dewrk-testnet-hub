@@ -119,17 +119,45 @@ export async function GET(request: Request) {
     let total = 0;
 
     try {
+      // Test connection first
+      const connectionTest = await prisma.$queryRaw`SELECT 1 as test`.catch(() => null);
+      console.log('[api/testnets] Connection test:', connectionTest ? 'OK' : 'FAILED');
+      
+      // Try count first
+      const countResult = await prisma.testnet.count().catch((err) => {
+        console.error('[api/testnets] Count query failed:', err instanceof Error ? err.message : String(err));
+        return 0;
+      });
+      console.log(`[api/testnets] Count result: ${countResult}`);
+      
+      if (countResult === 0) {
+        console.warn('[api/testnets] Count is 0, checking if table exists...');
+        const tableCheck = await prisma.$queryRaw`SELECT COUNT(*) as count FROM "Testnet"`.catch((err) => {
+          console.error('[api/testnets] Raw table check failed:', err instanceof Error ? err.message : String(err));
+          return [{ count: 0 }];
+        });
+        console.log('[api/testnets] Raw table check:', tableCheck);
+      }
+      
       [testnets, total] = await Promise.all([
         prisma.testnet.findMany({
           orderBy: { updatedAt: 'desc' },
           skip,
           take: pageSize
+        }).catch((err) => {
+          console.error('[api/testnets] FindMany query failed:', err instanceof Error ? err.message : String(err));
+          return [];
         }),
-        prisma.testnet.count()
+        Promise.resolve(countResult)
       ]);
       console.log(`[api/testnets] Found ${testnets.length} testnets from database, total: ${total}`);
     } catch (dbError) {
       console.error('[api/testnets] Database query failed:', dbError);
+      console.error('[api/testnets] Error details:', {
+        message: dbError instanceof Error ? dbError.message : String(dbError),
+        stack: dbError instanceof Error ? dbError.stack : undefined,
+        name: dbError instanceof Error ? dbError.name : undefined
+      });
       const fallback = getMockProjectCardKPIs(pageSize);
       return NextResponse.json({
         items: fallback.map(mapMockDataToTestnetListRow),
